@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './styles/App.css';
+import React, { Component } from 'react'
+import './styles/App.css'
 
 // components
 import ItemsPage from './components/ItemsPage'
@@ -19,4 +19,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
