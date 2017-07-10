@@ -5,3 +5,17 @@
 .navbar {
   padding: 0 50px;
 }
+
+.navbar-end li {
+  display: flex;
+  padding: 0;
+}
+
+.nav-item a {
+  height: 100%;
+}
+
+.nav-item.selected {
+  border-bottom: 2px solid red;
+
+}
