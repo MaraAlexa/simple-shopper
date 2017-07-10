@@ -2,11 +2,22 @@ import React from 'react'
 import Item from './Item'
 import '../styles/ItemsPage.css'
 
-const ItemsPage = () =>
-    <div className="items-page">
-      <h2>Items Page</h2>
-      <Item/>
-    </div>
+
+class ItemsPage extends React.Component {
+  render() {
+    return (
+      <div className="items-page">
+        <h2>Items Page</h2>
+        {
+          this.props.products.map(product =>
+            <Item key={product.id} product={product} />
+          )
+        }
+      </div>
+    )
+  }
+}
+
 
 
 export default ItemsPage

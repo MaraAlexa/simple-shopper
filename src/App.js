@@ -4,6 +4,7 @@ import './styles/App.css'
 // components
 import ItemsPage from './components/ItemsPage'
 import Nav from './components/Nav'
+import products from './data/products'
 
 class App extends Component {
   render() {
@@ -11,7 +12,7 @@ class App extends Component {
       <div className="App">
         <Nav/>
         <div className="content">
-          <ItemsPage />
+          <ItemsPage products={products} />
         </div>
 
       </div>
