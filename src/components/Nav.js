@@ -9,7 +9,7 @@ const Nav = ({ activeTab, onTabChange }) =>
     <a className="navbar-item" href="http://bulma.io">
       <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28" />
     </a>
-  </div>{/* end navbar-brand */}
+  </div>{/* end navbar-brand here */}
   <ul className="navbar-end">
     <li className={`nav-item ${activeTab === 0 && 'selected'}`}>
       <a onClick={() => onTabChange(0)} className="navbar-item">ItemsPage</a>
