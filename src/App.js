@@ -20,7 +20,7 @@ class App extends Component {
   renderContent() {
     switch (this.state.activeTab) {
       default:
-      case 0: return <span>Items</span>
+      case 0: return <ItemsPage products={products} />
       case 1: return <span>Cart</span>
     }
   }
@@ -35,7 +35,7 @@ class App extends Component {
         />
         <div className="content">
           {this.renderContent()}
-          {/* <ItemsPage products={products} /> */}
+
         </div>
 
       </div>
