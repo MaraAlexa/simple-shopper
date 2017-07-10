@@ -31,9 +31,30 @@ class App extends Component {
                         products={products}
                         onAddToCart={this.handleAddToCart}
                       />
-      case 1: return <CartPage cart={this.state.cart}  />
-      {/* <span>You have added {this.state.cart.length} products</span> */}
+      case 1: return this.renderCart()
     }
+  }
+
+  renderCart() {
+    // count how many of each product in cart
+    let productsCount = this.state.cart.reduce((productsCount, productId) => {
+      productsCount[productId] = productsCount[productId] || 0
+      productsCount[productId] ++
+      return productsCount
+    }, {})
+    // create an array of products
+    let cartProducts = Object.keys(productsCount).map(productId => {
+      // find product by its ID
+      var product = products.find(product => product.id === parseInt(productId, 10))
+      // create a new product that also has a count property
+      return {
+        ...product,
+        count: productsCount[productId]
+      }
+    })
+    return (
+      <CartPage products={cartProducts} />
+    )
   }
 
   render() {
