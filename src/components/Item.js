@@ -1,11 +1,11 @@
 import React from 'react'
-
+import PropTypes from 'prop-types'
 import '../styles/Item.css'
 
 
 class Item extends React.Component {
   render() {
-    const { product } = this.props
+    const { product, onAddToCart } = this.props
 
     return (
       <div className='item-content'>
@@ -25,12 +25,22 @@ class Item extends React.Component {
               </span>
               {product.price/100}
           </div>
-            <button className="addToCart button is-primary is-outlined">Add to cart</button>
+            <button
+              className="addToCart button is-primary is-outlined"
+              onClick={onAddToCart}
+            >
+              Add to cart
+            </button>
           </div>
         </div>
       </div>
     )
   }
+}
+
+Item.propTypes = {
+  product: PropTypes.object.isRequired,
+  onAddToCart: PropTypes.func.isRequired
 }
 
 
