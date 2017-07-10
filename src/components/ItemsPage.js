@@ -1,23 +1,28 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Item from './Item'
 import '../styles/ItemsPage.css'
 
 
-class ItemsPage extends React.Component {
-  render() {
-    return (
-      <div className="items-page">
-        <h2>Items Page</h2>
-        {
-          this.props.products.map(product =>
-            <Item key={product.id} product={product} />
-          )
-        }
-      </div>
-    )
-  }
+const ItemsPage = ({products, onAddToCart}) =>
+  <div className="items-page">
+    <h2>Items Page</h2>
+    {
+      products.map(product =>
+        <Item
+          key={product.id}
+          product={product}
+          onAddToCart={() => onAddToCart(product)}
+        />
+      )
+    }
+  </div>
+
+
+
+ItemsPage.propTypes = {
+  products: PropTypes.array.isRequired,
+  onAddToCart: PropTypes.func.isRequired
 }
-
-
 
 export default ItemsPage
