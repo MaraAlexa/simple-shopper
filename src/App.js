@@ -18,11 +18,19 @@ class App extends Component {
     })
   }
 
+  handleAddToCart = (product) =>
+    this.setState({
+      cart: [...this.state.cart, product.id]
+    })
+
   renderContent() {
     switch (this.state.activeTab) {
       default:
-      case 0: return <ItemsPage products={products} />
-      case 1: return <span>Cart</span>
+      case 0: return <ItemsPage
+                        products={products}
+                        onAddToCart={this.handleAddToCart}
+                      />
+      case 1: return <span>You have added {this.state.cart.length} products</span>
     }
   }
 
@@ -33,6 +41,7 @@ class App extends Component {
         <Nav
           activeTab={activeTab}
           onTabChange={this.handleTabChange}
+          cart={this.state.cart}
         />
         <div className="content">
           {this.renderContent()}

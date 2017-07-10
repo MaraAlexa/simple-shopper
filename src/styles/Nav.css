@@ -19,3 +19,10 @@
   border-bottom: 2px solid red;
 
 }
+
+/*cart section*/
+.tag.is-danger {
+  width: 2em;
+  margin-bottom: 10px;
+  margin-left: 3px;
+}
