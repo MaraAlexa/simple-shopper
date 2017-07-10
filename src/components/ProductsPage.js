@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Item from './Item'
-import '../styles/ItemsPage.css'
+import Product from './Product'
+import '../styles/ProductsPage.css'
 
 
 const ProductsPage = ({products, onAddToCart}) =>
@@ -9,7 +9,7 @@ const ProductsPage = ({products, onAddToCart}) =>
     <h2>Items Page</h2>
     {
       products.map(product =>
-        <Item
+        <Product
           key={product.id}
           product={product}
           onAddToCart={() => onAddToCart(product)}
