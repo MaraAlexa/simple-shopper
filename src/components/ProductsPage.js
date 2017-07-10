@@ -5,7 +5,7 @@ import '../styles/ProductsPage.css'
 
 
 const ProductsPage = ({products, onAddToCart}) =>
-  <div className="items-page">
+  <div className="products-page">
     <h2>Items Page</h2>
     {
       products.map(product =>

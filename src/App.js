@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import './styles/App.css'
 
 // components
-import ProductsPage from './components/ProductsPage'
 import Nav from './components/Nav'
+import ProductsPage from './components/ProductsPage'
+import CartPage from './components/CartPage'
 import products from './data/products'
 
 class App extends Component {
@@ -30,7 +31,8 @@ class App extends Component {
                         products={products}
                         onAddToCart={this.handleAddToCart}
                       />
-      case 1: return <span>You have added {this.state.cart.length} products</span>
+      case 1: return <CartPage cart={this.state.cart}  />
+      {/* <span>You have added {this.state.cart.length} products</span> */}
     }
   }
 

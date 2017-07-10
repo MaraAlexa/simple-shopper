@@ -20,7 +20,7 @@ const Nav = ({ activeTab, onTabChange, cart }) =>
         >
           Cart
           {
-            cart.length ? <span className="tag is-danger">{cart.length}</span> : null 
+            cart.length ? <span className="tag is-danger">{cart.length}</span> : null
           }
         </a>
       </li>
