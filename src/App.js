@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './styles/App.css'
 
 // components
-import ItemsPage from './components/ItemsPage'
+import ProductsPage from './components/ProductsPage'
 import Nav from './components/Nav'
 import products from './data/products'
 
@@ -26,7 +26,7 @@ class App extends Component {
   renderContent() {
     switch (this.state.activeTab) {
       default:
-      case 0: return <ItemsPage
+      case 0: return <ProductsPage
                         products={products}
                         onAddToCart={this.handleAddToCart}
                       />

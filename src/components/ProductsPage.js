@@ -4,7 +4,7 @@ import Item from './Item'
 import '../styles/ItemsPage.css'
 
 
-const ItemsPage = ({products, onAddToCart}) =>
+const ProductsPage = ({products, onAddToCart}) =>
   <div className="items-page">
     <h2>Items Page</h2>
     {
@@ -20,9 +20,9 @@ const ItemsPage = ({products, onAddToCart}) =>
 
 
 
-ItemsPage.propTypes = {
+ProductsPage.propTypes = {
   products: PropTypes.array.isRequired,
   onAddToCart: PropTypes.func.isRequired
 }
 
-export default ItemsPage
+export default ProductsPage
