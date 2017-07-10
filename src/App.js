@@ -8,7 +8,8 @@ import products from './data/products'
 
 class App extends Component {
   state = {
-    activeTab: 0
+    activeTab: 0,
+    cart: []
   }
 
   handleTabChange = (index) => {
