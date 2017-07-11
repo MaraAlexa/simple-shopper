@@ -17,12 +17,15 @@
 
 .nav-item.selected {
   border-bottom: 2px solid red;
-
 }
 
 /*cart section*/
 .tag.is-danger {
-  width: 2em;
+  width: .1rem;
+  height: 1.2rem;
   margin-bottom: 10px;
   margin-left: 3px;
+  position: relative;
+  bottom: .2rem;
+  right: .7rem;
 }

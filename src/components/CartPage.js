@@ -6,8 +6,8 @@ import Product from './Product'
 
 const CartPage = ({ cart, products }) =>
   <div className='cart-page'>
-    <h2>Cart Page</h2>
-    <ul>
+    <h2 className='cart-title'>Cart Page</h2>
+    <ul className='cart-list'>
       {
         products.map(product =>
           <li

@@ -10,7 +10,7 @@ import products from './data/products'
 class App extends Component {
   state = {
     activeTab: 0,
-    cart: []
+    cart: [],
   }
 
   handleTabChange = (index) => {
@@ -21,7 +21,7 @@ class App extends Component {
 
   handleAddToCart = (product) =>
     this.setState({
-      cart: [...this.state.cart, product.id]
+      cart: [...this.state.cart, product.id],
     })
 
   renderContent() {

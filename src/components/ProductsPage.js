@@ -7,15 +7,20 @@ import '../styles/ProductsPage.css'
 const ProductsPage = ({products, onAddToCart}) =>
   <div className="products-page">
     <h2>Items Page</h2>
-    {
-      products.map(product =>
-        <Product
-          key={product.id}
-          product={product}
-          onAddToCart={() => onAddToCart(product)}
-        />
-      )
-    }
+    <ul className="products">
+      {
+        products.map(product =>
+          <li className="product" key={product.id}>
+            <Product
+              product={product}
+              onAddToCart={() => onAddToCart(product)}
+            />
+          </li>
+
+        )
+      }
+    </ul>
+    
   </div>
 
 
