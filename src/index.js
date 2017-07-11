@@ -7,5 +7,7 @@ import 'animate.css/animate.css'
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+// begin with routing
+
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
