@@ -1,3 +1,12 @@
+ul.products.columns {
+  margin: 0;
+  flex-flow: row wrap;
+}
+
+ul li {
+  list-style-type: none;
+}
+
 .products-page {
   background: #f7f7f7;
   padding: 10px 50px;

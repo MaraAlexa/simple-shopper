@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "react-router-dom": "next",
     "react-scripts": "1.0.10"
   },
   "dependencies": {

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { NavLink } from 'react-router-dom'
 import '../styles/Nav.css'
 
 const Nav = ({ activeTab, onTabChange, cart }) =>
@@ -11,13 +11,13 @@ const Nav = ({ activeTab, onTabChange, cart }) =>
     </div>{/* end navbar-brand here */}
 
     <ul className="navbar-end">
-      <li className={`nav-item ${activeTab === 0 && 'selected'}`}>
-        <a onClick={() => onTabChange(0)} className="navbar-item">
-          ItemsPage
-        </a>
+      <li>
+        <NavLink exact activeClassName='active' to='/' onClick={() => onTabChange(0)} className="navbar-item">
+          ProductsPage
+        </NavLink>
       </li>
-      <li className={`nav-item ${activeTab === 1 && 'selected'}`}>
-        <a onClick={() => onTabChange(1)} className="navbar-item">
+      <li>
+        <NavLink activeClassName='active' to='/cart' onClick={() => onTabChange(1)} className="navbar-item">
           Cart
           <span className="icon">
             <i className="fa fa-cart-arrow-down fa-5" aria-hidden="true"></i>
@@ -30,7 +30,7 @@ const Nav = ({ activeTab, onTabChange, cart }) =>
               :
               null
           }
-        </a>
+        </NavLink>
       </li>
     </ul>
 

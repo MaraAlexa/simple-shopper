@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './styles/App.css'
 
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+
 // components
 import Nav from './components/Nav'
 import ProductsPage from './components/ProductsPage'
@@ -9,7 +11,6 @@ import products from './data/products'
 
 class App extends Component {
   state = {
-    activeTab: 0,
     cart: [],
   }
 
@@ -23,17 +24,6 @@ class App extends Component {
     this.setState({
       cart: [...this.state.cart, product.id],
     })
-
-  renderContent() {
-    switch (this.state.activeTab) {
-      default:
-      case 0: return <ProductsPage
-                        products={products}
-                        onAddToCart={this.handleAddToCart}
-                      />
-      case 1: return this.renderCart()
-    }
-  }
 
   renderCart() {
     // count how many of each product in cart
@@ -53,25 +43,27 @@ class App extends Component {
       }
     })
     return (
-      <CartPage products={cartProducts} />
+      cartProducts
     )
   }
 
   render() {
     let {activeTab} = this.state
     return (
-      <div className="App">
-        <Nav
-          activeTab={activeTab}
-          onTabChange={this.handleTabChange}
-          cart={this.state.cart}
-        />
-        <div className="content">
-          {this.renderContent()}
-
+      <Router>
+        <div className="App">
+          <Nav
+            activeTab={activeTab}
+            onTabChange={this.handleTabChange}
+            cart={this.state.cart}
+          />
+          <div className="content">
+            {/* {this.renderContent()} */}
+            <Route exact path='/' render={() => <ProductsPage products={products} onAddToCart={this.handleAddToCart} />} />
+            <Route path='/cart' render={() => <CartPage cartProducts={this.renderCart()} />} />
+          </div>
         </div>
-
-      </div>
+      </Router>
     );
   }
 }

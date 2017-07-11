@@ -4,12 +4,12 @@ import '../styles/CartPage.css'
 
 import Product from './Product'
 
-const CartPage = ({ cart, products }) =>
+const CartPage = ({ cart, cartProducts }) =>
   <div className='cart-page'>
     <h2 className='cart-title'>Cart Page</h2>
     <ul className='cart-list'>
       {
-        products.map(product =>
+        cartProducts.map(product =>
           <li
             key={product.id}
             className='CartPage-item'
