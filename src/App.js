@@ -1,17 +1,23 @@
 import React, { Component } from 'react'
 import './styles/App.css'
 
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 // components
 import Nav from './components/Nav'
 import ProductsPage from './components/ProductsPage'
 import CartPage from './components/CartPage'
+import Product from './components/Product'
 import products from './data/products'
 
 class App extends Component {
   state = {
     cart: [],
+  }
+
+  findProductById = (productId) => {
+    var product = products.find(product => product.id === parseInt(productId, 10))
+    return {...product}
   }
 
   handleTabChange = (index) => {
@@ -58,8 +64,10 @@ class App extends Component {
             cart={this.state.cart}
           />
           <div className="content">
-            {/* {this.renderContent()} */}
-            <Route exact path='/' render={() => <ProductsPage products={products} onAddToCart={this.handleAddToCart} />} />
+            <Switch>
+              <Route exact path='/' render={() => <ProductsPage products={products} onAddToCart={this.handleAddToCart} />} />
+              <Route exact path='/products/:id' render={({match}) => <Product product={findProductById(props.params.id)} onAddToCart={this.handleAddToCart} />} />
+            </Switch>
             <Route path='/cart' render={() => <CartPage cartProducts={this.renderCart()} />} />
           </div>
         </div>

@@ -28,6 +28,13 @@ const Product = ({ product, onAddToCart }) =>
           {product.description}
           <br />
           <small>11:09 PM - 1 Jan 2016</small>
+          <button
+            className="addToCart button is-primary is-outlined"
+            onClick={onAddToCart}
+          >
+            Add to cart
+          </button>
+
         </div>
       </div>
     </div>
@@ -41,11 +48,3 @@ Product.propTypes = {
 
 
 export default Product
-
-
-{/* <button
-  className="addToCart button is-primary is-outlined"
-  onClick={onAddToCart}
->
-  Add to cart
-</button> */}

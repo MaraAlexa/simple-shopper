@@ -17,15 +17,12 @@ const ProductsPage = ({products, onAddToCart}) =>
             className="product column is-one-third"
             key={product.id}
           >
-            <Link to={`/product/${product.id}`}>
               <Product
                 product={product}
                 onAddToCart={() => onAddToCart(product)}
               />
-            </Link>
-            <Route path={`product/${product.id}`} render={({match}) => <h2>{match.params.product.id}</h2>} />
+            {/* <Route path={`product/${product.id}`} render={({match}) => <h2>{match.params.product.id}</h2>} /> */}
           </li>
-
         )
       }
     </ul>
