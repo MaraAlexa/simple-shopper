@@ -65,10 +65,21 @@ class App extends Component {
           />
           <div className="content">
             <Switch>
-              <Route exact path='/' render={() => <ProductsPage products={products} onAddToCart={this.handleAddToCart} />} />
-              <Route exact path='/products/:id' render={({match}) => <Product product={findProductById(props.params.id)} onAddToCart={this.handleAddToCart} />} />
+              <Route exact path='/'
+                render={() => <ProductsPage products={products} />}
+            />
+              <Route path='/products/:id'
+                render={({match}) =>
+                  <Product
+                    product={this.findProductById(match.params.id)}
+                    onAddToCart={this.handleAddToCart}
+                    buyItem='Add to Cart'
+                  />
+                }
+            />
+              <Route path='/cart' render={() => <CartPage cartProducts={this.renderCart()} />} />
             </Switch>
-            <Route path='/cart' render={() => <CartPage cartProducts={this.renderCart()} />} />
+
           </div>
         </div>
       </Router>

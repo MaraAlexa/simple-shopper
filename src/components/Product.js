@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import '../styles/Product.css'
 
 
-const Product = ({ product, onAddToCart }) =>
+const Product = ({ product, onAddToCart, buyItem }) =>
   <div>
     <div className="card">
       <div className="card-image">
@@ -28,22 +28,27 @@ const Product = ({ product, onAddToCart }) =>
           {product.description}
           <br />
           <small>11:09 PM - 1 Jan 2016</small>
-          <button
-            className="addToCart button is-primary is-outlined"
-            onClick={onAddToCart}
-          >
-            Add to cart
-          </button>
+          {
+            buyItem ? <button
+              className="addToCart button is-primary is-outlined"
+              onClick={() => onAddToCart(product)}
+            >
+              Add to cart
+            </button>
+            :
+            null
+          }
+
 
         </div>
       </div>
     </div>
   </div>
 
-Product.propTypes = {
-  product: PropTypes.object.isRequired,
-  onAddToCart: PropTypes.func.isRequired
-}
+// Product.propTypes = {
+//   product: PropTypes.object.isRequired,
+//   onAddToCart: PropTypes.func.isRequired
+// }
 
 
 
