@@ -4,6 +4,7 @@ import '../styles/Product.css'
 
 
 const Product = ({ product, onAddToCart, buyItem }) =>
+  // begin to refactor item component
   <div>
     <div className="card">
       <div className="card-image">
