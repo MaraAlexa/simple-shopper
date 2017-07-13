@@ -4,7 +4,7 @@ import '../styles/CartPage.css'
 
 import Product from './Product'
 
-const CartPage = ({ cart, cartProducts, onAddToCart }) =>
+const CartPage = ({ cart, cartProducts, onAddOne, onRemoveOne }) =>
   <div className='cart-page'>
     <h2 className='cart-title'>Cart Page</h2>
     <ul className='cart-list'>
@@ -15,9 +15,26 @@ const CartPage = ({ cart, cartProducts, onAddToCart }) =>
             className='CartPage-item'
           >
             <Product
-              onAddToCart={() => onAddToCart(product)}
+              // onAddToCart={() => onAddToCart(product)}
               product={product}
             />
+            <div className="cart-product-controls">
+              <button
+                className='remove-one button is-primary is-outlined'
+                onClick={() => onRemoveOne(product)}
+              >
+                &ndash;
+              </button>
+
+              <span className='product-count'>{product.count}</span>
+
+              <button
+                className="add-one button is-danger is-outlined"
+                onClick={() => onAddOne(product)}
+              >
+                +
+              </button>
+            </div>
           </li> )
       }
     </ul>

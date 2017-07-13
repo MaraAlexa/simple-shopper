@@ -6,13 +6,12 @@ import '../styles/ProductsPage.css'
 import { Link, Route } from 'react-router-dom'
 
 
-const ProductsPage = ({products, onAddToCart, buyItem}) =>
+const ProductsPage = ({products, onAddToCart}) =>
   <div className="products-page">
     <h2>Products Page</h2>
     <ul className="products columns is-mobile">
       {
         products.map(product =>
-
           <li
             className="product column is-one-third"
             key={product.id}
@@ -21,12 +20,9 @@ const ProductsPage = ({products, onAddToCart, buyItem}) =>
               <Product
                 product={product}
                 onAddToCart={null}
-                buyItem={buyItem}
               />
             </Link>
-            {/* <Route path={`product/${product.id}`} render={({match}) => <h2>{match.params.product.id}</h2>} /> */}
           </li>
-
         )
       }
     </ul>

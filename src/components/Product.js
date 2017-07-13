@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import '../styles/Product.css'
 
 
-const Product = ({ product, onAddToCart, buyItem }) =>
-  // begin to refactor item component
+const Product = ({ product, onAddToCart, buyProduct }) =>
   <div>
     <div className="card">
       <div className="card-image">
@@ -30,7 +29,8 @@ const Product = ({ product, onAddToCart, buyItem }) =>
           <br />
           <small>11:09 PM - 1 Jan 2016</small>
           {
-            buyItem ? <button
+            buyProduct ?
+            <button
               className="addToCart button is-primary is-outlined"
               onClick={() => onAddToCart(product)}
             >
@@ -38,19 +38,12 @@ const Product = ({ product, onAddToCart, buyItem }) =>
             </button>
             :
             null
+
           }
-
-
         </div>
       </div>
     </div>
   </div>
-
-// Product.propTypes = {
-//   product: PropTypes.object.isRequired,
-//   onAddToCart: PropTypes.func.isRequired
-// }
-
 
 
 export default Product

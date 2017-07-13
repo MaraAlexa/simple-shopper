@@ -5,3 +5,9 @@ li.product.column.is-one-third {
 .card-content {
   height: 200px;
 }
+
+.media-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

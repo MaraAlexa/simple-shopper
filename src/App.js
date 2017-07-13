@@ -26,6 +26,17 @@ class App extends Component {
       cart: [...this.state.cart, product.id],
     })
 
+  handleRemoveOne = (product) => {
+    let index = this.state.cart.indexOf(product.id)
+    this.setState({
+      cart: [
+        ...this.state.cart.slice(0, index),
+        ...this.state.cart.slice(index + 1)
+      ]
+    })
+  }
+
+
   renderCart() {
     // count how many of each product in cart
     let productsCount = this.state.cart.reduce((productsCount, productId) => {
@@ -64,10 +75,21 @@ class App extends Component {
                 render={() => <ProductsPage products={products} />}
               />
               <Route path='/products/:id' render={({match}) =>
-                <Product product={this.findProductById(match.params.id)} onAddToCart={this.handleAddToCart} buyItem='Add to Cart'/>
+                <Product
+                  product={this.findProductById(match.params.id)}
+                  onAddToCart={this.handleAddToCart}
+                  buyProduct='Add to cart'
+                />
               }
               />
-              <Route path='/cart' render={() => <CartPage cartProducts={this.renderCart()} />} />
+              <Route path='/cart' render={() =>
+                <CartPage
+                  cartProducts={this.renderCart()}
+                  onAddOne={this.handleAddToCart}
+                  onRemoveOne={this.handleRemoveOne}
+                />
+              }
+              />
             </Switch>
 
           </div>
