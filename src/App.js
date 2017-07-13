@@ -20,11 +20,6 @@ class App extends Component {
     return {...product}
   }
 
-  handleTabChange = (index) => {
-    this.setState({
-      activeTab: index
-    })
-  }
 
   handleAddToCart = (product) =>
     this.setState({
@@ -54,29 +49,24 @@ class App extends Component {
   }
 
   render() {
-    let {activeTab} = this.state
     return (
       <Router>
         <div className="App">
           <Nav
-            activeTab={activeTab}
-            onTabChange={this.handleTabChange}
             cart={this.state.cart}
           />
           <div className="content">
             <Switch>
               <Route exact path='/'
                 render={() => <ProductsPage products={products} />}
-            />
-              <Route path='/products/:id'
-                render={({match}) =>
-                  <Product
-                    product={this.findProductById(match.params.id)}
-                    onAddToCart={this.handleAddToCart}
-                    buyItem='Add to Cart'
-                  />
-                }
-            />
+              />
+              <Route exact path='/products'
+                render={() => <ProductsPage products={products} />}
+              />
+              <Route path='/products/:id' render={({match}) =>
+                <Product product={this.findProductById(match.params.id)} onAddToCart={this.handleAddToCart} buyItem='Add to Cart'/>
+              }
+              />
               <Route path='/cart' render={() => <CartPage cartProducts={this.renderCart()} />} />
             </Switch>
 
