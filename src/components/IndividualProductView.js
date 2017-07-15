@@ -3,16 +3,15 @@ import PropTypes from 'prop-types'
 import '../styles/Product.css'
 
 
-const Product = ({ product, onAddToCart, buyProduct }) =>
-  <div className="card">
+const IndividualProductView = ({ product, onAddToCart, buyProduct }) =>
+  <div className="card individual-product-view">
     <div className="card-image">
-      <figure className="image is-4by3">
+      <figure className="image">
         <img src={product.image} alt={product.name} />
       </figure>
     </div>
     <div className="card-content">
-      <div className="media">
-        <div className="media-content">
+      <div className="title">
           <p className="title is-4">{product.name}</p>
           <p className="subtitle is-6">
             <span className="icon">
@@ -20,13 +19,11 @@ const Product = ({ product, onAddToCart, buyProduct }) =>
             </span>
             {product.price/100}
           </p>
-        </div>
       </div>
 
       <div className="content">
-        {product.description}
+        <p className='description'>{product.description}</p>
         <br />
-        <small>11:09 PM - 1 Jan 2016</small>
         {
           buyProduct ?
           <button
@@ -44,4 +41,4 @@ const Product = ({ product, onAddToCart, buyProduct }) =>
   </div>
 
 
-export default Product
+export default IndividualProductView

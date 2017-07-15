@@ -8,6 +8,7 @@ import Nav from './components/Nav'
 import ProductsPage from './components/ProductsPage'
 import CartPage from './components/CartPage'
 import Product from './components/Product'
+import IndividualProductView from './components/IndividualProductView'
 import products from './data/products'
 
 class App extends Component {
@@ -75,7 +76,7 @@ class App extends Component {
                 render={() => <ProductsPage products={products} />}
               />
               <Route path='/products/:id' render={({match}) =>
-                <Product
+                <IndividualProductView
                   product={this.findProductById(match.params.id)}
                   onAddToCart={this.handleAddToCart}
                   buyProduct='Add to cart'

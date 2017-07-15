@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import '../styles/CartPage.css'
 
 import Product from './Product'
+import CartPageProductView from './CartPageProductView'
 
 const CartPage = ({ cart, cartProducts, onAddOne, onRemoveOne }) =>
   <div className='cart-page'>
@@ -12,15 +13,15 @@ const CartPage = ({ cart, cartProducts, onAddOne, onRemoveOne }) =>
         cartProducts.map(product =>
           <li
             key={product.id}
-            className='CartPage-item'
+            className='CartPage-item box'
           >
-            <Product
+            <CartPageProductView
               // onAddToCart={() => onAddToCart(product)}
               product={product}
             />
             <div className="cart-product-controls">
               <button
-                className='remove-one button is-primary is-outlined'
+                className='remove-one button is-danger is-outlined'
                 onClick={() => onRemoveOne(product)}
               >
                 &ndash;
@@ -29,7 +30,7 @@ const CartPage = ({ cart, cartProducts, onAddOne, onRemoveOne }) =>
               <span className='product-count'>{product.count}</span>
 
               <button
-                className="add-one button is-danger is-outlined"
+                className="add-one button is-primary is-outlined"
                 onClick={() => onAddOne(product)}
               >
                 +

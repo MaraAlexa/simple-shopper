@@ -9,5 +9,33 @@
 
 .cart-title {
   text-align: center;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*cart page view */
+.cart-page-img-wrap {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+}
+
+.media-content {
+  margin-left: 3rem;
+}
+
+.media {
+  align-items: center;
+}
+
+.product-count {
+  font-weight: bold;
+  margin: 1rem;
+  line-height: 2.5;
 }

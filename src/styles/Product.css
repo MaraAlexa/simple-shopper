@@ -11,3 +11,27 @@ li.product.column.is-one-third {
   justify-content: space-between;
   align-items: center;
 }
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+/*individual-product-view styles*/
+
+.individual-product-view {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin: 6rem;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addToCart {
+  margin-top: 3rem;
+}
