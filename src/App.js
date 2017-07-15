@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Nav from './components/Nav'
 import ProductsPage from './components/ProductsPage'
 import CartPage from './components/CartPage'
-import Product from './components/Product'
+import CheckoutPage from './components/CheckoutPage'
 import IndividualProductView from './components/IndividualProductView'
 import products from './data/products'
 
@@ -91,6 +91,9 @@ class App extends Component {
                 />
               }
               />
+              <Route path='/checkout' render={() =>
+                <CheckoutPage cartProducts={this.renderCart()} />
+              } />
             </Switch>
 
           </div>

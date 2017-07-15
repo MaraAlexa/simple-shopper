@@ -1,9 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Product from './Product'
 import '../styles/ProductsPage.css'
 
-import { Link, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 const ProductsPage = ({products, onAddToCart}) =>
@@ -29,11 +28,5 @@ const ProductsPage = ({products, onAddToCart}) =>
 
   </div>
 
-
-
-// ProductsPage.propTypes = {
-//   products: PropTypes.array.isRequired,
-//   onAddToCart: PropTypes.func.isRequired
-// }
 
 export default ProductsPage

@@ -1,0 +1,31 @@
+.your-details {
+  margin-top: 2rem;
+}
+
+.field {
+  margin: 1.2rem 0;
+}
+
+.input, select, .select {
+  min-height: 48px;
+  width: 100%;
+}
+
+span.icon.is-small.is-left {
+  height: 100%;
+}
+
+.field.is-grouped.submit {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.inline {
+  display: flex;
+  justify-content: space-between;
+}
+
+section.your-details, section.ship-to, section.bill-to, section.invoice {
+  margin: 2rem 0;
+}

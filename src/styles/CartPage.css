@@ -39,3 +39,7 @@
   margin: 1rem;
   line-height: 2.5;
 }
+
+.button.is-primary.button-large.is-pulled-right {
+  min-width: 240px;
+}

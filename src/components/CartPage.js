@@ -1,8 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import '../styles/CartPage.css'
+import { Link } from 'react-router-dom'
 
-import Product from './Product'
 import CartPageProductView from './CartPageProductView'
 
 const CartPage = ({ cart, cartProducts, onAddOne, onRemoveOne }) =>
@@ -16,7 +15,6 @@ const CartPage = ({ cart, cartProducts, onAddOne, onRemoveOne }) =>
             className='CartPage-item box'
           >
             <CartPageProductView
-              // onAddToCart={() => onAddToCart(product)}
               product={product}
             />
             <div className="cart-product-controls">
@@ -40,10 +38,9 @@ const CartPage = ({ cart, cartProducts, onAddOne, onRemoveOne }) =>
       }
     </ul>
 
-  </div>
+    {/* checkout button */}
+    <Link to='/checkout' className='button is-primary button-large is-pulled-right' >Checkout</Link>
 
-// CartPage.propTypes = {
-//   products: PropTypes.array.isRequired
-// }
+  </div>
 
 export default CartPage
