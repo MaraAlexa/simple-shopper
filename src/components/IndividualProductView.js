@@ -12,7 +12,7 @@ const IndividualProductView = ({ product, onAddToCart, buyProduct }) =>
     <div className="card-content">
       <div className="title">
           <p className="title is-4">{product.name}</p>
-          <p className="subtitle is-6">
+          <p className="subtitle is-6 price">
             <span className="icon">
               <i className="fa fa-eur" aria-hidden="true"></i>
             </span>
