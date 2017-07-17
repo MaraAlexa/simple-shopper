@@ -54,3 +54,8 @@
   font-size: 1.1rem;
   font-weight: 400;
 }
+
+i.fa.fa-eur {
+  font-size: 15px;
+  margin-right: 5px;
+}

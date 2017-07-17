@@ -3,6 +3,7 @@ import '../styles/CartPage.css'
 import { Link } from 'react-router-dom'
 
 import CartPageProductView from './CartPageProductView'
+import TotalOrder from './TotalOrder'
 
 const CartPage = ({ cart, cartProducts, onAddOne, onRemoveOne }) =>
   <div className='cart-page'>
@@ -36,8 +37,16 @@ const CartPage = ({ cart, cartProducts, onAddOne, onRemoveOne }) =>
                 +
               </button>
             </div>
-          </li> )
+          </li>
+        )
       }
+      {/* cart products total */}
+      <li className='cartPage-total'>
+        {
+          cartProducts.length > 0 ? <TotalOrder cartProducts={cartProducts} /> : null
+        }
+
+      </li>
     </ul>
 
     {/* checkout button */}

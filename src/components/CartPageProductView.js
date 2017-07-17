@@ -11,6 +11,12 @@ const CartPageProductView = ({ product, onAddToCart, buyProduct }) =>
         <div className="media-content">
           <div className="content">
             <p className="title is-4">{product.name}</p>
+            <p className="subtitle is-6">
+              <span className="icon">
+                <i className="fa fa-eur" aria-hidden="true"></i>
+              </span>
+              {product.price/100}
+            </p>
             <p>{product.description}</p>
 
             {
