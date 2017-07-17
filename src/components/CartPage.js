@@ -18,14 +18,14 @@ const CartPage = ({ cart, cartProducts, onAddOne, onRemoveOne }) =>
               product={product}
             />
             <div className="cart-product-controls">
-              <button
-                className='remove-one button is-danger is-outlined'
+              <a
+                className='remove-one button is-white'
                 onClick={() => onRemoveOne(product)}
               >
                 {
-                  product.count > 1 ? <span>&ndash;</span> : <span>remove</span>
+                  product.count > 1 ? <a className='button is-danger'>&ndash;</a> : <span className='button is-light'>x</span>
                 }
-              </button>
+              </a>
 
               <span className='product-count'>{product.count}</span>
 
