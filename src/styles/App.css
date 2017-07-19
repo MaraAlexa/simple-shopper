@@ -1,4 +1,10 @@
 .App {
-  padding: 50px;
+  padding: 1rem;
   background: #eeeeee;
+}
+
+@media screen and (max-width: 560px) {
+  .App {
+    padding: .5rem;
+  }
 }

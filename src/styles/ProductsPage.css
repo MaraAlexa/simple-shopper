@@ -9,5 +9,31 @@ ul li {
 
 .products-page {
   background: #f7f7f7;
-  padding: 10px 50px;
+  padding: 1rem;
+}
+
+.products-page h2 {
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+@media screen and (max-width: 978px) {
+  .product.column.is-one-third.is-half-mobile {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .product.column.is-one-third.is-half-mobile {
+    width: 100%;
+  }
+  .media-content {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .products-page {
+    padding: .5rem;
+  }
 }

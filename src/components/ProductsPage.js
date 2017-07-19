@@ -12,7 +12,7 @@ const ProductsPage = ({products, onAddToCart}) =>
       {
         products.map(product =>
           <li
-            className="product column is-one-third"
+            className="product column is-one-third is-half-mobile"
             key={product.id}
           >
             <Link to={`/products/${product.id}`}>

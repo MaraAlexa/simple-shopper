@@ -24,10 +24,7 @@
   height: 150px;
   display: flex;
   align-items: center;
-}
-
-.media-content {
-  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
 .media {
