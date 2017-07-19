@@ -1,5 +1,7 @@
 # To-do list for the app
 
+  * show card icon next to burger mobile menu 🔫
+
   * fix navigation for mobile 🚩
   * fix grid for mobile 🚩
   * checkout form - functions for validating each field 🚩

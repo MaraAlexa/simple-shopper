@@ -15,6 +15,13 @@
   height: 100%;
 }
 
+.navbar-brand {
+  justify-content: space-between;
+}
+.flex {
+  display: flex;
+}
+
 a.active {
   border-bottom: 2px solid red;
 }
@@ -28,4 +35,15 @@ a.active {
   position: relative;
   bottom: .2rem;
   right: .7rem;
+}
+
+
+#navBurger, #navMobileLinks {
+  animation-duration: .3s;
+}
+
+@media (max-width: 1000px) {
+  .navbar {
+    padding: 0;
+  }
 }

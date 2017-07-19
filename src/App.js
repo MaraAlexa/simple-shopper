@@ -14,6 +14,7 @@ import products from './data/products'
 class App extends Component {
   state = {
     cart: [],
+    isActive: ''
   }
 
   findProductById = (productId) => {
@@ -37,6 +38,12 @@ class App extends Component {
     })
   }
 
+  toggleMobileNav = () =>  {
+    let toggle = this.state.isActive ? '' : 'is-active animated fadeIn'
+    this.setState({
+      isActive: toggle
+    })
+  }
 
   renderCart() {
     // count how many of each product in cart
@@ -66,6 +73,8 @@ class App extends Component {
         <div className="App">
           <Nav
             cart={this.state.cart}
+            toggleMobileNav={this.toggleMobileNav}
+            isActive={this.state.isActive}
           />
           <div className="content">
             <Switch>
