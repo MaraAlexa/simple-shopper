@@ -17,7 +17,7 @@ const CartPageProductView = ({ product, onAddToCart, buyProduct }) =>
               </span>
               {product.price/100}
             </p>
-            <p>{product.description}</p>
+            <p className='product-description'>{product.description}</p>
 
             {
               buyProduct ?
