@@ -11,6 +11,8 @@ import CheckoutPage from './components/CheckoutPage'
 import IndividualProductView from './components/IndividualProductView'
 import products from './data/products'
 
+// begin adding stripe 
+
 class App extends Component {
   state = {
     cart: [],
