@@ -11,7 +11,8 @@ import CheckoutPage from './components/CheckoutPage'
 import IndividualProductView from './components/IndividualProductView'
 import products from './data/products'
 
-// begin adding stripe 
+// begin adding stripe
+import { StripeProvider } from 'react-stripe-elements'
 
 class App extends Component {
   state = {
@@ -103,10 +104,11 @@ class App extends Component {
               }
               />
               <Route path='/checkout' render={() =>
-                <CheckoutPage cartProducts={this.renderCart()} />
+                <StripeProvider apiKey='pk_test_sTYa7BQYuXsAcGVHGtwNqt8k'>
+                  <CheckoutPage cartProducts={this.renderCart()} />
+                </StripeProvider>
               } />
             </Switch>
-
           </div>
         </div>
       </Router>

@@ -11,7 +11,8 @@
     "bulma": "^0.4.3",
     "font-awesome": "^4.7.0",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-stripe-elements": "^0.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
