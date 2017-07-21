@@ -11,7 +11,7 @@ import CheckoutPage from './components/CheckoutPage'
 import IndividualProductView from './components/IndividualProductView'
 import products from './data/products'
 
-// begin adding stripe
+
 import { StripeProvider } from 'react-stripe-elements'
 
 class App extends Component {
