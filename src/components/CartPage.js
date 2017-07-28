@@ -24,7 +24,8 @@ const CartPage = ({ cart, cartProducts, onAddOne, onRemoveOne }) =>
                 onClick={() => onRemoveOne(product)}
               >
                 {
-                  product.count > 1 ? <span className='button is-danger is-outlined'>&ndash;</span> : <span className='button is-light'>x</span>
+                  product.count > 1 ? 
+                  <span className='button is-danger is-outlined'>&ndash;</span> : <span className='button is-light'>x</span>
                 }
               </a>
 
@@ -50,7 +51,15 @@ const CartPage = ({ cart, cartProducts, onAddOne, onRemoveOne }) =>
     </ul>
 
     {/* checkout button */}
-    <Link to='/checkout' className='button is-primary button-large is-pulled-right' >Checkout</Link>
+    {
+      cartProducts.length > 0 ?
+        <Link to='/checkout' className='button is-primary button-large is-pulled-right checkout-btn' >Checkout</Link>
+        :
+        <p className='subtitle is-5 empty-cart-message'>
+          You cart is empty. Add products to your cart before proceeding to checkout.
+        </p>
+    }
+
 
   </div>
 
