@@ -12,7 +12,7 @@ class AddressSection extends React.Component {
       <div>
 
         <section className="your-details">
-          <p className="subtitle">Your Details</p>
+          <p className="subtitle">Your Details- FORM VALIDATION WORKS!!</p>
 
           <div className="field form-group">
             <div className="control has-icons-left">
@@ -90,7 +90,7 @@ class AddressSection extends React.Component {
         </section>
 
         <section className="ship-to">
-          <p className="subtitle">Ship to (this section is NOT YET VALIDATED!!)</p>
+          <p className="subtitle">Ship to</p>
           {/* <div className="field form-group">
             <p className="control has-icons-left">
               <input className="input" type="text" name='shipTo-name' placeholder='First and Last Name' />
