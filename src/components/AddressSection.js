@@ -12,7 +12,7 @@ class AddressSection extends React.Component {
       <div>
 
         <section className="your-details">
-          <p className="subtitle">Your Details- FORM VALIDATION WORKS!!</p>
+          <p className="subtitle">Your Details- Restart-FORM VALIDATION WORKS!!</p>
 
           <div className="field form-group">
             <div className="control has-icons-left">

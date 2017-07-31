@@ -118,7 +118,7 @@ class App extends Component {
       selectedCountryValid: selectedCountryValid,
       cityValid: cityValid,
       postalCodeValid: postalCodeValid,
-      addressValid: addressValid
+      addressValid: addressValid,
     }, this.validateForm)
   }
 
@@ -134,7 +134,7 @@ class App extends Component {
     const value = e.target.value;
 
     this.setState({
-      [name]: value
+      [name]: value,
     }, () => {this.validateField(name, value)})
   }
 
