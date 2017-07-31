@@ -64,6 +64,11 @@ i.fa.fa-eur {
   margin-right: 5px;
 }
 
+.empty-cart-message, .checkout-btn {
+  margin: 2rem 0 ;
+}
+
+
 /*mobile */
 @media (max-width: 900px) {
   .cart-page {

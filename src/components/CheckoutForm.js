@@ -4,19 +4,21 @@ import AddressSection from './AddressSection'
 import CardSection from './CardSection'
 import { injectStripe } from 'react-stripe-elements'
 
+// begin form validation
 class CheckoutForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
     let form = document.querySelector('form')
     let extraDetails = {
-      name: form.querySelector('input[name=cardholder-name]').value,
-      email: form.querySelector('input[name=cardholder-email]').value,
-      phone: form.querySelector('input[name=cardholder-phone]').value,
-      shipName: form.querySelector('input[name=shipTo-name]').value,
-      address_city: form.querySelector('input[name=shipTo-city]').value,
-      shipPostCode: form.querySelector('input[name=shipTo-postCode]').value,
-      address_line1: form.querySelector('input[name=shipTo-street]').value,
+      name: form.querySelector('input[name=name]').value,
+      email: form.querySelector('input[name=email]').value,
+      phone: form.querySelector('input[name=phone]').value,
+      address_country: form.querySelector('select[name=selectedCountry]').value,
+      // shipName: form.querySelector('input[name=shipTo-name]').value,
+      address_city: form.querySelector('input[name=city]').value,
+      address_zip: form.querySelector('input[name=postalCode]').value,
+      address_line1: form.querySelector('input[name=address]').value,
     }
 
     this.props.stripe.createToken(extraDetails).then(({token}) => {
@@ -26,11 +28,29 @@ class CheckoutForm extends React.Component {
   }
 
   render() {
-    const {cartProducts} = this.props
+    const {cartProducts, email, cardholderName, phone, selectedCountry, city, postalCode, address, formErrors, handleUserInput, formValid, emailValid, phoneValid, selectedCountryValid, cityValid, postalCodeValid, addressValid} = this.props;
+
     return(
       <form onSubmit={this.handleSubmit} >
 
-        <AddressSection cartProducts={cartProducts} />
+        <AddressSection
+          cartProducts={cartProducts}
+          email={email}
+          cardholderName={cardholderName}
+          phone={phone}
+          city={city}
+          postalCode={postalCode}
+          selectedCountry={selectedCountry}
+          address={address}
+          handleUserInput={handleUserInput}
+          formErrors={formErrors}
+          emailValid={emailValid}
+          phoneValid={phoneValid}
+          selectedCountryValid={selectedCountryValid}
+          cityValid={cityValid}
+          postalCodeValid={postalCodeValid}
+          addressValid={addressValid}
+        />
 
         <CardSection />
 
@@ -40,18 +60,15 @@ class CheckoutForm extends React.Component {
           }
         </section>
 
-
         <div className="field is-grouped submit">
           <p className="control">
-            <button className="button is-primary">Confirm Order</button>
+            <button className="button is-primary" type='submit' disabled={!formValid}>Confirm Order</button>
           </p>
         </div>
-
       </form>
     )
   }
 
 }
-
 
 export default injectStripe(CheckoutForm)

@@ -8,6 +8,7 @@ import Nav from './components/Nav'
 import ProductsPage from './components/ProductsPage'
 import CartPage from './components/CartPage'
 import CheckoutPage from './components/CheckoutPage'
+import FormErrors from './components/FormErrors'
 import IndividualProductView from './components/IndividualProductView'
 import products from './data/products'
 
@@ -17,7 +18,26 @@ import { StripeProvider } from 'react-stripe-elements'
 class App extends Component {
   state = {
     cart: [],
-    isActive: ''
+    isActive: '', // mobile Nav
+
+    email: '',
+    name: '',
+    phone: '',
+    selectedCountry: '',
+    city: '',
+    postalCode: '',
+    address: '',
+
+    formErrors: {email: '', name: '', phone: '', selectedCountry: '', city: '', postalCode: '', address: ''},
+    emailValid: '',
+    nameValid: '',
+    phoneValid: '',
+    selectedCountryValid: '',
+    cityValid: '',
+    postalCodeValid: '',
+    addressValid: '',
+    formValid: false
+
   }
 
   findProductById = (productId) => {
@@ -46,6 +66,76 @@ class App extends Component {
     this.setState({
       isActive: toggle
     })
+  }
+
+  validateField = (fieldName, value) => {
+    let fieldValidationErrors = this.state.formErrors;
+    let emailValid = this.state.emailValid;
+    let nameValid = this.state.nameValid;
+    let phoneValid = this.state.phoneValid;
+    let selectedCountryValid = this.state.selectedCountryValid;
+    let cityValid = this.state.cityValid;
+    let postalCodeValid = this.state.postalCodeValid;
+    let addressValid = this.state.addressValid;
+
+    switch(fieldName) {
+      case 'email':
+        emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+        fieldValidationErrors.email = emailValid ? '' : ' is invalid';
+      break;
+      case 'name':
+        nameValid = value.match(/^[a-zA-Z ]{3,30}$/);
+        fieldValidationErrors.name = nameValid ? '' : ' is too short';
+      break;
+      case 'phone':
+        phoneValid = value.match(/^\d{10}$/);
+        fieldValidationErrors.phone = phoneValid ? '' : ' is invalid!';
+      break;
+      case 'selectedCountry':
+        selectedCountryValid = value.length <= 11;
+        fieldValidationErrors.selectedCountry = selectedCountryValid ? '' : ' unselected!';
+        break;
+      case 'city':
+        cityValid = value.match(/^[a-zA-Z ]{3,30}$/); // only letters of length 3 to 30
+        fieldValidationErrors.city = cityValid ? '' : ' is invalid!';
+        break;
+      case 'postalCode':
+        postalCodeValid = value.match(/^[\w.%+-]{4,6}$/) // between 4 and 6 letters OR numbers eg 1142AB- to be refined for NL
+        fieldValidationErrors.postalCode = postalCodeValid ? '' : ' is invalid!';
+        break;
+      case 'address':
+        addressValid = value.match(/^[A-Za-z0-9 _]*[A-Za-z]+[A-Za-z0-9 _]*$/) // allows for combination of letters  and numbers and an optional space // only numbers not allowed
+        fieldValidationErrors.address = addressValid ? '' : ' is invalid!';
+        break;
+      default:
+        break;
+    }
+    this.setState({
+      formErrors: fieldValidationErrors,
+      emailValid: emailValid,
+      nameValid: nameValid,
+      phoneValid: phoneValid,
+      selectedCountryValid: selectedCountryValid,
+      cityValid: cityValid,
+      postalCodeValid: postalCodeValid,
+      addressValid: addressValid,
+    }, this.validateForm)
+  }
+
+  validateForm = () => {
+    this.setState({
+      formValid: this.state.emailValid && this.state.nameValid && this.state.phoneValid && this.state.selectedCountryValid
+      && this.state.cityValid && this.state.postalCodeValid && this.state.addressValid
+    })
+  }
+
+  handleUserInput = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    this.setState({
+      [name]: value,
+    }, () => {this.validateField(name, value)})
   }
 
   renderCart() {
@@ -105,7 +195,27 @@ class App extends Component {
               />
               <Route path='/checkout' render={() =>
                 <StripeProvider apiKey='pk_test_sTYa7BQYuXsAcGVHGtwNqt8k'>
-                  <CheckoutPage cartProducts={this.renderCart()} />
+                  <CheckoutPage cartProducts={this.renderCart()}
+                                email={this.state.email}
+                                cardholderName={this.state.name}
+                                phone={this.state.phone}
+                                selectedCountry={this.state.selectedCountry}
+                                city={this.state.city}
+                                postalCode={this.state.postalCode}
+                                address={this.state.address}
+                                // formErrors={this.state.formErrors}
+                                handleUserInput={this.handleUserInput}
+                                formValid={this.state.formValid}
+                                nameValid={this.state.nameValid}
+                                emailValid={this.state.emailValid}
+                                phoneValid={this.state.phoneValid}
+                                selectedCountryValid={this.state.selectedCountryValid}
+                                cityValid={this.state.cityValid}
+                                postalCodeValid={this.state.postalCodeValid}
+                                addressValid={this.state.addressValid}
+                    >
+                    <FormErrors formErrors={this.state.formErrors}/>
+                  </CheckoutPage>
                 </StripeProvider>
               } />
             </Switch>
