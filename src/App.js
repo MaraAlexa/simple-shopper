@@ -13,7 +13,7 @@ import products from './data/products'
 
 
 import { StripeProvider } from 'react-stripe-elements'
-
+// begin fetch from rails api
 class App extends Component {
   state = {
     cart: [],
