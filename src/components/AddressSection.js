@@ -1,18 +1,13 @@
 import React from 'react'
 
-//const AddressSection = ({email, handleUserInput, formErrors}) => {
 class AddressSection extends React.Component {
-  errorClass(error) {
-   return(error.length === 0 ? 'error' : 'has-error');
-}
-
+  
   render(){
     const { cardholderName, email, phone, selectedCountry, city, postalCode, address, handleUserInput, emailValid, phoneValid, selectedCountryValid, cityValid, postalCodeValid, addressValid } = this.props;
     return(
       <div>
 
         <section className="your-details">
-          <p className="subtitle">Your Details- Restart-FORM VALIDATION WORKS!!</p>
 
           <div className="field form-group">
             <div className="control has-icons-left">

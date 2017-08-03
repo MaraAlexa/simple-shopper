@@ -6,7 +6,7 @@ const products = [
     name: 'bike one',
     description: 'beach bike nice description - bike one',
     size: [34, 36, 40],
-    color: 'white',
+    color: ['white', 'black'],
     price: 40600,
     image: require('../images/beach-bike.jpg')
   },
@@ -15,7 +15,7 @@ const products = [
     name: 'bike two',
     description: 'bike against a wall description - bike two',
     size: [40, 41, 42],
-    color: 'blue-green',
+    color: ['blue-green', 'red', 'grey'],
     price: 21100,
     image: require('../images/blue-green-bike.jpg')
   },
@@ -24,7 +24,7 @@ const products = [
     name: 'bike three',
     description: 'bike against a fence description - bike three',
     size: [40, 42, 44],
-    color: 'colorful',
+    color: ['colorful', 'white', 'orange-white'],
     price: 16500,
     image: require('../images/colorful-bike.jpg')
   },
@@ -33,7 +33,7 @@ const products = [
     name: 'bike four',
     description: 'mountain bike on the shore of a lake or something description - bike four',
     size: [30, 32, 34],
-    color: 'black-and-blue',
+    color: ['black-and-blue', 'black'],
     price: 37500,
     image: require('../images/mountain-bike.jpg')
   },
@@ -42,7 +42,7 @@ const products = [
     name: 'bike five',
     description: 'old peoples bike description - bike five',
     size: [31, 33, 35],
-    color: 'black',
+    color: ['black', 'white'],
     price: 11500,
     image: require('../images/oma-fiets.jpg')
   },
@@ -51,7 +51,7 @@ const products = [
     name: 'bike six',
     description: 'bike on a harvested wheat field description - bike six',
     size: [30, 35, 40],
-    color: 'white',
+    color: ['white', 'black&white'],
     price: 13700,
     image: require('../images/white-bike.jpg')
   },
@@ -60,7 +60,7 @@ const products = [
     name: 'bike seven',
     description: 'racing bike description - bike seven',
     size: [31, 33, 35],
-    color: 'blue',
+    color: ['blue', 'white'],
     price: 41800,
     image: require('../images/racing-bike.png')
   },
@@ -69,7 +69,7 @@ const products = [
     name: 'bike eight',
     description: 'vintage bike description - bike eight',
     size: [30, 32, 34],
-    color: 'blue',
+    color: ['blue', 'yellow', 'black&white'],
     price: 81100,
     image: require('../images/vintage-bike.png')
   },

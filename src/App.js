@@ -10,7 +10,9 @@ import CartPage from './components/CartPage'
 import CheckoutPage from './components/CheckoutPage'
 import FormErrors from './components/FormErrors'
 import IndividualProductView from './components/IndividualProductView'
-import products from './data/products'
+// import products from './data/products'
+// function that loads data asyncronously
+import { loadProducts } from './store/Products'
 
 
 import { StripeProvider } from 'react-stripe-elements'
@@ -19,7 +21,7 @@ class App extends Component {
   state = {
     cart: [],
     isActive: '', // mobile Nav
-
+    // form fields validation state
     email: '',
     name: '',
     phone: '',
@@ -36,12 +38,14 @@ class App extends Component {
     cityValid: '',
     postalCodeValid: '',
     addressValid: '',
-    formValid: false
-
+    formValid: false,
+    // inventory stock fetched from backend api
+    products: []
   }
 
+
   findProductById = (productId) => {
-    var product = products.find(product => product.id === parseInt(productId, 10))
+    var product = this.state.products.find(product => product.id === parseInt(productId, 10))
     return {...product}
   }
 
@@ -138,6 +142,8 @@ class App extends Component {
     }, () => {this.validateField(name, value)})
   }
 
+
+
   renderCart() {
     // count how many of each product in cart
     let productsCount = this.state.cart.reduce((productsCount, productId) => {
@@ -148,7 +154,7 @@ class App extends Component {
     // create an array of products
     let cartProducts = Object.keys(productsCount).map(productId => {
       // find product by its ID
-      var product = products.find(product => product.id === parseInt(productId, 10))
+      var product = this.state.products.find(product => product.id === parseInt(productId, 10))
       // create a new product that also has a count property
       return {
         ...product,
@@ -158,6 +164,12 @@ class App extends Component {
     return (
       cartProducts
     )
+  }
+  // fetch products from api
+  componentDidMount() {
+    loadProducts()
+      .then(products => this.setState({products}))
+      .catch(error => console.log(error))
   }
 
   render() {
@@ -172,16 +184,17 @@ class App extends Component {
           <div className="content">
             <Switch>
               <Route exact path='/'
-                render={() => <ProductsPage products={products} />}
+                render={() => <ProductsPage products={this.state.products} />}
               />
               <Route exact path='/products'
-                render={() => <ProductsPage products={products} />}
+                render={() => <ProductsPage products={this.state.products} />}
               />
               <Route path='/products/:id' render={({match}) =>
                 <IndividualProductView
                   product={this.findProductById(match.params.id)}
                   onAddToCart={this.handleAddToCart}
                   buyProduct='Add to cart'
+                  stock={this.state.stock}
                 />
               }
               />
