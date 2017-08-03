@@ -229,6 +229,7 @@ class App extends Component {
                     >
                     <FormErrors formErrors={this.state.formErrors}/>
                   </CheckoutPage>
+                  {/* add admin page */}
                 </StripeProvider>
               } />
             </Switch>
