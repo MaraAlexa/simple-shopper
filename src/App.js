@@ -10,6 +10,7 @@ import CartPage from './components/CartPage'
 import CheckoutPage from './components/CheckoutPage'
 import FormErrors from './components/FormErrors'
 import IndividualProductView from './components/IndividualProductView'
+import AdminPage from './components/AdminPage'
 // import products from './data/products'
 // function that loads data asyncronously
 import { loadProducts } from './store/Products'
@@ -40,8 +41,18 @@ class App extends Component {
     addressValid: '',
     formValid: false,
     // inventory stock fetched from backend api
-    products: []
+    products: [],
+
   }
+
+  // addProduct = (product) => {
+  //   const updatedProduct = {...this.state.product}; // new product state
+  //   const timestamp = Date.now();
+  //   updatedProduct[`product-${timestamp}`] = product;
+  //   //set new state
+  //   this.setState({ product });
+  //
+  // }
 
 
   findProductById = (productId) => {
@@ -208,30 +219,33 @@ class App extends Component {
               />
               <Route path='/checkout' render={() =>
                 <StripeProvider apiKey='pk_test_sTYa7BQYuXsAcGVHGtwNqt8k'>
-                  <CheckoutPage cartProducts={this.renderCart()}
-                                email={this.state.email}
-                                cardholderName={this.state.name}
-                                phone={this.state.phone}
-                                selectedCountry={this.state.selectedCountry}
-                                city={this.state.city}
-                                postalCode={this.state.postalCode}
-                                address={this.state.address}
-                                // formErrors={this.state.formErrors}
-                                handleUserInput={this.handleUserInput}
-                                formValid={this.state.formValid}
-                                nameValid={this.state.nameValid}
-                                emailValid={this.state.emailValid}
-                                phoneValid={this.state.phoneValid}
-                                selectedCountryValid={this.state.selectedCountryValid}
-                                cityValid={this.state.cityValid}
-                                postalCodeValid={this.state.postalCodeValid}
-                                addressValid={this.state.addressValid}
-                    >
+                  <CheckoutPage
+                    cartProducts={this.renderCart()}
+                    email={this.state.email}
+                    cardholderName={this.state.name}
+                    phone={this.state.phone}
+                    selectedCountry={this.state.selectedCountry}
+                    city={this.state.city}
+                    postalCode={this.state.postalCode}
+                    address={this.state.address}
+                    // formErrors={this.state.formErrors}
+                    handleUserInput={this.handleUserInput}
+                    formValid={this.state.formValid}
+                    nameValid={this.state.nameValid}
+                    emailValid={this.state.emailValid}
+                    phoneValid={this.state.phoneValid}
+                    selectedCountryValid={this.state.selectedCountryValid}
+                    cityValid={this.state.cityValid}
+                    postalCodeValid={this.state.postalCodeValid}
+                    addressValid={this.state.addressValid}
+                  >
                     <FormErrors formErrors={this.state.formErrors}/>
                   </CheckoutPage>
-                  {/* add admin page */}
+
                 </StripeProvider>
               } />
+              {/* add admin page */}
+              <Route path='/admin' render={() => <AdminPage products={this.state.products} />} />
             </Switch>
           </div>
         </div>

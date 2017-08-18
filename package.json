@@ -8,10 +8,14 @@
   },
   "dependencies": {
     "animate.css": "^3.5.2",
-    "bulma": "^0.4.3",
+    "axios": "^0.16.2",
+    "base64-img": "^1.0.3",
+    "bulma": "^0.5.1",
     "font-awesome": "^4.7.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-dropzone": "^4.0.0",
+    "react-fileupload": "^2.4.0",
     "react-stripe-elements": "^0.0.2"
   },
   "scripts": {
