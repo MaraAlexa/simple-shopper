@@ -6,7 +6,7 @@ const Product = ({ product, onAddToCart, buyProduct }) =>
   <div className="card">
     <div className="card-image">
       <figure className="image is-4by3">
-        <img src={product.image} alt={product.name} />
+        <img src={product.main_img_url} alt={product.name} />
       </figure>
     </div>
     <div className="card-content">

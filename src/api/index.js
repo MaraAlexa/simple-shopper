@@ -1,11 +1,22 @@
-const endpoint = 'http://localhost:3001/v1'
+const endpoint = 'http://localhost:3000/v1'
 
 const headers = () => {
   const h = new Headers();
-  h.append('Content-Type', 'application/json');
+  h.append('Content-Type', 'application/json')
+  h.append('Accept', 'application/json')
 
-  return h;
-};
+  const session = {
+    email: localStorage.getItem('email'),
+    token: localStorage.getItem('token')
+  }
+
+  if (session.email && session.token) {
+    h.append('X-User-Email', session.email)
+    h.append('X-User-Token', session.token)
+  }
+
+  return h
+}
 
 const request = (method, path, body) => {
   const url = `${endpoint}${path}`;

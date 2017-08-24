@@ -7,10 +7,16 @@ import 'animate.css/animate.css'
 
 // import components
 import App from './App'
+import stores from './store'
+import { Provider } from 'mobx-react'
 
 import registerServiceWorker from './registerServiceWorker'
 
 // begin with routing
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider {...stores}>
+    <App />
+  </Provider>
+  , document.getElementById('root'));
 registerServiceWorker();

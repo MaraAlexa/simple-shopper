@@ -46,7 +46,7 @@ class CheckoutForm extends React.Component {
   }
 
   render() {
-    const {cartProducts, email, cardholderName, phone, selectedCountry, city, postalCode, address, formErrors, handleUserInput, formValid, emailValid, phoneValid, selectedCountryValid, cityValid, postalCodeValid, addressValid} = this.props;
+    const {cartProducts, email, cardholderName, phone, selectedCountry, city, postalCode, address, handleUserInput, formValid, emailValid, phoneValid, selectedCountryValid, cityValid, postalCodeValid, addressValid} = this.props;
 
     return(
       <form onSubmit={this.handleSubmit} >

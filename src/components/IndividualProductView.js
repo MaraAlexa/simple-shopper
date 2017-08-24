@@ -6,7 +6,7 @@ const IndividualProductView = ({ product, onAddToCart, buyProduct }) =>
   <div className="card individual-product-view">
     <div className="card-image">
       <figure className="image">
-        <img src={product.image} alt={product.name} />
+        <img src={product.main_img_url} alt={product.name} />
       </figure>
     </div>
     <div className="card-content">

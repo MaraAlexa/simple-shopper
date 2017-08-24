@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './styles/App.css'
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
 // components
 import Nav from './components/Nav'
@@ -10,18 +10,19 @@ import CartPage from './components/CartPage'
 import CheckoutPage from './components/CheckoutPage'
 import FormErrors from './components/FormErrors'
 import IndividualProductView from './components/IndividualProductView'
-import AdminPage from './components/AdminPage'
-// import products from './data/products'
-// function that loads data asyncronously
-import { loadProducts } from './store/Products'
+import AdminPage from './components/protected/AdminPage'
+import LoginPage from './components/LoginPage'
 
+import { inject, observer } from 'mobx-react'
 
 import { StripeProvider } from 'react-stripe-elements'
 
+@inject(['products']) @inject('user')
 class App extends Component {
   state = {
     cart: [],
     isActive: '', // mobile Nav
+
     // form fields validation state
     email: '',
     name: '',
@@ -45,21 +46,30 @@ class App extends Component {
 
   }
 
-  // addProduct = (product) => {
-  //   const updatedProduct = {...this.state.product}; // new product state
-  //   const timestamp = Date.now();
-  //   updatedProduct[`product-${timestamp}`] = product;
-  //   //set new state
-  //   this.setState({ product });
-  //
-  // }
 
-
-  findProductById = (productId) => {
-    var product = this.state.products.find(product => product.id === parseInt(productId, 10))
-    return {...product}
+  PrivateRoute = ({component: Component}) => {
+    return (
+      <Route
+        render={(props) => this.props.user.authenticated === true
+          ? <Component {...props}/>
+          : <Redirect to='/login'/>
+        } />
+    )
+  }
+  PublicRoute = ({component: Component}) => {
+    return (
+      <Route
+        render={(props) => this.props.user.authenticated === false
+          ? <Component {...props}/>
+          : <Redirect to='/admin'/>
+        } />
+    )
   }
 
+  findProductById = (productId) => {
+    const product = this.props.products.all.find(product => product.id === parseInt(productId, 10))
+    return {...product}
+  }
 
   handleAddToCart = (product) =>
     this.setState({
@@ -153,8 +163,6 @@ class App extends Component {
     }, () => {this.validateField(name, value)})
   }
 
-
-
   renderCart() {
     // count how many of each product in cart
     let productsCount = this.state.cart.reduce((productsCount, productId) => {
@@ -165,7 +173,7 @@ class App extends Component {
     // create an array of products
     let cartProducts = Object.keys(productsCount).map(productId => {
       // find product by its ID
-      var product = this.state.products.find(product => product.id === parseInt(productId, 10))
+      const product = this.props.products.all.find(product => product.id === parseInt(productId, 10))
       // create a new product that also has a count property
       return {
         ...product,
@@ -175,12 +183,6 @@ class App extends Component {
     return (
       cartProducts
     )
-  }
-  // fetch products from api
-  componentDidMount() {
-    loadProducts()
-      .then(products => this.setState({products}))
-      .catch(error => console.log(error))
   }
 
   render() {
@@ -195,10 +197,10 @@ class App extends Component {
           <div className="content">
             <Switch>
               <Route exact path='/'
-                render={() => <ProductsPage products={this.state.products} />}
+                render={() => <ProductsPage />}
               />
               <Route exact path='/products'
-                render={() => <ProductsPage products={this.state.products} />}
+                render={() => <ProductsPage />}
               />
               <Route path='/products/:id' render={({match}) =>
                 <IndividualProductView
@@ -217,6 +219,10 @@ class App extends Component {
                 />
               }
               />
+              {/* <Route path='/admin' render={() => <AdminPage products={this.state.products} />} /> */}
+              {/* <Route path='/login' render={() => <LoginPage  />} /> */}
+              <this.PublicRoute path='/login' component={LoginPage} />
+              <this.PrivateRoute path='/admin' component={AdminPage} />
               <Route path='/checkout' render={() =>
                 <StripeProvider apiKey='pk_test_sTYa7BQYuXsAcGVHGtwNqt8k'>
                   <CheckoutPage
@@ -244,8 +250,7 @@ class App extends Component {
 
                 </StripeProvider>
               } />
-              {/* add admin page */}
-              <Route path='/admin' render={() => <AdminPage products={this.state.products} />} />
+              <Route render={() => <p className="subtitle">Page not found!!!</p>}></Route>
             </Switch>
           </div>
         </div>

@@ -1,8 +1,15 @@
 import React from 'react'
 import axios from 'axios'
 import Dropzone from 'react-dropzone' // dropzone for images
+import { Image } from 'cloudinary-react'
 
-class AdminPage extends React.Component {
+import { observable } from 'mobx'
+import { observer } from 'mobx-react'
+
+@observer class AdminPage extends React.Component {
+  // mobx state for main_img_url
+  @observable main_img_url = ''
+  @observable main_img_id = ''
 
   createProduct = e => {
     e.preventDefault()
@@ -14,7 +21,8 @@ class AdminPage extends React.Component {
       price: this.price.value,
       stock: this.stock.value,
       size: this.size.value,
-      color: this.color.value
+      color: this.color.value,
+      main_img_url: this.main_img_url
     }
 
     axios.post(API_URL, {
@@ -32,7 +40,7 @@ class AdminPage extends React.Component {
   }
 
   handleDrop = files => {
-    const uploaders = files.map((file) => {
+    files.map((file) => {
       // initial formData
       const cloudinaryPreset = 'j3oktzhi'
       const apiKey = '212252819131138'
@@ -48,26 +56,17 @@ class AdminPage extends React.Component {
 
       // making the ajax request
       const cloudinaryUrl = 'https://api.cloudinary.com/v1_1/dcbdbitwq/image/upload'
-      const apiUrl = 'http://localhost:3000/v1/products'
 
-      const config = {
-           headers: { 'content-type': 'multipart/form-data' }
-      }
       return axios.post(cloudinaryUrl, formData, {
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
       }).then((response) => {
-        const main_img_url = response.data.secure_url
-        console.log(main_img_url)
-
-        axios.post(apiUrl, {
-          main_img_url: response.data.secure_url
-        })
+        this.main_img_url = response.data.secure_url
+        this.main_img_id = response.data.public_id
       })
       .catch(error => {
         console.log(error)
       })
     }) // end of loop
-
     // axios.all(uploaders).then((files) => {
     //   console.log(files);
     // })
@@ -75,9 +74,7 @@ class AdminPage extends React.Component {
 
 
   render() {
-
-    const { files } = this.props
-
+    const hasImg = this.main_img_url !== '';
     return(
       <div className='column is-8 is-offset-2'>
         <p className="subtitle">CREATE A NEW PRODUCT</p>
@@ -173,9 +170,23 @@ class AdminPage extends React.Component {
             >
             <p>Drop here your files or click to upload</p>
             </Dropzone>
+            {
+              this.main_img_url !== '' ?
+                <Image
+                  cloudName="dcbdbitwq"
+                  publicId={`${this.main_img_id}`}
+                  width="300"
+                  crop="scale"
+                />
+                :
+                null
+            }
 
           </section>
-          <button className="button is-primary is-pulled-right" type='submit'>
+
+          <button className="button is-primary is-pulled-right"
+                  type='submit'
+                  disabled={!hasImg}>
             Submit
           </button>
         </form>
