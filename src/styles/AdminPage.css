@@ -1,0 +1,22 @@
+.upload-img-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.dropzone-img-preview {
+  border: 1px dashed black;
+  margin: 0;
+}
+.upload-icon {
+  padding: 20px;
+}
+.columns.images_wrapper {
+  display: flex;
+  /*flex-flow: row wrap;*/
+  flex-wrap: wrap;
+  width: 420px;
+}
+
+.product-image {
+  min-width: 200px;
+}

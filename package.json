@@ -50,6 +50,7 @@
     "react-dropzone": "^4.0.0",
     "react-error-overlay": "^1.0.9",
     "react-fileupload": "^2.4.0",
+    "react-modal": "^2.2.4",
     "react-stripe-elements": "^0.0.2",
     "style-loader": "0.18.2",
     "sw-precache-webpack-plugin": "0.11.3",

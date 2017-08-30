@@ -23,13 +23,33 @@ li.product.column.is-one-third {
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
-  margin: 7rem;
+  margin: 2rem 12rem;
+  flex-direction: column;
+}
+.primary-image-wrapper, .secondary-images-wrapper {
+  width: 100%;
+}
+.secondary-images-wrapper {
+  display: flex;
+  justify-content: space-around;
 }
 
-.title {
+.product-info {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-flow: row wrap;
+  /*justify-content: center;*/
+  /*align-items: center;*/
+}
+
+.product-name {
+  margin-right: 2rem;
+  align-self: flex-end;
+}
+
+.product-price {
+  margin: 2rem 0;
+  align-self: flex-end;
+  text-align: center;
 }
 
 .addToCart {

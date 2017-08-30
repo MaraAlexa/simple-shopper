@@ -45,7 +45,7 @@ const Nav = ({ activeTab, onTabChange, cart, toggleMobileNav, isActive }) =>
         className={`navbar-menu ${isActive}`}
       >
         <div className="navbar-end">
-          <NavLink exact activeClassName='active' to='/' className="navbar-item">
+          <NavLink exact activeClassName='active' to='/products' className="navbar-item">
             ProductsPage
           </NavLink>
           <NavLink activeClassName='active' to='/cart' className="navbar-item">

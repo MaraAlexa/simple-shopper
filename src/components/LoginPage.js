@@ -12,7 +12,7 @@ function SetErrorMsg(error){
 @observer class LoginPage extends React.Component {
   @observable loginMessage = null
 
-  componetWillMount() {
+  componentWillMount() {
     this.props.user.signIn()
   }
 

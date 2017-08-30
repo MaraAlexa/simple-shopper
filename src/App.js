@@ -12,13 +12,14 @@ import FormErrors from './components/FormErrors'
 import IndividualProductView from './components/IndividualProductView'
 import AdminPage from './components/protected/AdminPage'
 import LoginPage from './components/LoginPage'
+import LandingPageStatic from './components/static/LandingPageStatic'
 
 import { inject, observer } from 'mobx-react'
 
 import { StripeProvider } from 'react-stripe-elements'
 
 @inject(['products']) @inject('user')
-class App extends Component {
+@observer class App extends Component {
   state = {
     cart: [],
     isActive: '', // mobile Nav
@@ -51,8 +52,8 @@ class App extends Component {
     return (
       <Route
         render={(props) => this.props.user.authenticated === true
-          ? <Component {...props}/>
-          : <Redirect to='/login'/>
+          ? <Component {...props} />
+          : <Redirect to='/login' />
         } />
     )
   }
@@ -197,7 +198,7 @@ class App extends Component {
           <div className="content">
             <Switch>
               <Route exact path='/'
-                render={() => <ProductsPage />}
+                render={() => <LandingPageStatic />}
               />
               <Route exact path='/products'
                 render={() => <ProductsPage />}
@@ -219,8 +220,7 @@ class App extends Component {
                 />
               }
               />
-              {/* <Route path='/admin' render={() => <AdminPage products={this.state.products} />} /> */}
-              {/* <Route path='/login' render={() => <LoginPage  />} /> */}
+
               <this.PublicRoute path='/login' component={LoginPage} />
               <this.PrivateRoute path='/admin' component={AdminPage} />
               <Route path='/checkout' render={() =>

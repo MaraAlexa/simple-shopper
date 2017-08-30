@@ -24,10 +24,10 @@ class User {
     }
   }
 
-  signIn(email = null, password = null) {
+  @action signIn(email = null, password = null) {
     const store = {
-      authentication_token: localStorage.getItem('token'),
-      email: localStorage.getItem('email')
+      email: localStorage.getItem('email'),
+      authentication_token: localStorage.getItem('token')
     }
 
     // check localStorage for auth credentials

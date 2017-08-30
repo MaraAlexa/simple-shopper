@@ -4,20 +4,31 @@ import '../styles/Product.css'
 
 const IndividualProductView = ({ product, onAddToCart, buyProduct }) =>
   <div className="card individual-product-view">
-    <div className="card-image">
+    <div className="primary-image-wrapper">
       <figure className="image">
         <img src={product.main_img_url} alt={product.name} />
       </figure>
     </div>
+    <div className="secondary-images-wrapper">
+      <figure className="image is-128x128">
+        <img src={product.second_img_url} alt={product.name} />
+      </figure>
+      <figure className="image is-128x128">
+        <img src={product.third_img_url} alt={product.name} />
+      </figure>
+      <figure className="image is-128x128">
+        <img src={product.fourth_img_url} alt={product.name} />
+      </figure>
+    </div>
     <div className="card-content">
-      <div className="title">
-          <p className="title is-4">{product.name}</p>
-          <p className="subtitle is-6 price">
-            <span className="icon">
-              <i className="fa fa-eur" aria-hidden="true"></i>
-            </span>
-            {product.price/100}
-          </p>
+      <div className="product-info">
+            <p className="title is-2 product-name">{product.name}</p>
+            <p className="subtitle is-5 product-price">
+              <span className="icon">
+                <i className="fa fa-eur" aria-hidden="true"></i>
+              </span>
+              {product.price/100}
+            </p>
       </div>
 
       <div className="content">

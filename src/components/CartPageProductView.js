@@ -6,7 +6,7 @@ const CartPageProductView = ({ product, onAddToCart, buyProduct }) =>
   <div>
       <div className="media">
         <figure className="image cart-page-img-wrap">
-          <img src={product.image} alt={product.name} />
+          <img src={product.main_img_url} alt={product.name} />
         </figure>
         <div className="media-content">
           <div className="content">

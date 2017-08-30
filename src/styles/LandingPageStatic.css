@@ -1,0 +1,79 @@
+.page-header {
+  background-image: url(../images/landing-page-bg.png);
+  transform: translate3d(0px, 0px, 0px);
+  background-color: #B2AFAB;
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  max-height: 999px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+
+}
+
+.content-center {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  z-index: 3
+}
+
+.content-center > p {
+  color: white;
+  text-align: center;
+}
+.content-center > p.title {
+  font-size: 4rem;
+}
+.content-center > p.subtitle {
+  font-size: 2rem;
+}
+
+.filter {
+  background-color: rgba(0, 0, 0, 0.5);
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2
+}
+
+.best-seller-wrap {
+  margin-top: 2rem;
+}
+
+figure.static-product-one , figure.static-product-two, figure.static-product-three {
+  transform: translate3d(0px, 0px, 0px);
+  background-color: rgba(240, 240, 240, 1);
+  background-position: center center;
+  background-size: 98% 98%;
+  background-repeat: no-repeat;
+  min-height: 30vh;
+  max-height: 999px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.best-selling-title {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+figure.static-product-one {
+  background-image: url(../images/mountain-bike.jpg);
+}
+figure.static-product-two {
+  background-image: url(../images/oma-fiets.jpg);
+}
+figure.static-product-three {
+  background-image: url(../images/vintage-bike.png);
+}
