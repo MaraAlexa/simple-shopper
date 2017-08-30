@@ -8,7 +8,7 @@ const LandingPageStatic = () =>
     <div className="page-header">
       <div className="filter"></div>
       <div className="content-center">
-        <p className="title">Landing Page</p>
+        <p className="title">Landing Page - persisting data</p>
         <p className="subtitle">This is where all starts</p>
         <NavLink
           activeClassName='active'
