@@ -5,13 +5,12 @@
 //     .then(res => res.json())
 // }
 
-
-import { observable, action } from 'mobx'
-import Api from '../api/index'
-
+import { observable, action } from "mobx"
+import Api from "../api/index"
 
 class Products {
-  path = '/products'
+  path = "/products"
+  // initial state
   @observable all = []
   @observable isLoading = false
 
@@ -21,10 +20,20 @@ class Products {
     const status = await response.status
 
     if (status === 200) {
+      // update state
       this.all = await response.json()
     }
   }
-}
 
+  @action async remove(productId) {
+    this.isLoading = true
+    const response = await Api.delete(`${this.path}/${productId}`)
+    const status = await response.status
+    if (status === 200) {
+      this.isLoading = false
+      this.fetchAll()
+    }
+  }
+}
 
 export default new Products()

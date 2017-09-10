@@ -15,9 +15,18 @@ const instance = axios.create({
 })
 
 @observer
-class CreateProductForm extends React.Component {
+class EditProductForm extends React.Component {
   @observable images_url = []
   @observable images_id = []
+
+  state = {
+    name: this.props.product.name,
+    description: this.props.product.description,
+    price: this.props.product.price,
+    stock: this.props.product.stock,
+    size: this.props.product.size,
+    color: this.props.product.color
+  }
 
   createProduct = e => {
     e.preventDefault()
@@ -47,7 +56,16 @@ class CreateProductForm extends React.Component {
     this.productForm.reset()
     this.images_url = []
     this.images_id = []
-    this.props.closeModal()
+  }
+
+  handleChange = e => {
+    const name = e.target.name
+    const value = e.target.value
+    this.setState({
+      [name]: value
+    })
+
+    //this.props.updateProduct(updatedProduct)
   }
 
   handleDrop = files => {
@@ -58,8 +76,6 @@ class CreateProductForm extends React.Component {
 
       const formData = new FormData()
       formData.append("file", file)
-      // formData.append('picture', file.picture)
-      // formData.append('main_img_url', file.images_url[0])
       formData.append("tags", `codeinfuse, medium, gist`)
       formData.append("upload_preset", cloudinaryPreset) // the code is the preset string provided by cloudinary
       formData.append("api_key", apiKey)
@@ -68,7 +84,6 @@ class CreateProductForm extends React.Component {
       // making the ajax request
       const cloudinaryUrl =
         "https://api.cloudinary.com/v1_1/dcbdbitwq/image/upload"
-
       return axios
         .post(cloudinaryUrl, formData, {
           headers: { "X-Requested-With": "XMLHttpRequest" }
@@ -82,9 +97,9 @@ class CreateProductForm extends React.Component {
         })
     }) // end of loop
   }
-
   render() {
     const hasImg = this.images_id !== null
+    const { product } = this.props
     return (
       <form
         onSubmit={this.createProduct}
@@ -92,7 +107,7 @@ class CreateProductForm extends React.Component {
       >
         {/* <DevTools /> */}
         <section className="create">
-          <p className="subtitle">Upload product images</p>
+          <p className="subtitle">EDIT product images</p>
 
           <div className="upload-img-wrapper">
             <Dropzone
@@ -157,9 +172,10 @@ class CreateProductForm extends React.Component {
               <input
                 type="text"
                 className="input"
-                ref={input => (this.name = input)}
                 name="name"
                 placeholder="Product Name"
+                value={this.state.name}
+                onChange={e => this.handleChange(e)}
               />
             </div>
           </div>
@@ -168,12 +184,13 @@ class CreateProductForm extends React.Component {
             <div className="control has-icons-left">
               <label htmlFor="name">Description *</label>
               <textarea
-                name=""
+                name="description"
                 id=""
                 rows="4"
                 className="textarea"
                 placeholder="Description"
-                ref={input => (this.description = input)}
+                value={this.state.description}
+                onChange={e => this.handleChange(e)}
               />
             </div>
           </div>
@@ -184,9 +201,10 @@ class CreateProductForm extends React.Component {
               <input
                 type="text"
                 className="input"
-                ref={input => (this.price = input)}
                 name="price"
                 placeholder="Product Price"
+                value={this.state.price}
+                onChange={e => this.handleChange(e)}
               />
             </div>
           </div>
@@ -197,9 +215,10 @@ class CreateProductForm extends React.Component {
               <input
                 type="text"
                 className="input"
-                ref={input => (this.stock = input)}
                 name="stock"
                 placeholder="Stock"
+                value={this.state.stock}
+                onChange={e => this.handleChange(e)}
               />
             </div>
           </div>
@@ -210,9 +229,10 @@ class CreateProductForm extends React.Component {
               <input
                 type="text"
                 className="input"
-                ref={input => (this.size = input)}
                 name="size"
                 placeholder="Product Size: S M L XL"
+                value={this.state.size}
+                onChange={e => this.handleChange(e)}
               />
             </div>
           </div>
@@ -223,9 +243,10 @@ class CreateProductForm extends React.Component {
               <input
                 type="text"
                 className="input"
-                ref={input => (this.color = input)}
                 name="color"
                 placeholder="Product Color"
+                value={this.state.color}
+                onChange={e => this.handleChange(e)}
               />
             </div>
           </div>
@@ -243,4 +264,4 @@ class CreateProductForm extends React.Component {
   }
 }
 
-export default CreateProductForm
+export default EditProductForm

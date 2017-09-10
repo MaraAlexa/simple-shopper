@@ -1,104 +1,86 @@
-import React from 'react'
+import React from "react";
 
-import Modal from 'react-modal'
+import Modal from "react-modal";
 
-import { observable } from 'mobx'
-import { observer } from 'mobx-react'
-import DevTools from 'mobx-react-devtools'
-import axios from 'axios'
-import CreateProductForm from './CreateProductForm'
+import { observable } from "mobx";
+import { observer, inject } from "mobx-react";
+// import DevTools from 'mobx-react-devtools'
+import CreateProductForm from "./CreateProductForm";
+import EditProductForm from "./EditProductForm";
 
-import '../../styles/AdminPage.css'
+import "../../styles/AdminPage.css";
 
-const instance = axios.create({
-  headers: {
-    'X-User-Email': localStorage.getItem('email'),
-    'X-User-Token': localStorage.getItem('token')
-  }
-})
+import ProductsTable from './ProductsTable'
 
-const PRODUCTS_API_URL = 'http://localhost:3000/v1/products'
-
-@observer class AdminPage extends React.Component {
-
-  @observable modalIsOpen = false
-  @observable allProducts = []
+@inject(["products"])
+@observer
+class AdminPage extends React.Component {
+  @observable modalIsOpen = false;
+  @observable needsUpdate = false;
 
   componentDidMount() {
-    this.fetchProducts()
+    this.props.products.fetchAll();
   }
 
+  openEditModal = () => {
+    this.modalIsOpen = true;
+    this.needsUpdate = true;
+  };
 
-  openModal = () => {
-    this.modalIsOpen = true
-  }
+  openCreateModal = () => {
+    this.modalIsOpen = true;
+  };
+
   closeModal = () => {
-    this.modalIsOpen = false
-  }
+    this.modalIsOpen = false;
+    this.needsUpdate = false;
+  };
 
-  fetchProducts = () => {
-    return instance.get(PRODUCTS_API_URL)
-      .then((response) => {
-        this.allProducts = response.data
-        console.log(this.allProducts)
-      })
-      .catch(function (error){
-        console.log(error)
-      })
-  }
+  removeProduct = productId => {
+    if (window.confirm("Are you sure?")) {
+      this.props.products.remove(productId);
+    }
+  };
 
   render() {
-    // const { all } = this.props.products
-    return(
-      <div className='column is-8 is-offset-2'>
-        {/* <DevTools /> */}
-        <a className='button is-primary is-outlined' onClick={this.openModal}>Create New Product</a>
-        <Modal
-          isOpen={this.modalIsOpen}
-          onRequestClose={this.closeModal}
-          contentLabel='Modal'
-          >
-            <a className='button is-primary is-outlined is-pulled-right' onClick={this.closeModal}>Close</a>
-            <h1>Modal Content</h1>
-            <CreateProductForm />
+    return (
+      <div className="column">
+        {
+          this.props.products.all.length > 0 ?
+          <ProductsTable/>
+          :
+          <div>
+            <Modal
+              isOpen={this.modalIsOpen}
+              onRequestClose={this.closeModal}
+              contentLabel="Modal"
+            >
+              <a
+                className="button is-primary is-outlined is-pulled-right"
+                onClick={this.closeModal}
+              >
+                Close
+              </a>
 
-        </Modal>
+              {this.needsUpdate ?
+                <EditProductForm  />
+               :
+                <CreateProductForm />
+              }
+            </Modal>
+            <a
+              className="button is-primary is-outlined"
+              onClick={this.openCreateModal}
+            >
+              Create New Product
+            </a>
+          </div>
+        }
 
-        <table className="table is-bordered is-striped">
-          <thead>
-            <tr>
-              <th><abbr title="ID">ID</abbr></th>
-              <th><abbr title="Name">Name</abbr></th>
-              <th><abbr title="Stock">Stock</abbr></th>
-              <th><abbr title="Price">Price</abbr></th>
-              <th><abbr title="Thumb">Thumb</abbr></th>
-              <th><abbr title="Status">Status</abbr></th>
-            </tr>
-          </thead>
 
-          <tbody>
-            {
-              this.allProducts.map(product =>
-                <tr key={product.id}>
-                  <td>{product.id}</td>
-                  <td>{product.name}</td>
-                  <td>{product.stock}</td>
-                  <td>{product.price}</td>
-                  <td>
-                    <img src={product.main_img_url} alt=""/>
-                  </td>
-                  <td>{product.status}</td>
-                  <td><a href="" className="edit">edit</a></td>
-                  <td><a href="" className="remove">remove</a></td>
-                </tr>
-              )
-            }
-
-          </tbody>
-        </table>
       </div>
-    )
+    );
   }
 }
 
-export default AdminPage
+export default AdminPage;
