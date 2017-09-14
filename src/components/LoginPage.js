@@ -2,12 +2,6 @@ import React from 'react'
 import { observer, inject } from 'mobx-react'
 import { observable } from 'mobx'
 
-function SetErrorMsg(error){
-  return {
-    loginMessage: error
-  }
-}
-
 @inject('user')
 @observer class LoginPage extends React.Component {
   @observable loginMessage = null
@@ -17,7 +11,7 @@ function SetErrorMsg(error){
   }
 
   handleSubmit = (e) => {
-    e.preventDefault
+    e.preventDefault()
 
     const email = this.email.value
     const password = this.password.value

@@ -39,7 +39,7 @@ class App extends Component {
     city: "",
     postalCode: "",
     address: "",
-
+    // formErrors state
     formErrors: {
       email: "",
       name: "",
@@ -56,8 +56,8 @@ class App extends Component {
     cityValid: "",
     postalCodeValid: "",
     addressValid: "",
+    // form validation state
     formValid: false
-    // inventory stock fetched from backend api
   };
 
   PrivateRoute = ({ component: Component }) => {
