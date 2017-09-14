@@ -103,7 +103,7 @@ class User {
     }
   }
 
-  @action SignOut() {
+  @action signOut() {
     localStorage.removeItem('email')
     localStorage.removeItem('token')
     this.email = null

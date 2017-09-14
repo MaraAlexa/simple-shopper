@@ -1,12 +1,8 @@
 import React from "react";
 
-import Modal from "react-modal";
-
 import { observable } from "mobx";
 import { observer, inject } from "mobx-react";
-// import DevTools from 'mobx-react-devtools'
-import CreateProductForm from "./CreateProductForm";
-import EditProductForm from "./EditProductForm";
+import CreateNewProductModal from './modals/CreateNewProductModal'
 
 import "../../styles/AdminPage.css";
 
@@ -16,16 +12,10 @@ import ProductsTable from './ProductsTable'
 @observer
 class AdminPage extends React.Component {
   @observable modalIsOpen = false;
-  @observable needsUpdate = false;
 
   componentDidMount() {
     this.props.products.fetchAll();
   }
-
-  openEditModal = () => {
-    this.modalIsOpen = true;
-    this.needsUpdate = true;
-  };
 
   openCreateModal = () => {
     this.modalIsOpen = true;
@@ -33,7 +23,6 @@ class AdminPage extends React.Component {
 
   closeModal = () => {
     this.modalIsOpen = false;
-    this.needsUpdate = false;
   };
 
   removeProduct = productId => {
@@ -43,39 +32,24 @@ class AdminPage extends React.Component {
   };
 
   render() {
+    const {all} = this.props.products
     return (
       <div className="column">
         {
           this.props.products.all.length > 0 ?
-          <ProductsTable/>
+          <ProductsTable
+            products={all}
+            removeProduct={this.removeProduct}
+          />
           :
-          <div>
-            <Modal
-              isOpen={this.modalIsOpen}
-              onRequestClose={this.closeModal}
-              contentLabel="Modal"
-            >
-              <a
-                className="button is-primary is-outlined is-pulled-right"
-                onClick={this.closeModal}
-              >
-                Close
-              </a>
-
-              {this.needsUpdate ?
-                <EditProductForm  />
-               :
-                <CreateProductForm />
-              }
-            </Modal>
-            <a
-              className="button is-primary is-outlined"
-              onClick={this.openCreateModal}
-            >
-              Create New Product
-            </a>
-          </div>
+          null
         }
+
+        <CreateNewProductModal
+          modalIsOpen={this.modalIsOpen}
+          closeModal={this.closeModal}
+          openCreateModal={this.openCreateModal}
+        />
 
 
       </div>

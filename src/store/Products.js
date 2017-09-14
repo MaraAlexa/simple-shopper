@@ -31,6 +31,11 @@ class Products {
       this.fetchAll()
     }
   }
+
+  // @action async edit(editedProduct) {
+  //   this.isLoading = true
+  //   const response = await Api.post(`${this.path}/${}`)
+  // }
 }
 
 export default new Products()

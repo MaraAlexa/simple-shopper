@@ -1,4 +1,5 @@
 const endpoint = 'http://localhost:3000/v1'
+// const endpoint = 'https://safe-spire-80465.herokuapp.com/v1'
 
 const headers = () => {
   const h = new Headers();

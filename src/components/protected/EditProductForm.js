@@ -28,24 +28,25 @@ class EditProductForm extends React.Component {
     color: this.props.product.color
   }
 
-  createProduct = e => {
+  editProduct = (e) => {
     e.preventDefault()
-    const PRODUCTS_API_URL = "http://localhost:3000/v1/products"
+    const PRODUCTS_API_URL = `http://localhost:3000/v1/products/${this.props.product.id}`
 
     const product = {
-      name: this.name.value,
-      description: this.description.value,
-      price: this.price.value,
-      stock: this.stock.value,
-      size: [this.size.value],
-      color: [this.color.value],
+      name: this.state.name,
+      description: this.state.description,
+      price: this.state.price,
+      stock: this.state.stock,
+      size: [this.state.size],
+      color: [this.state.color],
+      // work on image state?????
       main_img_url: this.images_url[0],
       second_img_url: this.images_url[1],
       third_img_url: this.images_url[2],
       fourth_img_url: this.images_url[3]
     }
     instance
-      .post(PRODUCTS_API_URL, { product })
+      .put(PRODUCTS_API_URL, { product })
       .then(response => {
         console.log(response)
       })
@@ -56,6 +57,7 @@ class EditProductForm extends React.Component {
     this.productForm.reset()
     this.images_url = []
     this.images_id = []
+    this.props.closeModal()
   }
 
   handleChange = e => {
@@ -99,10 +101,10 @@ class EditProductForm extends React.Component {
   }
   render() {
     const hasImg = this.images_id !== null
-    const { product } = this.props
+    // const { product } = this.props
     return (
       <form
-        onSubmit={this.createProduct}
+        onSubmit={this.editProduct}
         ref={input => (this.productForm = input)}
       >
         {/* <DevTools /> */}

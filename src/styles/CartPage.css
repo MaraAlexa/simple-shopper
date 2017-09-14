@@ -52,6 +52,11 @@ ul.cart-list {
   min-width: 240px;
 }
 
+/*subtotal, shipping & total section*/
+.message-body {
+  padding: 2em 4.25em;
+}
+
 
 .subtitle.is-6.price {
   display: flex;

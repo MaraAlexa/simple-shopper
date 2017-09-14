@@ -1,42 +1,26 @@
 import React from "react"
-import Modal from "react-modal"
-import CreateProductForm from "./CreateProductForm"
-import EditProductForm from "./EditProductForm"
 
 import { observable } from "mobx"
-import { observer, inject } from "mobx-react"
+import { observer} from "mobx-react"
 
-@inject(["products"])
+import EditProductModal from './modals/EditProductModal'
+
 @observer
 class ProductsTable extends React.Component {
   @observable modalIsOpen = false
-  @observable needsUpdate = false
+  @observable product = {}
 
-  componentDidMount() {
-    this.props.products.fetchAll()
-  }
-
-  openEditModal = () => {
+  openEditModal = (productId) => {
     this.modalIsOpen = true
-    this.needsUpdate = true
-  }
-
-  openCreateModal = () => {
-    this.modalIsOpen = true
+    this.product = this.props.products.filter(p => p.id === Number(productId))[0]
   }
 
   closeModal = () => {
     this.modalIsOpen = false
-    this.needsUpdate = false
-  }
-
-  removeProduct = productId => {
-    if (window.confirm("Are you sure?")) {
-      this.props.products.remove(productId)
-    }
   }
 
   render() {
+    const { products, removeProduct } = this.props
     return (
       <div className="column is-8 is-offset-2">
         <table className="table is-bordered is-striped">
@@ -64,7 +48,7 @@ class ProductsTable extends React.Component {
           </thead>
 
           <tbody>
-            {this.props.products.all.map(product => (
+            {products.map(product => (
               <tr key={product.id}>
                 <td>{product.id}</td>
                 <td>{product.name}</td>
@@ -77,33 +61,16 @@ class ProductsTable extends React.Component {
                 <td>
                   <a
                     className="edit button is-primary is-outlined"
-                    onClick={this.openEditModal}
+                    onClick={() => this.openEditModal(product.id)}
                   >
                     Edit
                   </a>
-                  <Modal
-                    isOpen={this.modalIsOpen}
-                    onRequestClose={this.closeModal}
-                    contentLabel="Modal"
-                  >
-                    <a
-                      className="button is-primary is-outlined is-pulled-right"
-                      onClick={this.closeModal}
-                    >
-                      Close
-                    </a>
 
-                    {this.needsUpdate ? (
-                      <EditProductForm product={product} />
-                    ) : (
-                      <CreateProductForm closeModal={this.closeModal} />
-                    )}
-                  </Modal>
                 </td>
 
                 <td>
                   <a
-                    onClick={() => this.removeProduct(product.id)}
+                    onClick={() => removeProduct(product.id)}
                     className="button is-danger is-outlined remove"
                   >
                     remove
@@ -113,12 +80,12 @@ class ProductsTable extends React.Component {
             ))}
           </tbody>
         </table>
-        <a
-          className="button is-primary is-outlined"
-          onClick={this.openCreateModal}
-        >
-          Create New Product
-        </a>
+        <EditProductModal
+          modalIsOpen={this.modalIsOpen}
+          closeModal={this.closeModal}
+          product={this.product}
+        />
+
       </div>
     )
   }
