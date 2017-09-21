@@ -6,6 +6,14 @@ const Product = ({ product, onAddToCart, buyProduct }) =>
   <div className="card">
     <div className="card-image">
       <figure className="image is-4by3">
+        {
+          product.stock > 0 ?
+            null
+            :
+          <div className="notification out-of-stock">
+            <strong>Out Of Stock</strong>
+          </div>
+        }
         <img src={product.main_img_url} alt={product.name} />
       </figure>
     </div>
@@ -25,7 +33,7 @@ const Product = ({ product, onAddToCart, buyProduct }) =>
       <div className="content">
         {product.description}
         <br />
-        
+
         {
           buyProduct ?
           <button

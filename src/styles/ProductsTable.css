@@ -13,3 +13,15 @@
   margin-bottom: 0;
   margin-left: 0;
 }
+
+/* toggle status button */
+.react-toggle--checked .react-toggle-track {
+  background-color: #248dd8;
+}
+
+.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
+  background-color: #2865c1;
+}
+.react-toggle--checked .react-toggle-thumb {
+  border-color: #248dd8;
+}

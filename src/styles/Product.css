@@ -39,6 +39,16 @@ li.product.column.is-one-third {
 .card-content {
   width: 100%
 }
+.notification.out-of-stock {
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  background: rgba(165, 206, 241, 0.77);
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 0px;
+  z-index: 2;
+}
 .product-name {
   margin-right: 2rem;
   align-self: flex-end;

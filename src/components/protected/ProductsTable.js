@@ -2,6 +2,10 @@ import React from "react"
 
 import { observable } from "mobx"
 import { observer} from "mobx-react"
+
+import Toggle from 'react-toggle'
+import 'react-toggle/style.css'
+
 import '../../styles/ProductsTable.css'
 
 import EditProductModal from './modals/EditProductModal'
@@ -65,10 +69,13 @@ class ProductsTable extends React.Component {
                 <td>
                   <img className="thumb" src={product.main_img_url} alt="" />
                 </td>
-                <td>{product.status}</td>
+                <td className='status'>
+                  <Toggle
+                    defaultChecked={true} />
+                </td>
                 <td>
                   <a
-                    className="edit button is-primary is-outlined"
+                    className="button is-small is-primary is-outlined"
                     onClick={() => this.openEditModal(product.id)}
                   >
                     Edit
@@ -79,7 +86,7 @@ class ProductsTable extends React.Component {
                 <td>
                   <a
                     onClick={() => removeProduct(product.id)}
-                    className="button is-danger is-outlined remove"
+                    className="button is-small is-danger is-outlined remove"
                   >
                     remove
                   </a>

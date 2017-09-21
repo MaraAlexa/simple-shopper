@@ -11,7 +11,7 @@ class IndividualProductView extends React.Component {
   }
 
   render(){
-    const {onAddToCart, buyProduct, product} = this.props
+    const {onAddToCart, product} = this.props
     return(
       <div className="card individual-product-view">
         <div className="primary-image-wrapper">
@@ -45,7 +45,7 @@ class IndividualProductView extends React.Component {
             <p className='description'>{product.description}</p>
 
             {
-              buyProduct ?
+              product.stock > 0 ?
               <button
                 className="addToCart button is-primary is-outlined"
                 onClick={() => onAddToCart(product)}
@@ -53,7 +53,7 @@ class IndividualProductView extends React.Component {
                 Add to cart
               </button>
               :
-              null
+              <button disabled className="button is-danger is-outlined out-of-stock-btn">Out of stock</button>
 
             }
           </div>
