@@ -37,9 +37,13 @@ const Api = {
   post(path, data = {}){
     return request('POST', path, data);
   },
+  put(path, data = {}) {
+    return request('PUT', path, data)
+  },
   delete(path) {
     return request('DELETE', path)
   }
+
 };
 
 export default Api;

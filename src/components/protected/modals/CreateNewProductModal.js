@@ -23,7 +23,7 @@ class CreateNewProductModal extends React.Component {
               >
               Close
             </a>
-            <CreateProductForm />
+            <CreateProductForm closeModal={closeModal}/>
 
         </Modal>
         <a className="button is-primary is-outlined"

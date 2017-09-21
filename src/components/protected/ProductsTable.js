@@ -2,6 +2,7 @@ import React from "react"
 
 import { observable } from "mobx"
 import { observer} from "mobx-react"
+import '../../styles/ProductsTable.css'
 
 import EditProductModal from './modals/EditProductModal'
 
@@ -52,7 +53,14 @@ class ProductsTable extends React.Component {
               <tr key={product.id}>
                 <td>{product.id}</td>
                 <td>{product.name}</td>
-                <td>{product.stock}</td>
+                <td>
+                  {
+                    product.stock <= 0 ?
+                      <span className="tag is-danger out-of-stock">Out of stock</span>
+                      :
+                      product.stock
+                  }
+                </td>
                 <td>{product.price}</td>
                 <td>
                   <img className="thumb" src={product.main_img_url} alt="" />

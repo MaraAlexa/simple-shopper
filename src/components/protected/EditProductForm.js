@@ -4,16 +4,16 @@ import Dropzone from "react-dropzone" // dropzone for images
 import { Image } from "cloudinary-react"
 
 import { observable } from "mobx"
-import { observer } from "mobx-react"
+import { observer, inject } from "mobx-react"
 // import DevTools from 'mobx-react-devtools'
 
-const instance = axios.create({
-  headers: {
-    "X-User-Email": localStorage.getItem("email"),
-    "X-User-Token": localStorage.getItem("token")
-  }
-})
-
+// const instance = axios.create({
+//   headers: {
+//     "X-User-Email": localStorage.getItem("email"),
+//     "X-User-Token": localStorage.getItem("token")
+//   }
+// })
+@inject(['products'])
 @observer
 class EditProductForm extends React.Component {
   @observable images_url = []
@@ -30,7 +30,7 @@ class EditProductForm extends React.Component {
 
   editProduct = (e) => {
     e.preventDefault()
-    const PRODUCTS_API_URL = `http://localhost:3000/v1/products/${this.props.product.id}`
+    // const PRODUCTS_API_URL = `http://localhost:3000/v1/products/${this.props.product.id}`
 
     const product = {
       name: this.state.name,
@@ -45,14 +45,8 @@ class EditProductForm extends React.Component {
       third_img_url: this.images_url[2],
       fourth_img_url: this.images_url[3]
     }
-    instance
-      .put(PRODUCTS_API_URL, { product })
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+
+    this.props.products.edit(this.props.product.id, product)
 
     this.productForm.reset()
     this.images_url = []

@@ -1,0 +1,15 @@
+.content table td,
+.table.is-bordered th {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.thumb {
+  width: 48px;
+}
+.tag.is-danger.out-of-stock {
+  width: auto;
+  position: inherit;
+  margin-bottom: 0;
+  margin-left: 0;
+}

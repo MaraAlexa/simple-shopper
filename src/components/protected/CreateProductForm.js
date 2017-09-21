@@ -4,16 +4,16 @@ import Dropzone from "react-dropzone" // dropzone for images
 import { Image } from "cloudinary-react"
 
 import { observable } from "mobx"
-import { observer } from "mobx-react"
+import { observer, inject } from "mobx-react"
 // import DevTools from 'mobx-react-devtools'
 
-const instance = axios.create({
-  headers: {
-    "X-User-Email": localStorage.getItem("email"),
-    "X-User-Token": localStorage.getItem("token")
-  }
-})
-
+// const instance = axios.create({
+//   headers: {
+//     "X-User-Email": localStorage.getItem("email"),
+//     "X-User-Token": localStorage.getItem("token")
+//   }
+// })
+@inject(['products'])
 @observer
 class CreateProductForm extends React.Component {
   @observable images_url = []
@@ -21,7 +21,7 @@ class CreateProductForm extends React.Component {
 
   createProduct = e => {
     e.preventDefault()
-    const PRODUCTS_API_URL = "http://localhost:3000/v1/products"
+    // const PRODUCTS_API_URL = "http://localhost:3000/v1/products"
 
     const product = {
       name: this.name.value,
@@ -35,14 +35,16 @@ class CreateProductForm extends React.Component {
       third_img_url: this.images_url[2],
       fourth_img_url: this.images_url[3]
     }
-    instance
-      .post(PRODUCTS_API_URL, { product })
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+
+    this.props.products.add(product)
+    // instance
+    //   .post(PRODUCTS_API_URL, { product })
+    //   .then(response => {
+    //     console.log(response)
+    //   })
+    //   .catch(error => {
+    //     console.log(error)
+    //   })
 
     this.productForm.reset()
     this.images_url = []
