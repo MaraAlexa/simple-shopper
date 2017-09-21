@@ -2,18 +2,13 @@ li.product.column.is-one-third {
   margin-top: 0;
 }
 
-.card-content {
-  height: 200px;
-}
-
 .media-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.content {
-  display: flex;
+.column {
   flex-direction: column;
 }
 
@@ -34,16 +29,20 @@ li.product.column.is-one-third {
   justify-content: space-around;
 }
 
-.product-info {
+.info-product-wrapper {
   display: flex;
-  flex-flow: row wrap;
+  /*flex-flow: row wrap;*/
   /*justify-content: center;*/
   /*align-items: center;*/
+  justify-content: space-between;
 }
-
+.card-content {
+  width: 100%
+}
 .product-name {
   margin-right: 2rem;
   align-self: flex-end;
+  margin-bottom: 0px;
 }
 
 .product-price {
@@ -53,6 +52,7 @@ li.product.column.is-one-third {
 }
 
 .addToCart {
+  width: 100%;
   margin-top: 3rem;
 }
 

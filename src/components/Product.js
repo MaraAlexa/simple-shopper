@@ -25,7 +25,7 @@ const Product = ({ product, onAddToCart, buyProduct }) =>
       <div className="content">
         {product.description}
         <br />
-        <small>11:09 PM - 1 Jan 2016</small>
+        
         {
           buyProduct ?
           <button
