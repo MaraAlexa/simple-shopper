@@ -265,7 +265,7 @@ class App extends Component {
               <Route
                 path="/checkout"
                 render={() => (
-                  <StripeProvider apiKey="pk_test_sTYa7BQYuXsAcGVHGtwNqt8k">
+                  <StripeProvider apiKey="pk_test_d5pgMWZSGWQZ530wrp1EM3ET">
                     <CheckoutPage
                       cartProducts={this.renderCart()}
                       email={this.state.email}
