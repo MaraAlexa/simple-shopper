@@ -1,20 +1,12 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import '../styles/Nav.css'
-import { inject, observer } from "mobx-react"
 
 
-@inject('user')
-@observer class Nav extends React.Component {
-
-  signOut =  (e) => {
-    e.preventDefault()
-    console.log(this.props.user.authenticated)
-    this.props.user.destroySession()
-  }
+class Nav extends React.Component {
 
   render() {
-    const { activeTab, onTabChange, cart, toggleMobileNav, isActive  } = this.props
+    const { cart, toggleMobileNav, isActive, user } = this.props
     return(
       <nav className="navbar">
         <div className="navbar-brand">
@@ -76,7 +68,7 @@ import { inject, observer } from "mobx-react"
                 }
               </NavLink>
               {
-                this.props.user.authenticated ? <a onClick={this.signOut} className='navbar-item'>Sign Out!</a> : null
+                user.authenticated ? <a onClick={() => user.destroySession()} className='navbar-item'>Sign Out!</a> : null
               }
 
 

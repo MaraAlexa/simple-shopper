@@ -232,6 +232,8 @@ class App extends Component {
             cart={this.state.cart}
             toggleMobileNav={this.toggleMobileNav}
             isActive={this.state.isActive}
+            user={this.props.user}
+
           />
           <div className="content">
             <Switch>
