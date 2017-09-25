@@ -1,70 +1,93 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import '../styles/Nav.css'
+import { inject, observer } from "mobx-react"
 
-const Nav = ({ activeTab, onTabChange, cart, toggleMobileNav, isActive }) =>
-  <nav className="navbar">
-    <div className="navbar-brand">
 
-      <Link to='/' className="navbar-item">
-        <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28" />
-      </Link>
+@inject('user')
+@observer class Nav extends React.Component {
 
-        <div className="flex is-hidden-desktop">
-          <NavLink activeClassName='active' to='/cart' className="navbar-item">
-            <span className="icon">
-              <i className="fa fa-cart-arrow-down fa-5" aria-hidden="true"></i>
-            </span>
-            {
-              cart.length ?
-                <span className='tag is-danger animated rubberBand'>
-                  {cart.length}
+  signOut =  (e) => {
+    e.preventDefault()
+    console.log(this.props.user.authenticated)
+    this.props.user.destroySession()
+  }
+
+  render() {
+    const { activeTab, onTabChange, cart, toggleMobileNav, isActive  } = this.props
+    return(
+      <nav className="navbar">
+        <div className="navbar-brand">
+
+          <Link to='/' className="navbar-item">
+            <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28" />
+          </Link>
+
+            <div className="flex is-hidden-desktop">
+              <NavLink activeClassName='active' to='/cart' className="navbar-item">
+                <span className="icon">
+                  <i className="fa fa-cart-arrow-down fa-5" aria-hidden="true"></i>
                 </span>
-                :
-                null
-            }
-          </NavLink>
+                {
+                  cart.length ?
+                    <span className='tag is-danger animated rubberBand'>
+                      {cart.length}
+                    </span>
+                    :
+                    null
+                }
+              </NavLink>
 
-        <div
-          id='navBurger'
-          className={`navbar-burger burger ${isActive}`}
-          onClick={toggleMobileNav}
+            <div
+              id='navBurger'
+              className={`navbar-burger burger ${isActive}`}
+              onClick={toggleMobileNav}
+              >
+
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            </div>
+
+
+        </div>{/* end navbar-brand here - contains the logo and the nav burger*/}
+
+          <div
+            id="navMobileLinks"
+            className={`navbar-menu ${isActive}`}
           >
-
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        </div>
-
-
-    </div>{/* end navbar-brand here - contains the logo and the nav burger*/}
-
-      <div
-        id="navMobileLinks"
-        className={`navbar-menu ${isActive}`}
-      >
-        <div className="navbar-end">
-          <NavLink exact activeClassName='active' to='/products' className="navbar-item">
-            ProductsPage
-          </NavLink>
-          <NavLink activeClassName='active' to='/cart' className="navbar-item">
-            Cart
-            <span className="icon">
-              <i className="fa fa-cart-arrow-down fa-5" aria-hidden="true"></i>
-            </span>
-            {
-              cart.length ?
-                <span className='tag is-danger animated rubberBand'>
-                  {cart.length}
+            <div className="navbar-end">
+              <NavLink exact activeClassName='active' to='/products' className="navbar-item">
+                ProductsPage
+              </NavLink>
+              <NavLink activeClassName='active' to='/cart' className="navbar-item">
+                Cart
+                <span className="icon">
+                  <i className="fa fa-cart-arrow-down fa-5" aria-hidden="true"></i>
                 </span>
-                :
-                null
-            }
-          </NavLink>
-        </div>
-      </div>
+                {
+                  cart.length ?
+                    <span className='tag is-danger animated rubberBand'>
+                      {cart.length}
+                    </span>
+                    :
+                    null
+                }
+              </NavLink>
+              {
+                this.props.user.authenticated ? <a onClick={this.signOut} className='navbar-item'>Sign Out!</a> : null
+              }
 
-  </nav>
+
+
+            </div>
+          </div>
+
+      </nav>
+    )
+  }
+}
+
 
 export default Nav

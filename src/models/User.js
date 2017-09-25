@@ -104,6 +104,7 @@ class User {
   }
 
   @action signOut() {
+    // cleans up localStorage and redirects
     localStorage.removeItem('email')
     localStorage.removeItem('token')
     this.email = null
