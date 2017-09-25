@@ -67,7 +67,7 @@ class App extends Component {
           this.props.user.authenticated === true ? (
             <Component {...props} />
           ) : (
-            <Redirect to="/login" />
+            <Redirect from="/admin" to="/login" />
           )}
       />
     );
@@ -79,7 +79,7 @@ class App extends Component {
           this.props.user.authenticated === false ? (
             <Component {...props} />
           ) : (
-            <Redirect to="/admin" />
+            <Redirect from="/login" to="/admin" />
           )}
       />
     );

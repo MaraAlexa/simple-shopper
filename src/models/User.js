@@ -110,7 +110,7 @@ class User {
     this.email = null
     this.authenticated = false
     this.isLoading = false
-    history.push('/login')
+    history.push('/')
   }
 }
 
