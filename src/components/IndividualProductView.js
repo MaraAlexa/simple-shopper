@@ -7,11 +7,19 @@ import { inject, observer} from 'mobx-react'
 class IndividualProductView extends React.Component {
 
   componentWillMount(){
-    this.props.products.fetchAll()
+    this.props.products.fetchAll() // -> this.props.products.all
+  }
+
+  findProductById = productId => {
+    const product = this.props.products.all.find(
+      product => product.id === parseInt(productId, 10)
+    );
+    return { ...product };
   }
 
   render(){
-    const {onAddToCart, product} = this.props
+    const { onAddToCart, match } = this.props;
+    const product = this.findProductById(match)
     return(
       <div className="card individual-product-view">
         <div className="primary-image-wrapper">

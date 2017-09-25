@@ -241,10 +241,7 @@ class App extends Component {
                 path="/products/:id"
                 render={({ match }) => (
                   <IndividualProductView
-                    product={this.findProductById(match.params.id)}
                     onAddToCart={this.handleAddToCart}
-                    buyProduct="Add to cart"
-                    stock={this.state.stock}
                     match={match.params.id}
                   />
                 )}
