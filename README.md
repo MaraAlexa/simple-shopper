@@ -13,4 +13,4 @@ This aims to be a complete solution for selling products online.It has two main 
 ## Hosting
 - The app is hosted by the now service: https://zeit.co/now
 
-[see it online](https://build-dqlvckvhce.now.sh)
+[see it online](https://build-prgmqklhek.now.sh)
