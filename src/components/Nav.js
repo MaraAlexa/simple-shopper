@@ -12,7 +12,7 @@ class Nav extends React.Component {
         <div className="navbar-brand">
 
           <Link to='/' className="navbar-item">
-            <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28" />
+            <img src="https://res.cloudinary.com/dokwuww30/image/upload/v1506414086/bike-logo_y7xwus.svg" alt="Bike Shop Logo" width="112" height="28" />
           </Link>
 
             <div className="flex is-hidden-desktop">
