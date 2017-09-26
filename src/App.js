@@ -18,6 +18,7 @@ import IndividualProductView from "./components/IndividualProductView";
 import AdminPage from "./components/protected/AdminPage";
 import LoginPage from "./components/LoginPage";
 import LandingPageStatic from "./components/static/LandingPageStatic";
+import Thanks from './components/Thanks'
 
 import { inject, observer } from "mobx-react";
 
@@ -258,6 +259,8 @@ class App extends Component {
                   />
                 )}
               />
+
+              <Route render={() => <Thanks />} />
 
               <this.PublicRoute path="/login" component={LoginPage} />
               <this.PrivateRoute path="/admin" component={AdminPage} />

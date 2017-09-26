@@ -1,10 +1,9 @@
-// const baseUrl = 'http://localhost:3000/v1/products'
-
 import { observable, action } from "mobx"
 import Api from "../api/index"
 
 class Products {
   products_path = "/products"
+  orders_path = "/orders"
   // initial state
   @observable all = []
   @observable isLoading = false
@@ -25,6 +24,16 @@ class Products {
     const status = await response.status
     if(status === 201) {
       this.fetchAll()
+    }
+  }
+
+  @action async send_order(order_data) {
+    const response = await Api.post(this.orders_path, order_data)
+    const status = await response.status
+    if(status === 201) {
+      this.fetchAll()
+      // redirect to thank you page
+      window.location.replace('thanks')
     }
   }
 

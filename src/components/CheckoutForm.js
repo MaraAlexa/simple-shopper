@@ -2,9 +2,10 @@ import React from 'react'
 import TotalOrder from './TotalOrder'
 import CardSection from './CardSection'
 import { injectStripe } from 'react-stripe-elements'
-import axios from 'axios'
+// import axios from 'axios'
+import { inject, observer } from 'mobx-react'
 
-// begin form validation
+@inject(['products']) @observer
 class CheckoutForm extends React.Component {
 
   handleSubmit = (event) => {
@@ -20,27 +21,42 @@ class CheckoutForm extends React.Component {
       address_line1: this.street.value,
     }
 
-    const apiUrl = 'http://localhost:3000/v1/orders'
+    // const apiUrl = 'http://localhost:3000/v1/orders'
 
     this.props.stripe.createToken(extraDetails).then(({token}) => {
       console.log('Received Stripe token: ', token)
-      axios.post(apiUrl, {
+      // axios.post(apiUrl, {
+      //   cart_products: this.props.cartProducts,
+      //   name: extraDetails.name,
+      //   email: extraDetails.email,
+      //   tel: extraDetails.phone,
+      //   country: extraDetails.address_country,
+      //   city: extraDetails.address_city,
+      //   postcode: extraDetails.address_zip,
+      //   street: extraDetails.address_line1,
+      //   stripe_token: token
+      // })
+      // .then(function(response) {
+      //   console.log(response)
+      // })
+      // .catch(function(error) {
+      //   console.log(error)
+      // })
+      const order = {
         cart_products: this.props.cartProducts,
         name: extraDetails.name,
         email: extraDetails.email,
         tel: extraDetails.phone,
-        country: extraDetails.address_country,
-        city: extraDetails.address_city,
-        postcode: extraDetails.address_zip,
-        street: extraDetails.address_line1,
-        stripe_token: token
-      })
-      .then(function(response) {
-        console.log(response)
-      })
-      .catch(function(error) {
-        console.log(error)
-      })
+        country: extraDetails.country,
+        city: extraDetails.city,
+        postcode: extraDetails.postcode,
+        street: extraDetails.street,
+        stripe_token: token,
+      }
+      // req to backend to save order and send it to stripe
+      this.props.products.send_order(order)
+      // reset form fields when done
+      this.checkoutForm.reset()
     })
 
   }
@@ -49,7 +65,10 @@ class CheckoutForm extends React.Component {
     const {cartProducts, email, cardholderName, phone, selectedCountry, city, postalCode, address, handleUserInput, formValid, emailValid, phoneValid, selectedCountryValid, cityValid, postalCodeValid, addressValid} = this.props;
 
     return(
-      <form onSubmit={this.handleSubmit} >
+      <form
+        onSubmit={this.handleSubmit}
+        ref={input => this.checkoutForm = input}
+      >
 
         <section className="your-details">
 
