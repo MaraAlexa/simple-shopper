@@ -260,7 +260,7 @@ class App extends Component {
                 )}
               />
 
-              <Route render={() => <Thanks />} />
+              <Route path='/thanks' render={() => <Thanks />} />
 
               <this.PublicRoute path="/login" component={LoginPage} />
               <this.PrivateRoute path="/admin" component={AdminPage} />
