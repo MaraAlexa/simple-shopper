@@ -11,7 +11,7 @@ class Nav extends React.Component {
       <nav className="navbar">
         <div className="navbar-brand">
 
-          <Link to='/' className="navbar-item">
+          <Link to='/' className="navbar-item logo-link">
             <img src="https://res.cloudinary.com/dokwuww30/image/upload/v1506414086/bike-logo_y7xwus.svg" alt="Bike Shop Logo" width="112" height="28" />
           </Link>
 

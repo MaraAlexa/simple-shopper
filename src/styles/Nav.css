@@ -12,11 +12,18 @@
   padding: 0;
 }
 
-.nav-item a {
+a.nav-item {
   height: 100%;
+  padding: 0;
+  margin: 0;
 }
 .navbar-item img {
-  max-height: 3.2rem;
+  max-height: 4rem;
+
+}
+
+.navbar-item.logo-link {
+  padding: 0;
 }
 
 .navbar-brand {
