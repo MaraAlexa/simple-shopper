@@ -2,17 +2,12 @@ import React from "react"
 import axios from "axios"
 import Dropzone from "react-dropzone" // dropzone for images
 import { Image } from "cloudinary-react"
+import cloudinary from '../../api/cloudinary-upload-info'
 
 import { observable } from "mobx"
 import { observer, inject } from "mobx-react"
 // import DevTools from 'mobx-react-devtools'
 
-// const instance = axios.create({
-//   headers: {
-//     "X-User-Email": localStorage.getItem("email"),
-//     "X-User-Token": localStorage.getItem("token")
-//   }
-// })
 @inject(['products'])
 @observer
 class EditProductForm extends React.Component {
@@ -30,7 +25,6 @@ class EditProductForm extends React.Component {
 
   editProduct = (e) => {
     e.preventDefault()
-    // const PRODUCTS_API_URL = `http://localhost:3000/v1/products/${this.props.product.id}`
 
     const product = {
       name: this.state.name,
@@ -67,21 +61,16 @@ class EditProductForm extends React.Component {
   handleDrop = files => {
     files.map(file => {
       // initial formData
-      const cloudinaryPreset = "j3oktzhi"
-      const apiKey = "212252819131138"
-
       const formData = new FormData()
       formData.append("file", file)
       formData.append("tags", `codeinfuse, medium, gist`)
-      formData.append("upload_preset", cloudinaryPreset) // the code is the preset string provided by cloudinary
-      formData.append("api_key", apiKey)
+      formData.append("upload_preset", cloudinary.uploadPreset) // the code is the preset string provided by cloudinary
+      formData.append("api_key", cloudinary.apiKey)
       formData.append("timestamp", (Date.now() / 1000) | 0)
 
       // making the ajax request
-      const cloudinaryUrl =
-        "https://api.cloudinary.com/v1_1/dcbdbitwq/image/upload"
       return axios
-        .post(cloudinaryUrl, formData, {
+        .post(cloudinary.API_BASE_URL, formData, {
           headers: { "X-Requested-With": "XMLHttpRequest" }
         })
         .then(response => {
@@ -125,7 +114,7 @@ class EditProductForm extends React.Component {
                 <li className="column is-half">
                   <Image
                     className="product-image"
-                    cloudName="dcbdbitwq"
+                    cloudName={cloudinary.cloudName}
                     publicId={`${this.images_id[0]}`}
                     width="200"
                     crop="scale"
@@ -134,7 +123,7 @@ class EditProductForm extends React.Component {
                 <li className="column is-half">
                   <Image
                     className="product-image"
-                    cloudName="dcbdbitwq"
+                    cloudName={cloudinary.cloudName}
                     publicId={`${this.images_id[1]}`}
                     width="200"
                     crop="scale"
@@ -143,7 +132,7 @@ class EditProductForm extends React.Component {
                 <li className="column is-half">
                   <Image
                     className="product-image"
-                    cloudName="dcbdbitwq"
+                    cloudName={cloudinary.cloudName}
                     publicId={`${this.images_id[2]}`}
                     width="200"
                     crop="scale"
@@ -152,7 +141,7 @@ class EditProductForm extends React.Component {
                 <li className="column is-half">
                   <Image
                     className="product-image"
-                    cloudName="dcbdbitwq"
+                    cloudName={cloudinary.cloudName}
                     publicId={`${this.images_id[3]}`}
                     width="200"
                     crop="scale"
