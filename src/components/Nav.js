@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import logo from '../images/bike-logo-no-bg.svg'
 import '../styles/Nav.css'
 
 
@@ -12,7 +13,7 @@ class Nav extends React.Component {
         <div className="navbar-brand">
 
           <Link to='/' className="navbar-item logo-link">
-            <img src="https://res.cloudinary.com/dokwuww30/image/upload/v1506414086/bike-logo_y7xwus.svg" alt="Bike Shop Logo" width="112" height="28" />
+            <img className='logo' src={logo} alt="Bike Shop Logo" />
           </Link>
 
             <div className="flex is-hidden-desktop">
@@ -70,9 +71,6 @@ class Nav extends React.Component {
               {
                 user.authenticated ? <a onClick={() => user.destroySession()} className='navbar-item'>Sign Out!</a> : null
               }
-
-
-
             </div>
           </div>
 

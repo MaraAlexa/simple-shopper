@@ -34,6 +34,13 @@
   font-size: 2rem;
 }
 
+.button.is-success.cta-large-btn {
+  margin-top: 2rem;
+  width: 200px;
+  height: 50px;
+  align-self: center;
+}
+
 .filter {
   background-color: rgba(0, 0, 0, 0.5);
   content: "";
@@ -66,14 +73,4 @@ figure.static-product-one , figure.static-product-two, figure.static-product-thr
 .best-selling-title {
   text-align: center;
   margin: 2rem 0;
-}
-
-figure.static-product-one {
-  background-image: url(../images/mountain-bike.jpg);
-}
-figure.static-product-two {
-  background-image: url(../images/colorful-bike.jpg);
-}
-figure.static-product-three {
-  background-image: url(../images/vintage-bike.png);
 }

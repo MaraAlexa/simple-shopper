@@ -12,7 +12,7 @@ const LandingPageStatic = () =>
         <p className="subtitle">This is where all starts</p>
         <NavLink
           activeClassName='active'
-          className="button is-success is-outlined"
+          className="button is-success cta-large-btn"
           to='/products'
           >
             See our products
@@ -25,18 +25,21 @@ const LandingPageStatic = () =>
       <div className="card column">
         <div className="card-image">
           <figure className="image is-3by2 static-product-one">
+            <img src='' alt=""/>
           </figure>
         </div>
       </div>
       <div className="card column">
         <div className="card-image">
           <figure className="image is-3by2 static-product-two">
+            <img src='' alt=""/>
           </figure>
         </div>
       </div>
       <div className="card column">
         <div className="card-image">
           <figure className="image is-3by2 static-product-three">
+            <img src='' alt=""/>
           </figure>
         </div>
       </div>
