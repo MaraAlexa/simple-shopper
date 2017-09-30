@@ -41,7 +41,6 @@ class CreateProductForm extends React.Component {
   handleDrop = files => {
     files.map(file => {
       // initial formData
-      // const apiKey = "839416173789535"
 
       const formData = new FormData()
       formData.append("file", file)
