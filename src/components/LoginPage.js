@@ -2,6 +2,8 @@ import React from 'react'
 import { observer, inject } from 'mobx-react'
 import { observable } from 'mobx'
 
+import '../styles/LoginPage.css'
+
 @inject('user')
 @observer class LoginPage extends React.Component {
   @observable loginMessage = null
