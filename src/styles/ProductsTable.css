@@ -4,6 +4,14 @@
   text-align: center;
 }
 
+.products-table-wrap {
+  margin-top: 5rem;
+}
+
+#admin-products-table thead tr th abbr {
+  text-decoration: none;
+}
+
 .thumb {
   width: 48px;
 }
@@ -13,6 +21,7 @@
   margin-bottom: 0;
   margin-left: 0;
 }
+
 
 /* toggle status button */
 .react-toggle--checked .react-toggle-track {

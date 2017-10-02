@@ -8,7 +8,7 @@ import CheckoutForm from './CheckoutForm'
 
 const CheckoutPage = ({ cartProducts, email, cardholderName, phone, selectedCountry, city, postalCode, address, handleUserInput, formValid, nameValid, emailValid, phoneValid, selectedCountryValid, cityValid, postalCodeValid, addressValid }) =>
   <div className='columns is-mobile checkout-wrapper'>
-    <div className="column is-half is-offset-one-quarter">
+    <div className="is-10-by-12-mobile is-half-desktop-centered">
       {
         cartProducts.length > 0 ?
         <Elements>
@@ -33,7 +33,9 @@ const CheckoutPage = ({ cartProducts, email, cardholderName, phone, selectedCoun
           />
         </Elements>
         :
-        <p>Your cart is empthy, please add a product to proceed to checkout</p>
+        <div className="notification is-warning cart-is-empty">
+          The Shopping Cart is empty. Please select a product before proceeding to the shopping cart page.
+        </div>
       }
 
     </div>

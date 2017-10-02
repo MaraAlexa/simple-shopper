@@ -27,8 +27,8 @@ class ProductsTable extends React.Component {
   render() {
     const { products, removeProduct } = this.props
     return (
-      <div className="column is-8 is-offset-2">
-        <table className="table is-bordered is-striped">
+      <div className="column is-8 is-offset-2 products-table-wrap">
+        <table id='admin-products-table' className="table is-bordered is-striped">
           <thead>
             <tr>
               <th>

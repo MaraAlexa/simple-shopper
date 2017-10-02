@@ -1,5 +1,15 @@
-.your-details {
-  margin-top: 2rem;
+/*var warning redifined*/
+.input.is-warning, .textarea.is-warning {
+    border-color: #e9e2c9;
+}
+
+.is-10-by-12-mobile {
+  width: 83.3333%;
+  margin-left: 8.3333%;
+}
+
+.payment-form {
+  margin-top: 6rem;
 }
 
 .field {
@@ -27,7 +37,12 @@ span.icon.is-small.is-left {
   justify-content: space-between;
 }
 
-section.your-details, section.bill-to, section.invoice {
+.cart-is-empty {
+  margin-top: 7rem;
+  margin-bottom: 2rem;
+}
+
+section.client-details, section.bill-to, section.invoice {
   margin: 2rem 0;
 }
 span.icon.is-small.is-left.icon-fix {
@@ -38,4 +53,16 @@ section.ship-to {
 }
 .postalCode, .city {
   height: 50%;
+}
+
+@media (min-width: 1200px) {
+  .is-half-desktop-centered {
+    width: 50%;
+    margin-left: 25%;
+  }
+}
+@media (max-width: 700px) {
+  .cart-is-empty {
+    width: 100%;
+  }
 }

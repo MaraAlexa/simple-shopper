@@ -1,4 +1,5 @@
-const endpoint = 'https://radiant-sea-68238.herokuapp.com/v1'
+// const endpoint = 'https://radiant-sea-68238.herokuapp.com/v1'
+const endpoint = 'http://localhost:3000/v1'
 
 
 const headers = () => {
