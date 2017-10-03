@@ -8,8 +8,8 @@ const LandingPageStatic = () =>
     <div className="page-header">
       <div className="filter"></div>
       <div className="content-center">
-        <p className="title">Landing Page - persisting data</p>
-        <p className="subtitle">This is where all starts</p>
+        <p className="title is-size-1">An open road adventure</p>
+        <p className="subtitle is-size-4">Made possible by our reliable gear</p>
         <NavLink
           activeClassName='active'
           className="button is-success cta-large-btn"
@@ -20,8 +20,8 @@ const LandingPageStatic = () =>
       </div>
     </div>
 
-    <p className="title best-selling-title">Best selling products</p>
-    <div className="best-seller-wrap columns">
+    {/* <p className="title best-selling-title">Best selling products</p> */}
+    {/* <div className="best-seller-wrap columns">
       <div className="card column">
         <div className="card-image">
           <figure className="image is-3by2 static-product-one">
@@ -43,7 +43,7 @@ const LandingPageStatic = () =>
           </figure>
         </div>
       </div>
-    </div>
+    </div> */}
   </div>
 
 
