@@ -1,6 +1,7 @@
 import React from 'react'
 import '../styles/Product.css'
 import { inject, observer} from 'mobx-react'
+import ProgressiveImage from 'react-progressive-image'
 
 @inject(['products'])
 @observer
@@ -20,22 +21,32 @@ class IndividualProductView extends React.Component {
   render(){
     const { onAddToCart, match } = this.props;
     const product = this.findProductById(match)
+    const imagePlaceholder = 'https://res.cloudinary.com/dokwuww30/image/upload/v1507029343/img-placeholder_lmlptx.svg'
     return(
       <div className="card individual-product-view">
         <div className="primary-image-wrapper">
           <figure className="image">
-            <img src={product.main_img_url} alt={product.name} />
+            {/* <img src={product.main_img_url} alt={product.name} /> */}
+            <ProgressiveImage src={product.main_img_url} placeholder={imagePlaceholder}>
+              { (src) => <img src={product.main_img_url} alt={product.name} /> }
+            </ProgressiveImage>
           </figure>
         </div>
         <div className="secondary-images-wrapper">
           <figure className="image">
-            <img src={product.second_img_url} alt={product.name} />
+            <ProgressiveImage src={product.second_img_url} placeholder={imagePlaceholder}>
+              { (src) => <img src={product.second_img_url} alt={product.name} /> }
+            </ProgressiveImage>
           </figure>
           <figure className="image">
-            <img src={product.third_img_url} alt={product.name} />
+            <ProgressiveImage src={product.third_img_url} placeholder={imagePlaceholder}>
+              { (src) => <img src={product.third_img_url} alt={product.name} /> }
+            </ProgressiveImage>
           </figure>
           <figure className="image">
-            <img src={product.fourth_img_url} alt={product.name} />
+            <ProgressiveImage src={product.fourth_img_url} placeholder={imagePlaceholder}>
+              { (src) => <img src={product.fourth_img_url} alt={product.name} /> }
+            </ProgressiveImage>
           </figure>
         </div>
         <div className="card-content">

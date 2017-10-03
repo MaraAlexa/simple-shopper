@@ -1,10 +1,6 @@
 .App {
-  /*padding: 1rem;*/
-  background: #eeeeee;
-}
+  background: #eeeeee; }
 
 @media screen and (max-width: 560px) {
   .App {
-    padding: .5rem;
-  }
-}
+    padding: .5rem; } }

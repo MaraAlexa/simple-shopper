@@ -184,9 +184,9 @@ class CheckoutForm extends React.Component {
                 <li>* Please select a country *</li>
               </ul>
             ) : null}
-          </div>
 
-          <div className="field is-grouped form-group">
+
+
             <div className="control has-icons-left city">
               <label htmlFor="city">City *</label>
               <input
@@ -235,7 +235,10 @@ class CheckoutForm extends React.Component {
                 <li>* Please enter your post code *</li>
               </ul>
             ) : null}
+
           </div>
+
+
 
           <div className="field form-group">
             <div className="control has-icons-left">
