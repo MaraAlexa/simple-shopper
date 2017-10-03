@@ -7,6 +7,14 @@ ul li {
   list-style-type: none;
 }
 
+/*spinner showing off on loading*/
+.sk-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .products-page {
   background: #f7f7f7;
   padding: 1rem;

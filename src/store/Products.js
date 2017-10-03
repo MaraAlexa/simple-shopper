@@ -16,6 +16,7 @@ class Products {
     if (status === 200) {
       // update state
       this.all = await response.json()
+      this.isLoading = false
     }
   }
 

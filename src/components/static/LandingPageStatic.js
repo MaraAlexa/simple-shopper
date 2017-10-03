@@ -10,6 +10,7 @@ const LandingPageStatic = () =>
       <div className="content-center">
         <p className="title is-size-1">An open road adventure</p>
         <p className="subtitle is-size-4">Made possible by our reliable gear</p>
+
         <NavLink
           activeClassName='active'
           className="button is-success cta-large-btn"
