@@ -46,10 +46,10 @@ class CreateProductForm extends React.Component {
       formData.append("file", file)
       // formData.append('picture', file.picture)
       // formData.append('main_img_url', file.images_url[0])
-      formData.append("tags", `codeinfuse, medium, gist`)
+      formData.append("tags", `medium, gist`)
       formData.append("upload_preset", cloudinary.uploadPreset) // the code is the preset string provided by cloudinary
       formData.append("api_key", cloudinary.apiKey)
-      formData.append("timestamp", (Date.now() / 1000) | 0)
+      // formData.append("timestamp", (Date.now() / 1000) | 0)
 
       // making the ajax request
       // const cloudinaryUrl =

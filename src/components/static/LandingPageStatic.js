@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import '../../styles/LandingPageStatic.css'
-import ReactCSSTransitionGroup from 'react-transition-group'
 
 const LandingPageStatic = () => (
   <div className="landing-page">

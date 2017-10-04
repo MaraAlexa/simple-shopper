@@ -1,7 +1,10 @@
 import React from 'react'
 import '../styles/Product.css'
 import { inject, observer} from 'mobx-react'
-import ProgressiveImage from 'react-progressive-image'
+import ProcessImage from 'react-imgpro'
+import ImageGallery from 'react-image-gallery'
+import 'react-image-gallery/styles/css/image-gallery.css'
+
 
 @inject(['products'])
 @observer
@@ -18,37 +21,45 @@ class IndividualProductView extends React.Component {
     return { ...product };
   }
 
+
   render(){
+
     const { onAddToCart, match } = this.props;
     const product = this.findProductById(match)
-    const imagePlaceholder = 'https://res.cloudinary.com/dokwuww30/image/upload/v1507029343/img-placeholder_lmlptx.svg'
+    console.log(product)
+    const images = [
+      {
+        original: product.main_img_url,
+        thumbnail: product.main_img_url
+      },
+      {
+        original: product.second_img_url,
+        thumbnail: product.second_img_url
+      },
+      {
+        original: product.third_img_url,
+        thumbnail: product.third_img_url
+      },
+      {
+        original: product.fourth_img_url,
+        thumbnail: product.fourth_img_url
+      }
+    ]
+
+
     return(
       <div className="card individual-product-view">
         <div className="primary-image-wrapper">
-          <figure className="image">
-            {/* <img src={product.main_img_url} alt={product.name} /> */}
-            <ProgressiveImage src={product.main_img_url} placeholder={imagePlaceholder}>
-              { (src) => <img src={product.main_img_url} alt={product.name} /> }
-            </ProgressiveImage>
+          <figure className="image show-page">
+            <ImageGallery
+              items={images}
+              slideInterval={2000}
+              onImageLoad={this.handleImageLoad}
+            />
           </figure>
+
         </div>
-        <div className="secondary-images-wrapper">
-          <figure className="image">
-            <ProgressiveImage src={product.second_img_url} placeholder={imagePlaceholder}>
-              { (src) => <img src={product.second_img_url} alt={product.name} /> }
-            </ProgressiveImage>
-          </figure>
-          <figure className="image">
-            <ProgressiveImage src={product.third_img_url} placeholder={imagePlaceholder}>
-              { (src) => <img src={product.third_img_url} alt={product.name} /> }
-            </ProgressiveImage>
-          </figure>
-          <figure className="image">
-            <ProgressiveImage src={product.fourth_img_url} placeholder={imagePlaceholder}>
-              { (src) => <img src={product.fourth_img_url} alt={product.name} /> }
-            </ProgressiveImage>
-          </figure>
-        </div>
+
         <div className="card-content">
           <div className="info-product-wrapper">
                 <h3 className="title is-2 product-name">{product.name}</h3>

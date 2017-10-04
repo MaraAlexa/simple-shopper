@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
 
 
+
 @inject(['products'])
 @observer class ProductsPage extends React.Component {
 
