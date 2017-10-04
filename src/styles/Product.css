@@ -1,44 +1,39 @@
 li.product.column.is-one-third {
-  margin-top: 0;
-}
+  margin-top: 0; }
 
 .media-content {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
+  align-items: center; }
 
 .column {
-  flex-direction: column;
-}
+  flex-direction: column; }
 
 /*individual-product-view styles*/
-
 .individual-product-view {
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
-  margin: 2rem 12rem;
-  flex-direction: column;
-}
+  margin: 2rem 4;
+  flex-direction: column; }
+
 .primary-image-wrapper, .secondary-images-wrapper {
-  width: 100%;
-}
+  width: 100%; }
+
 .secondary-images-wrapper {
   display: flex;
-  justify-content: space-around;
-}
+  justify-content: space-around; }
 
 .info-product-wrapper {
   display: flex;
-  /*flex-flow: row wrap;*/
-  /*justify-content: center;*/
-  /*align-items: center;*/
-  justify-content: space-between;
-}
+  /*flex-flow: row wrap*/
+  /*justify-content: center*/
+  /*align-items: center*/
+  justify-content: space-between; }
+
 .card-content {
-  width: 100%
-}
+  width: 100%; }
+
 .notification.out-of-stock {
   position: absolute;
   bottom: 0%;
@@ -47,42 +42,30 @@ li.product.column.is-one-third {
   color: white;
   font-size: 1.5rem;
   margin-bottom: 0px;
-  z-index: 2;
-}
+  z-index: 2; }
+
 .product-name {
   margin-right: 2rem;
   align-self: flex-end;
-  margin-bottom: 0px;
-}
+  margin-bottom: 0px; }
 
 .product-price {
   margin: 2rem 0;
   align-self: flex-end;
-  text-align: center;
-}
+  text-align: center; }
 
 .addToCart {
   width: 60%;
   margin-top: 3rem;
   align-self: center;
   height: 3rem;
-  font-size: 1.4rem;
-}
+  font-size: 1.4rem; }
 
-@media (max-width: 1000px) {
+@media only screen and (min-width: 1280px) {
   .individual-product-view {
-    margin: 2rem 0 0 0;
-  }
-}
-
-@media (max-width: 770px) {
-  .individual-product-view {
-    flex-direction: column;
-    align-items: center;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-  .addToCart {
-    margin-top: -1rem;
-  }
-}
+    display: flex;
+    flex-direction: row; }
+  .primary-image-wrapper {
+    width: 50%; }
+  .secondary-images-wrapper {
+    width: 50%; } }
