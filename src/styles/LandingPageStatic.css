@@ -1,3 +1,28 @@
+#notification {
+  position: absolute;
+  bottom: 10%;
+  right: 27.5%;
+  width: 45%;
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
 .page-header {
   background-image: url(../images/landing-page-bg.png);
   transform: translate3d(0px, 0px, 0px);
