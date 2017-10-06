@@ -12,7 +12,7 @@ const LandingPageStatic = () => (
 
         <NavLink
           activeClassName="active"
-          className="button is-success cta-large-btn"
+          className="button is-primary cta-large-btn"
           to="/products"
         >
           See our products

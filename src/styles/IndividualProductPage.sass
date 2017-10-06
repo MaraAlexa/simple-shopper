@@ -1,0 +1,60 @@
+$laptop: "only screen and (min-width: 1280px)"
+$priceColor: lighten(black, 15%)
+
+// individual-product-view styles
+.content
+  padding: 3rem 0 1rem 0
+
+.card.individual-product-view
+  display: flex
+  justify-content: space-between
+  margin: 3.7rem .4rem 1rem .4rem
+  .product-title
+    font-weight: 700
+  .description
+    font-weight: 200
+    color: lighten(black, 40%)
+    line-height: 1.61em
+    padding: 0 2rem
+    text-align: center
+
+.image.show-page
+  margin: 0
+
+.card-content.ind-prod-view
+  background: darken(white, 5%)
+  width: 50%
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: space-around
+
+.product-price
+  color: $priceColor
+  .euro-icon
+    position: relative
+    color: $priceColor
+
+  .underline
+    background: lighten(black, 30%)
+    border-radius: 0
+    margin-top: 1rem
+    width: 2rem
+    height: 4px
+    margin: 1rem auto
+
+.tags
+  margin: auto
+
+  .tag
+    border-radius: 30px
+    width: 30px
+    height: 30px
+
+
+@media #{$laptop}
+  .individual-product-view
+    display: flex
+    flex-direction: row
+  .primary-image-wrapper
+    width: 50%

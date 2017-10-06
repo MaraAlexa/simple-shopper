@@ -1,9 +1,9 @@
 import React from 'react'
-import '../styles/Product.css'
+import '../styles/IndividualProductPage.css'
 
 
 const Product = ({ product, onAddToCart, buyProduct }) =>
-  <div className="card">
+  <div className="card product-on-prods-page">
     <div className="card-image">
       <figure className="image is-4by3">
         {
@@ -17,21 +17,22 @@ const Product = ({ product, onAddToCart, buyProduct }) =>
         <img src={product.main_img_url} alt={product.name} />
       </figure>
     </div>
-    <div className="card-content">
+    <div className="card-content prods-page-view">
       <div className="media">
         <div className="media-content">
-          <p className="title is-4">{product.name}</p>
-          <p className="subtitle is-6">
-            <span className="icon">
-              <i className="fa fa-eur" aria-hidden="true"></i>
-            </span>
-            {product.price/100}
-          </p>
+          <p className="title is-4 prod-name">{product.name}</p>
+          <p>{product.description}</p>
         </div>
       </div>
 
       <div className="content">
-        {product.description}
+        <p className="subtitle is-6">
+          <span className="icon">
+            <i className="fa fa-eur" aria-hidden="true"></i>
+          </span>
+          {product.price/100}
+        </p>
+
         <br />
 
         {

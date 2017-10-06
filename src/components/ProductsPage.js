@@ -22,7 +22,7 @@ import { inject, observer } from 'mobx-react'
     return(
 
         <div className="products-page">
-          <h2>Products Page</h2>
+          <h2 className='has-text-centered'>Products Page</h2>
           <ul className="products columns is-mobile">
             {
               isLoading ?

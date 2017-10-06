@@ -1,16 +1,26 @@
 // 1. Import the initial variables
 @import "node_modules/bulma/sass/utilities/initial-variables"
-
+// @font-face {
+//   font-family: 'Nucleo Outline'
+//   src: url('../fonts/nucleo-outline.eot')
+//   src: url('../fonts/nucleo-outline.eot') format('embedded-opentype'),
+//   url('../fonts/nucleo-outline.woff2') format('woff2'),
+//   url('../fonts/nucleo-outline.woff') format('woff'),
+//   url('../fonts/nucleo-outline.ttf') format('truetype')
+//   font-weight: normal
+//   font-style: normal
+// }
 // 2. Set your own initial variables
 // Update blue
 $blue: #72d0eb
 $infoBlue: #51bbda
 $successGreen: #00968a
+$dangerRed: #FF3636
 // Add primary blue and its invert
-$primaryColor: #52cace
+$primaryColor: #fa7a50
 $pink-invert: #fff
 // Add a serif family
-$family-serif: "Merriweather", "Georgia", serif
+$family-serif: 'Nucleo Outline', 'Helvetica Neue',  Arial, sans-serif
 
 // 3. Set the derived variables
 // Use the new primaryColor as the primary color
@@ -19,7 +29,7 @@ $success: $successGreen
 $info: $infoBlue
 $primary-invert: $pink-invert
 // Use the existing orange as the danger color
-$danger: $orange
+$danger: $dangerRed
 // Use the new serif family
 $family-primary: $family-serif
 

@@ -1,7 +1,7 @@
 import React from 'react'
-import '../styles/Product.css'
+import '../styles/IndividualProductPage.css'
 import { inject, observer} from 'mobx-react'
-import ProcessImage from 'react-imgpro'
+// import ProcessImage from 'react-imgpro'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/css/image-gallery.css'
 
@@ -60,19 +60,27 @@ class IndividualProductView extends React.Component {
 
         </div>
 
-        <div className="card-content">
-          <div className="info-product-wrapper">
-                <h3 className="title is-2 product-name">{product.name}</h3>
-                <p className="subtitle is-5 has-text-weight-bold product-price">
-                  <span className="icon">
-                    <i className="fa fa-eur" aria-hidden="true"></i>
-                  </span>
-                  {product.price/100}
-                </p>
-          </div>
+        <div className="card-content ind-prod-view">
+          <h3 className='product-title'>{product.name}</h3>
 
-          <div className="column info-product-wrapper">
-            <p className='description'>{product.description}</p>
+          <p className="subtitle is-5 product-price">
+            € {product.price/100}
+            <div className='underline'></div>
+          </p>
+
+          <p className='description'>{product.description}</p>
+
+          <div className="choose-color-wrap">
+            <p className="subtitle has-text-centered">Choose your color</p>
+
+            <div className="tags">
+              <span className="tag is-dark"></span>
+              <span className="tag is-primary"></span>
+              <span className="tag is-info"></span>
+              <span className="tag is-success"></span>
+            </div>
+
+          </div>
 
             {
               product.stock > 0 ?
@@ -86,7 +94,6 @@ class IndividualProductView extends React.Component {
               <button disabled className="button is-danger is-outlined out-of-stock-btn">Out of stock</button>
 
             }
-          </div>
         </div>
       </div>
     )

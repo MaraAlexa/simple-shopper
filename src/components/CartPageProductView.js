@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/Product.css'
+import '../styles/IndividualProductPage.css'
 
 const CartPageProductView = ({ product, onAddToCart, buyProduct }) => (
   <div className="media">
