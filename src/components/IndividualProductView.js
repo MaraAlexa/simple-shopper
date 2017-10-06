@@ -70,14 +70,27 @@ class IndividualProductView extends React.Component {
 
           <p className='description'>{product.description}</p>
 
-          <div className="choose-color-wrap">
-            <p className="subtitle has-text-centered">Choose your color</p>
+          <div className="choose-wrap">
+            <p className="subtitle has-text-centered">Choose a color</p>
 
             <div className="tags">
               <span className="tag is-dark"></span>
               <span className="tag is-primary"></span>
               <span className="tag is-info"></span>
               <span className="tag is-success"></span>
+            </div>
+
+          </div>
+
+          <div className="choose-wrap">
+            <p className="subtitle has-text-centered">Choose a size</p>
+
+            <div className="tags">
+              <span className="tag">10</span>
+              <span className="tag">20</span>
+              <span className="tag">30</span>
+              <span className="tag">40</span>
+              <span className="tag">50</span>
             </div>
 
           </div>
@@ -94,6 +107,21 @@ class IndividualProductView extends React.Component {
               <button disabled className="button is-danger is-outlined out-of-stock-btn">Out of stock</button>
 
             }
+
+            <div className="added-info-footer tabs">
+                <ul className="links">
+                  <li className='is-active'>
+                    <a>Details</a>
+                  </li>
+                  <li>
+                    <a>Features</a>
+                  </li>
+                  <li>
+                    <a>Shipping</a>
+                  </li>
+                </ul>
+            </div>
+
         </div>
       </div>
     )

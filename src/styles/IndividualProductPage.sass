@@ -1,5 +1,9 @@
 $laptop: "only screen and (min-width: 1280px)"
+$tablet: "only screen and (min-width: 700px)"
+$mobile: "only screen and (max-width: 700px)"
 $priceColor: lighten(black, 15%)
+$tagBgColor: lighten(grey, 40%)
+$tagBgColor: lighten(grey, 40%)
 
 // individual-product-view styles
 .content
@@ -7,6 +11,7 @@ $priceColor: lighten(black, 15%)
 
 .card.individual-product-view
   display: flex
+  height: 80vh
   justify-content: space-between
   margin: 3.7rem .4rem 1rem .4rem
   .product-title
@@ -28,6 +33,7 @@ $priceColor: lighten(black, 15%)
   flex-direction: column
   align-items: center
   justify-content: space-around
+  padding-bottom: 0
 
 .product-price
   color: $priceColor
@@ -45,12 +51,36 @@ $priceColor: lighten(black, 15%)
 
 .tags
   margin: auto
-
   .tag
     border-radius: 30px
     width: 30px
     height: 30px
+    background: $tagBgColor
+    &:hover
+      background: darken($tagBgColor, 10%)
+      cursor: pointer
 
+.addToCart
+  margin: 2rem 0
+  width: 200px
+
+.choose-wrap
+  margin: 1rem
+  .subtitle
+    font-size: .8rem
+    text-transform: uppercase
+
+.added-info-footer
+  width: 100%
+  padding-bottom: 1rem
+  .links
+    width: 100%
+    border: none
+    display: flex
+    background: darken(white, 5%)
+    margin-left: 0
+    display: flex
+    justify-content: space-around
 
 @media #{$laptop}
   .individual-product-view
@@ -58,3 +88,23 @@ $priceColor: lighten(black, 15%)
     flex-direction: row
   .primary-image-wrapper
     width: 50%
+
+@media #{$tablet}
+  .card.individual-product-view
+    height: 100%
+
+@media #{$mobile}
+  .card.individual-product-view
+    display: flex
+    flex-direction: column
+    height: 100%
+  // text column on larger screens
+  .card-content.ind-prod-view
+    width: 100%
+    margin-top: 1rem
+    background: white
+  .addToCart
+    padding: 1rem 0 2.5rem 0
+    font-size: 1.4rem
+  .added-info-footer
+    padding-bottom: 7rem
