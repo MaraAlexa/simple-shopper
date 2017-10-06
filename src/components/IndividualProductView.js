@@ -26,7 +26,7 @@ class IndividualProductView extends React.Component {
 
     const { onAddToCart, match } = this.props;
     const product = this.findProductById(match)
-    console.log(product)
+
     const images = [
       {
         original: product.main_img_url,
@@ -65,7 +65,7 @@ class IndividualProductView extends React.Component {
 
           <p className="subtitle is-5 product-price">
             € {product.price/100}
-            <div className='underline'></div>
+            <span className='underline'></span>
           </p>
 
           <p className='description'>{product.description}</p>

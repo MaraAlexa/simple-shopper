@@ -27,10 +27,7 @@ const Product = ({ product, onAddToCart, buyProduct }) =>
 
       <div className="products-page-price">
         <p className="subtitle is-6">
-          <span className="icon">
-            <i className="fa fa-eur" aria-hidden="true"></i>
-          </span>
-          {product.price/100}
+          € {product.price/100}
         </p>
 
         <br />

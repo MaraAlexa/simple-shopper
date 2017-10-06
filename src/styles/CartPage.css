@@ -47,15 +47,6 @@ ul.cart-list {
 .message-body {
   padding: 2em 4.25em; }
 
-.subtitle.is-6.price {
-  display: flex;
-  font-size: 1.1rem;
-  font-weight: 400; }
-
-i.fa.fa-eur {
-  font-size: 15px;
-  margin-right: 5px; }
-
 .empty-cart-message, .checkout-btn {
   margin: 2rem 0; }
 
@@ -73,6 +64,12 @@ i.fa.fa-eur {
     display: none; }
   .cart-page {
     padding: .2rem; }
+  .content {
+    padding: 0; }
+    .content .prod-name-cart-page, .content .price-cart-prod {
+      text-align: left; }
+    .content .prod-name-cart-page {
+      margin-top: 1.5rem; }
   .cart-product-controls {
     display: flex;
     align-items: center; } }

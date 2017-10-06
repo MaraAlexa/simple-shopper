@@ -8,23 +8,11 @@ const CartPageProductView = ({ product, onAddToCart, buyProduct }) => (
     </figure>
     <div className="media-content">
       <div className="content">
-        <p className="title is-4">{product.name}</p>
-        <p className="subtitle is-6">
-          <span className="icon">
-            <i className="fa fa-eur" aria-hidden="true" />
-          </span>
-          {product.price / 100}
+        <p className="title is-size-5-mobile prod-name-cart-page">{product.name}</p>
+        <p className="price-cart-prod">
+         €  {product.price / 100}
         </p>
         <p className="product-description">{product.description}</p>
-
-        {buyProduct ? (
-          <button
-            className="addToCart button is-primary is-outlined"
-            onClick={() => onAddToCart(product)}
-          >
-            Add to cart
-          </button>
-        ) : null}
       </div>
     </div>
   </div>

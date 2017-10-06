@@ -57,9 +57,7 @@ ul li {
   .media-content {
     margin-left: 0; }
     .media-content p {
-      text-align: center; }
-  .products-page-price {
-    width: 35%; } }
+      text-align: center; } }
 
 @media screen and (max-width: 560px) {
   .products-page {

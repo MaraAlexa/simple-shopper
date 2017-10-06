@@ -17,9 +17,9 @@ class Nav extends React.Component {
           </Link>
 
             <div className="flex is-hidden-desktop">
-              <NavLink activeClassName='active' to='/cart' className="navbar-item">
+              <NavLink activeClassName='active cart-link' to='/cart' className="navbar-item">
                 <span className="icon">
-                  <i className="fa fa-cart-arrow-down fa-5" aria-hidden="true"></i>
+                  <i className="fa fa-cart-arrow-down" aria-hidden="true"></i>
                 </span>
                 {
                   cart.length ?
@@ -56,8 +56,8 @@ class Nav extends React.Component {
               </NavLink>
               <NavLink activeClassName='active' to='/cart' className="navbar-item">
                 Cart
-                <span className="icon">
-                  <i className="fa fa-cart-arrow-down fa-5" aria-hidden="true"></i>
+                <span className="icon cart-icon-wrap">
+                  <i className="fa fa-cart-arrow-down" aria-hidden="true"></i>
                 </span>
                 {
                   cart.length ?

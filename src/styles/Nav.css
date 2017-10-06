@@ -43,6 +43,9 @@ a.active {
   border-bottom: 2px solid red; }
 
 /*cart section*/
+.cart-icon-wrap .fa.fa-cart-arrow-down {
+  font-size: 1.5rem; }
+
 .tag.is-danger {
   width: .1rem;
   height: 1.2rem;
@@ -58,3 +61,12 @@ a.active {
 @media (max-width: 1000px) {
   .navbar {
     padding: .65rem 0; } }
+
+@media (max-width: 640px) {
+  .navbar {
+    margin-left: 0;
+    width: calc(100% - 1rem); }
+  .cart-link .icon {
+    width: 2.5rem; }
+    .cart-link .icon .fa.fa-cart-arrow-down {
+      font-size: 1.5rem; } }
