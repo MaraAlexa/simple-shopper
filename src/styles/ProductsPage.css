@@ -51,11 +51,15 @@ ul li {
   .product.column.is-one-third.is-half-mobile {
     width: 50%; } }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 700px) {
   .product.column.is-one-third.is-half-mobile {
     width: 100%; }
   .media-content {
-    margin-left: 0; } }
+    margin-left: 0; }
+    .media-content p {
+      text-align: center; }
+  .products-page-price {
+    width: 35%; } }
 
 @media screen and (max-width: 560px) {
   .products-page {

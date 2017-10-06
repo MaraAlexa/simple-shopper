@@ -25,7 +25,7 @@ const Product = ({ product, onAddToCart, buyProduct }) =>
         </div>
       </div>
 
-      <div className="content">
+      <div className="products-page-price">
         <p className="subtitle is-6">
           <span className="icon">
             <i className="fa fa-eur" aria-hidden="true"></i>
