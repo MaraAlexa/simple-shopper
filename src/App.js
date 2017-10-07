@@ -8,7 +8,7 @@ import {
   Redirect
 } from 'react-router-dom'
 
-// components
+// components reorganized
 import Nav from './components/Nav'
 import ProductsPage from './components/ProductsPage'
 import CartPage from './components/CartPage'
