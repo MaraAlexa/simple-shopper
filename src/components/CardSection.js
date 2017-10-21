@@ -21,8 +21,8 @@ const createOptions = (fontSize: string) => {
 }
 
 const CardSection = () =>
-  <div>
-    <p className="subtitle">Bill To</p>
+  <div className='bill-to-wrap'>
+    <p className="subtitle bill-to">Bill To</p>
     <section className="bill-to columns">
       <div className="column">
         <label>

@@ -29,6 +29,9 @@ ul.cart-list {
   align-items: center;
   margin-right: 3rem; }
 
+.product-description {
+  max-width: 400px; }
+
 .media {
   align-items: center; }
 

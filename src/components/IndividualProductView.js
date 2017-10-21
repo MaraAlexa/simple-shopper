@@ -55,6 +55,10 @@ class IndividualProductView extends React.Component {
               items={images}
               slideInterval={2000}
               onImageLoad={this.handleImageLoad}
+              showFullscreenButton={false}
+              showPlayButton={false}
+              disableArrowKeys={true}
+              showNav={false}
             />
           </figure>
 

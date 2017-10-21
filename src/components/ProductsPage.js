@@ -26,7 +26,7 @@ import { inject, observer } from 'mobx-react'
           <ul className="products columns is-mobile">
             {
               isLoading ?
-              <Spinner name="ball-scale-ripple" color="brown"/>
+              <Spinner className='spinner' name="ball-scale-ripple"/>
               :
               all.map(product =>
                 <li

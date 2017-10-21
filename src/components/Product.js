@@ -5,7 +5,7 @@ import '../styles/IndividualProductPage.css'
 const Product = ({ product, onAddToCart, buyProduct }) =>
   <div className="card product-on-prods-page">
     <div className="card-image">
-      <figure className="image is-4by3">
+      <figure className="image">
         {
           product.stock > 0 ?
             null
@@ -21,7 +21,6 @@ const Product = ({ product, onAddToCart, buyProduct }) =>
       <div className="media">
         <div className="media-content">
           <p className="title is-4 prod-name">{product.name}</p>
-          <p>{product.description}</p>
         </div>
       </div>
 

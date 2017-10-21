@@ -6156,6 +6156,13 @@ html, body, #root, .App {
 .App {
   background: #eeeeee; }
 
+.spinner {
+  color: brown;
+  position: fixed;
+  background: floralwhite;
+  height: 100%;
+  top: 0; }
+
 @media screen and (max-width: 560px) {
   .App {
     padding: .5rem; } }

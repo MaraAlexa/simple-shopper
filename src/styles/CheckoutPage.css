@@ -1,68 +1,65 @@
 /*var warning redifined*/
 .input.is-warning, .textarea.is-warning {
-    border-color: #e9e2c9;
-}
+  border-color: #e9e2c9; }
 
 .is-10-by-12-mobile {
   width: 83.3333%;
-  margin-left: 8.3333%;
-}
+  margin-left: 8.3333%; }
 
 .payment-form {
-  margin-top: 6rem;
-}
+  margin-top: 6rem; }
+  .payment-form .ship-to .field.form-group .control.has-icons-left {
+    margin-top: 1.4rem; }
+
+.client-details p.subtitle, .ship-to p.subtitle, .invoice p.subtitle, .bill-to-wrap p.subtitle {
+  color: #717171;
+  font-weight: 400;
+  border-bottom: 2px solid #717171;
+  padding-bottom: .5rem;
+  width: 8rem;
+  text-align: center; }
 
 .field {
-  margin: 1.2rem 0;
-}
+  margin: 1.2rem 0; }
 
 .input, select, .select {
   min-height: 48px;
   width: 100%;
-  height: 100%;
-}
+  height: 100%; }
 
 span.icon.is-small.is-left {
-  height: 100%;
-}
+  height: 100%; }
 
 .field.is-grouped.submit {
   display: flex;
   justify-content: flex-end;
-  margin-top: 2rem;
-}
+  margin-top: 2rem; }
 
 .inline {
   display: flex;
-  justify-content: space-between;
-}
+  justify-content: space-between; }
 
 .cart-is-empty {
   margin-top: 7rem;
-  margin-bottom: 2rem;
-}
+  margin-bottom: 2rem; }
 
 section.client-details, section.bill-to, section.invoice {
-  margin: 2rem 0;
-}
+  margin: 2rem 0; }
+
 span.icon.is-small.is-left.icon-fix {
-  height: 130%;
-}
+  height: 130%; }
+
 section.ship-to {
-  margin: 4rem 0;
-}
+  margin: 4rem 0; }
+
 .postalCode, .city {
-  height: 50%;
-}
+  height: 50%; }
 
 @media (min-width: 1200px) {
   .is-half-desktop-centered {
     width: 50%;
-    margin-left: 25%;
-  }
-}
+    margin-left: 25%; } }
+
 @media (max-width: 700px) {
   .cart-is-empty {
-    width: 100%;
-  }
-}
+    width: 100%; } }

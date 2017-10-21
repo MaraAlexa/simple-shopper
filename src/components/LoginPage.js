@@ -1,6 +1,7 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react'
 import { observable } from 'mobx'
+import { withRouter } from 'react-router-dom'
 
 import '../styles/LoginPage.css'
 
@@ -57,4 +58,4 @@ import '../styles/LoginPage.css'
   }
 }
 
-export default LoginPage
+export default withRouter(LoginPage)

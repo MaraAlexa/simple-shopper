@@ -24,7 +24,7 @@
 }
 
 .page-header {
-  background-image: url(../images/landing-page-bg.png);
+  background-image: url(../images/landing-image.jpg);
   transform: translate3d(0px, 0px, 0px);
   background-color: #B2AFAB;
   background-position: center top;
@@ -44,25 +44,28 @@
 .content-center {
   display: flex;
   flex-direction: column;
-  align-self: center;
+  margin-top: 13%;
+  justify-content: center;
+  height: 300px;
   z-index: 3
 }
 
-.content-center > p {
+.content-center p {
   color: white;
   text-align: center;
 }
-.content-center > p.title {
+.content-center p.title {
   font-size: 4rem;
+  margin: 3rem;
 }
-.content-center > p.subtitle {
+.content-center p.subtitle {
   font-size: 2rem;
 }
 
-.button.is-success.cta-large-btn {
+.button.is-primary.cta-large-btn {
   margin-top: 2rem;
-  width: 200px;
-  height: 50px;
+  width: 50%;
+  height: 3rem;
   align-self: center;
 }
 

@@ -2,12 +2,14 @@ import React from 'react'
 import TotalOrder from './TotalOrder'
 import CardSection from './CardSection'
 import { injectStripe } from 'react-stripe-elements'
-// import axios from 'axios'
+// import Spinner from 'react-spinkit'
 import { inject, observer } from 'mobx-react'
 
 @inject(['products'])
 @observer
 class CheckoutForm extends React.Component {
+
+
   handleSubmit = event => {
     event.preventDefault()
 
@@ -62,6 +64,8 @@ class CheckoutForm extends React.Component {
       addressValid
     } = this.props
 
+    // const { isLoading } = this.props.products
+
     return (
       <form
         className="payment-form"
@@ -69,6 +73,7 @@ class CheckoutForm extends React.Component {
         ref={input => (this.checkoutForm = input)}
       >
         <section className="client-details">
+          <p className="subtitle">Your details</p>
           <div className="field form-group">
             <div className="control has-icons-left">
               <label htmlFor="name">Name *</label>
@@ -144,14 +149,6 @@ class CheckoutForm extends React.Component {
 
         <section className="ship-to">
           <p className="subtitle">Ship to</p>
-          {/* <div className="field form-group">
-              <p className="control has-icons-left">
-                <input className="input" type="text" name='shipTo-name' placeholder='First and Last Name' />
-                <span className="icon is-small is-left">
-                  <i className="fa fa-user-o"></i>
-                </span>
-              </p>
-            </div> */}
 
           <div className="field form-group">
             <div className="control has-icons-left">
@@ -267,8 +264,6 @@ class CheckoutForm extends React.Component {
             ) : null}
           </div>
         </section>
-
-        <hr />
 
         <CardSection />
 

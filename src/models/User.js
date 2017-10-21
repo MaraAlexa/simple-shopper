@@ -5,8 +5,10 @@ import Api from '../api/index'
 
 const history = createHashHistory()
 
+
 class User {
-  sessions = '/sessions'
+  // class attribute
+  sessions_path = '/sessions'
 
   @observable isLoading = false
   @observable authenticated = false
@@ -24,7 +26,7 @@ class User {
     }
   }
 
-  @action signIn(email = null, password = null) {
+  signIn(email = null, password = null) {
     const store = {
       email: localStorage.getItem('email'),
       authentication_token: localStorage.getItem('token')
@@ -32,9 +34,10 @@ class User {
 
     // check localStorage for auth credentials
     if(store.email && store.authentication_token) {
-      this.signInFromStorage(store.email)
+      this.signInFromStorage()
     }
     else if(email && password) {
+      // sign in if email and password input
       this.createSession(email, password)
     }
     else {
@@ -43,34 +46,42 @@ class User {
   }
 
   @action async signInFromStorage(email) {
+    // const session = {
+    //   email: localStorage.getItem('email'),
+    //   authentication_token: localStorage.getItem('token')
+    // }
 
-    const response = await Api.get(this.sessions)
+    const response = await Api.get(this.sessions_path)
+
     const status = await response.status
 
-    if(status === 200) {
-      this.email = email
+    if (status === 200) {
+      // check if user is signedIn
+      this.email = localStorage.getItem('email')
       this.authenticated = true
       this.isLoading = false
       history.push('/admin')
-    }
-    else {
-      // clear out the localStorage data
-      this.localStorage.removeItem('email')
-      this.localStorage.removeItem('token')
-      // set auth to none so user can log in again
+
+    } else {
+      // clear out localStorage
+      localStorage.removeItem('email')
+      localStorage.removeItem('token')
+      // set auth to none so user can login again
       this.email = null
       this.authenticated = false
       this.isLoading = false
-      // redirect to login Page
+      // Redirect to login
       history.push('/login')
     }
+
+
   }
 
   async createSession(email, password) {
     this.setIsLoading(true)
 
     const response = await Api.post(
-      this.sessions,
+      this.sessions_path,
       {
         email,
         password
@@ -94,7 +105,7 @@ class User {
   async destroySession() {
     this.setIsLoading(true)
 
-    const response = await Api.delete(this.sessions)
+    const response = await Api.delete(this.sessions_path)
     const status = await response.status
 
     if(status === 200) {

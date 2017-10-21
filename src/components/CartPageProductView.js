@@ -12,7 +12,6 @@ const CartPageProductView = ({ product, onAddToCart, buyProduct }) => (
         <p className="price-cart-prod">
          €  {product.price / 100}
         </p>
-        <p className="product-description">{product.description}</p>
       </div>
     </div>
   </div>
