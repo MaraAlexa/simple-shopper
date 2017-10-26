@@ -42,10 +42,9 @@ ul li {
 
 /*spinner showing off on loading*/
 .sk-spinner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%; }
+  position: absolute;
+  top: 50%;
+  left: 50%; }
 
 @media screen and (max-width: 978px) {
   .product.column.is-one-third.is-half-mobile {

@@ -1,0 +1,125 @@
+
+#notification
+  position: absolute
+  bottom: 10%
+  right: 27.5%
+  width: 45%
+
+
+.example-enter
+  opacity: 0.01
+
+
+.example-enter.example-enter-active
+  opacity: 1
+  transition: opacity 500ms ease-in
+
+
+.example-leave
+  opacity: 1
+
+
+.example-leave.example-leave-active
+  opacity: 0.01
+  transition: opacity 300ms ease-in
+
+
+.page-header
+  background-image: url(../images/landing-image.jpg)
+  transform: translate3d(0px, 0px, 0px)
+  background-color: #B2AFAB
+  background-position: center top
+  background-size: cover
+  background-repeat: no-repeat
+  min-height: 100vh
+  max-height: 999px
+  overflow: hidden
+  position: relative
+  width: 100%
+  z-index: 1
+  display: flex
+  justify-content: center
+
+
+
+.content-center
+  display: flex
+  flex-direction: column
+
+  justify-content: center
+  // height: 300px
+  z-index: 3
+  text-align: center
+
+.content-center
+  p.title
+    color: white
+    font-size: 3.6rem
+    // margin: 3rem
+  p.subtitle
+    color: antiquewhite
+    font-size: 1.5rem
+    font-weight: 200
+    width: 75%
+    margin: 0 auto
+
+
+.button.is-primary.cta-large-btn
+  width: 50%
+  height: 3rem
+  align-self: center
+  padding: 1.5rem
+  position: relative
+  top: 9rem
+
+
+.filter
+  background-color: rgba(0, 0, 0, 0.5)
+  content: ""
+  display: block
+  height: 100%
+  left: 0
+  position: absolute
+  top: 0
+  width: 100%
+  z-index: 2
+
+
+.best-seller-wrap
+  margin-top: 2rem
+
+
+figure.static-product-one , figure.static-product-two, figure.static-product-three
+  transform: translate3d(0px, 0px, 0px)
+  background-color: rgba(240, 240, 240, 1)
+  background-position: center center
+  background-size: 98% 98%
+  background-repeat: no-repeat
+  min-height: 30vh
+  max-height: 999px
+  overflow: hidden
+  position: relative
+  z-index: 1
+
+
+.best-selling-title
+  text-align: center
+  margin: 2rem 0
+
+@media screen and (max-width: 650px)
+  .content-center
+    margin-bottom: 8rem
+
+
+@media screen and (max-width: 444px)
+  .content-center
+    p.title
+      font-size: 2.6rem
+    p.subtitle
+      font-size: 1.2rem
+
+@media screen and (max-width: 350px)
+  .content-center
+    p.subtitle
+      width: 60%
+      margin: 0 auto

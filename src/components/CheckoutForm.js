@@ -4,6 +4,20 @@ import CardSection from './CardSection'
 import { injectStripe } from 'react-stripe-elements'
 // import Spinner from 'react-spinkit'
 import { inject, observer } from 'mobx-react'
+import { withRouter } from 'react-router-dom'
+
+import createHistory from 'history/createBrowserHistory'
+const history = createHistory()
+
+
+const Button = withRouter(({ history}) => (
+  <button
+    type='button'
+    onClick={() => { history.push('/thanks') }}
+  >
+    Click Me!
+  </button>
+))
 
 @inject(['products'])
 @observer
@@ -37,8 +51,12 @@ class CheckoutForm extends React.Component {
         street: extraDetails.street,
         stripe_token: token
       }
-      // req to backend to save order and send it to stripe
-      this.props.products.send_order(order)
+
+      // if (token) {
+        // req to backend to save order and send it to stripe
+        this.props.products.send_order(order)
+        history.push('/thanks')
+      // }
       // reset form fields when done
       this.checkoutForm.reset()
     })
@@ -64,7 +82,7 @@ class CheckoutForm extends React.Component {
       addressValid
     } = this.props
 
-    // const { isLoading } = this.props.products
+    const { transactionProccessed } = this.props.products
 
     return (
       <form
@@ -235,8 +253,6 @@ class CheckoutForm extends React.Component {
 
           </div>
 
-
-
           <div className="field form-group">
             <div className="control has-icons-left">
               <label htmlFor="address">Street address *</label>
@@ -275,14 +291,21 @@ class CheckoutForm extends React.Component {
 
         <div className="field is-grouped submit">
           <p className="control">
-            <button
-              className="button is-primary"
-              type="submit"
-              disabled={!formValid}
-            >
-              Confirm Order
-            </button>
+            {
+              transactionProccessed ?
+              <button className="button is-primary" disabled>Transaction Processed Successfully</button>
+              :
+              <button
+                className="button is-primary"
+                type="submit"
+                // disabled={!formValid}
+              >
+                Confirm Order
+              </button>
+            }
+
           </p>
+          <Button />
         </div>
       </form>
     )

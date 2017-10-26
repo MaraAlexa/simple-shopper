@@ -11,7 +11,9 @@
   padding: 0 50px; }
 
 #navMobileLinks {
-  background: white; }
+  background: white;
+  text-align: right;
+  margin-top: 1rem; }
 
 .logo {
   padding-top: 5px;
@@ -64,8 +66,7 @@ a.active {
 
 @media (max-width: 640px) {
   .navbar {
-    margin-left: 0;
-    width: calc(100% - 1rem); }
+    margin-left: 0; }
   .cart-link .icon {
     width: 2.5rem; }
     .cart-link .icon .fa.fa-cart-arrow-down {

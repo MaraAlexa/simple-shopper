@@ -1,5 +1,10 @@
 import { observable, action } from "mobx"
 import Api from "../api/index"
+// import createHashHistory from 'history/createHashHistory'
+
+
+// const history = createHashHistory()
+
 
 class Products {
   products_path = "/products"
@@ -7,6 +12,7 @@ class Products {
   // initial state
   @observable all = []
   @observable isLoading = false
+  @observable transactionProccessed = false
 
   @action async fetchAll() {
     this.isLoading = true
@@ -32,9 +38,11 @@ class Products {
     const response = await Api.post(this.orders_path, order_data)
     const status = await response.status
     if(status === 201) {
-      this.fetchAll()
+      // this.fetchAll()
       // redirect to thank you page
-      window.location.replace('thanks')
+      // history.push('/thanks')
+      this.transactionProccessed = true
+      console.log('this transaction was processed successfully! ❤️');
     }
   }
 
