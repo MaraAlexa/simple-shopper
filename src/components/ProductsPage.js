@@ -6,6 +6,14 @@ import '../styles/ProductsPage.css'
 import { Link } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
 
+import styled from 'styled-components'
+
+const Title = styled.h1`
+	font-size: 1.5em;
+	text-align: center;
+`;
+
+
 
 
 @inject(['products'])
@@ -22,13 +30,14 @@ import { inject, observer } from 'mobx-react'
     return(
 
         <div className="products-page">
-          <h2 className='has-text-centered'>Products Page</h2>
+          <Title className='content'>Products Page</Title>
+
           <ul className="products columns is-mobile">
             {
               isLoading ?
               <Spinner className='spinner' name="ball-spin-fade-loader" fadeIn='quarter'/>
               :
-              all.map(product =>
+              all.map((product) =>
                 <li
                   className="product column is-one-third is-half-mobile"
                   key={product.id}

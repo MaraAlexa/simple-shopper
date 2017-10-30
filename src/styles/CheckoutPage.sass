@@ -3,6 +3,12 @@ $subtitleColor: darken(gray, 6%)
 .input.is-warning, .textarea.is-warning
     border-color: #e9e2c9
 
+$backgroundColor: aliceblue
+
+
+.checkout-wrapper
+  background: $backgroundColor
+  height: 100%
 
 .is-10-by-12-mobile
   width: 83.3333%
@@ -77,3 +83,12 @@ section.ship-to
 @media (max-width: 700px)
   .cart-is-empty
     width: 100%
+  .checkout-btn
+    width: 200px
+    position: relative
+    left: 20%
+    top: .5rem
+  .submit-order
+    display: flex
+    justify-content: center
+    margin-bottom: 2rem

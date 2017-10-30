@@ -1,9 +1,5 @@
 import { observable, action } from "mobx"
 import Api from "../api/index"
-// import createHashHistory from 'history/createHashHistory'
-
-
-// const history = createHashHistory()
 
 
 class Products {
@@ -40,7 +36,6 @@ class Products {
     if(status === 201) {
       // this.fetchAll()
       // redirect to thank you page
-      // history.push('/thanks')
       this.transactionProccessed = true
       console.log('this transaction was processed successfully! ❤️');
     }

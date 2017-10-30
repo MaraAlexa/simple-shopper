@@ -6,18 +6,6 @@ import { injectStripe } from 'react-stripe-elements'
 import { inject, observer } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 
-import createHistory from 'history/createBrowserHistory'
-const history = createHistory()
-
-
-const Button = withRouter(({ history}) => (
-  <button
-    type='button'
-    onClick={() => { history.push('/thanks') }}
-  >
-    Click Me!
-  </button>
-))
 
 @inject(['products'])
 @observer
@@ -52,15 +40,17 @@ class CheckoutForm extends React.Component {
         stripe_token: token
       }
 
-      // if (token) {
+      //reset form fields when done
+      // this.checkoutForm.reset()
+      if (token) {
         // req to backend to save order and send it to stripe
         this.props.products.send_order(order)
-        history.push('/thanks')
-      // }
-      // reset form fields when done
-      this.checkoutForm.reset()
+        this.props.history.push('/thanks')
+      }
+
     })
   }
+
 
   render() {
     const {
@@ -289,27 +279,26 @@ class CheckoutForm extends React.Component {
           ) : null}
         </section>
 
-        <div className="field is-grouped submit">
-          <p className="control">
+        <div className="submit-order">
             {
               transactionProccessed ?
               <button className="button is-primary" disabled>Transaction Processed Successfully</button>
               :
+              formValid ?
+              <button className="button is-primary">Confirm Order</button>
+              :
               <button
                 className="button is-primary"
                 type="submit"
-                // disabled={!formValid}
+                disabled
               >
-                Confirm Order
+                Fill out all fields before buying
               </button>
             }
-
-          </p>
-          <Button />
         </div>
       </form>
     )
   }
 }
 
-export default injectStripe(CheckoutForm)
+export default injectStripe(withRouter(CheckoutForm))

@@ -27,13 +27,6 @@ $tagBgColor: lighten(grey, 40%)
   margin: 0
 
 
-// image-gallery styles
-
-// .image-gallery-image
-//   img
-//     width: 900px
-//     height: 680px
-
 .card-content.ind-prod-view
   background: darken(white, 5%)
   width: 50%
@@ -42,6 +35,7 @@ $tagBgColor: lighten(grey, 40%)
   align-items: center
   justify-content: space-around
   padding-bottom: 0
+  box-shadow: none
 
 .product-price
   color: $priceColor
@@ -52,7 +46,7 @@ $tagBgColor: lighten(grey, 40%)
     margin-top: 1rem
     width: 2rem
     height: 4px
-    margin: 1rem auto
+    margin: 1rem .9rem
     display: block
 
 .tags
@@ -97,20 +91,17 @@ $tagBgColor: lighten(grey, 40%)
 
 @media #{$tablet}
   .card.individual-product-view
-    height: 100%
+    display: block
 
 @media #{$mobile}
   .card.individual-product-view
-    display: flex
-    flex-direction: column
-    height: 100%
-  // text column on larger screens
+    display: block
+    margin-top: 5rem
+
   .card-content.ind-prod-view
     width: 100%
     margin-top: 1rem
     background: white
   .addToCart
-    padding: 1rem 0 2.5rem 0
-    font-size: 1.4rem
-  .added-info-footer
-    padding-bottom: 7rem
+    padding: .5rem 0 2rem 0
+    font-size: 1.1rem

@@ -5,6 +5,8 @@ import { inject, observer} from 'mobx-react'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/css/image-gallery.css'
 
+import ProductName from '../reusable-components/ProductName'
+
 
 @inject(['products'])
 @observer
@@ -65,8 +67,8 @@ class IndividualProductView extends React.Component {
         </div>
 
         <div className="card-content ind-prod-view">
-          <h3 className='product-title'>{product.name}</h3>
-
+          {/* <h3 className='product-title'>{product.name}</h3> */}
+          <ProductName>{product.name}</ProductName>
           <p className="subtitle is-5 product-price">
             € {product.price/100}
             <span className='underline'></span>
@@ -95,6 +97,8 @@ class IndividualProductView extends React.Component {
               <span className="tag">30</span>
               <span className="tag">40</span>
               <span className="tag">50</span>
+              <span className="tag">60</span>
+              <span className="tag">70</span>
             </div>
 
           </div>

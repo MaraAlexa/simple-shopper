@@ -4,6 +4,7 @@ import '../styles/CheckoutPage.css'
 import { Elements } from 'react-stripe-elements'
 
 import CheckoutForm from './CheckoutForm'
+import EmptyCartMessage from '../reusable-components/EmptyCartMessage'
 
 
 const CheckoutPage = ({ cartProducts, email, cardholderName, phone, selectedCountry, city, postalCode, address, handleUserInput, formValid, nameValid, emailValid, phoneValid, selectedCountryValid, cityValid, postalCodeValid, addressValid }) =>
@@ -33,9 +34,7 @@ const CheckoutPage = ({ cartProducts, email, cardholderName, phone, selectedCoun
           />
         </Elements>
         :
-        <div className="notification is-warning cart-is-empty">
-          The Shopping Cart is empty. Please select a product before proceeding to the shopping cart page.
-        </div>
+        <EmptyCartMessage pageName='Checkout'  />
       }
 
     </div>

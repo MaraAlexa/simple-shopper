@@ -1,9 +1,10 @@
 import React from 'react'
 import '../styles/IndividualProductPage.css'
-
+// import styled from 'styled-components'
+import ProductName from '../reusable-components/ProductName'
 
 const Product = ({ product, onAddToCart, buyProduct }) =>
-  <div className="card product-on-prods-page">
+  <div className="card product-card">
     <div className="card-image">
       <figure className="image">
         {
@@ -17,34 +18,13 @@ const Product = ({ product, onAddToCart, buyProduct }) =>
         <img src={product.main_img_url} alt={product.name} />
       </figure>
     </div>
-    <div className="card-content prods-page-view">
-      <div className="media">
-        <div className="media-content">
-          <p className="title is-4 prod-name">{product.name}</p>
-        </div>
-      </div>
-
-      <div className="products-page-price">
-        <p className="subtitle is-6">
+    <div className="card-content">
+        {/* <p className="title is-4 prod-name">{product.name}</p> */}
+        <ProductName className='has-text-centered'>{product.name}</ProductName>
+        {/* <p className="subtitle is-6 has-text-centered">
           € {product.price/100}
-        </p>
-
-        <br />
-
-        {
-          buyProduct ?
-          <button
-            className="addToCart button is-primary is-outlined"
-            onClick={() => onAddToCart(product)}
-          >
-            Add to cart
-          </button>
-          :
-          null
-
-        }
+        </p> */}
       </div>
-    </div>
   </div>
 
 
