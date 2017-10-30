@@ -20,6 +20,14 @@ ul li {
   display: flex;
   flex-direction: column;
   justify-content: space-between; }
+  .card.product-card .card-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; }
+    .card.product-card .card-image .image img {
+      width: 300px;
+      height: 300px; }
   .card.product-card .card-content {
     height: 135px;
     background: linear-gradient(to right, rgba(187, 210, 197, 0.2), rgba(83, 105, 118, 0.2));
