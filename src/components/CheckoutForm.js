@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom'
 
 
 @inject(['products'])
+@inject('validations')
 @observer
 class CheckoutForm extends React.Component {
 

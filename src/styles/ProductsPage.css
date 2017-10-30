@@ -31,6 +31,8 @@ ul li {
   .card.product-card .card-content {
     height: 135px;
     background: linear-gradient(to right, rgba(187, 210, 197, 0.2), rgba(83, 105, 118, 0.2));
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
     display: flex;
     justify-content: center; }
     .card.product-card .card-content p {

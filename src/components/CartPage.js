@@ -22,27 +22,9 @@ const CartPage = ({ cart, cartProducts, onAddOne, onRemoveOne }) =>
             >
               <CartPageProductView
                 product={product}
+                onAddOne={onAddOne}
+                onRemoveOne={onRemoveOne}
               />
-              <div className="cart-product-controls">
-                <a
-                  className='remove-one button is-white'
-                  onClick={() => onRemoveOne(product)}
-                >
-                  {
-                    product.count > 1 ?
-                    <span className='button is-danger is-outlined'>&ndash;</span> : <span className='button is-light'>x</span>
-                  }
-                </a>
-
-                <span className='product-count'>{product.count}</span>
-
-                <button
-                  className="add-one button is-primary is-outlined"
-                  onClick={() => onAddOne(product)}
-                >
-                  +
-                </button>
-              </div>
             </li>
           )
         }
@@ -53,7 +35,9 @@ const CartPage = ({ cart, cartProducts, onAddOne, onRemoveOne }) =>
           }
 
         </li>
-        <Link to='/checkout' className='button is-primary checkout-btn' >Checkout</Link>
+        <div className="goto-checkout-wrap">
+          <Link to='/checkout' className='button is-primary goto-checkout-btn'>Checkout</Link>
+        </div>
       </ul>
       :
       <EmptyCartMessage pageName='Cart' />

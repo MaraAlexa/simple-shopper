@@ -5,6 +5,7 @@ import ProductName from '../reusable-components/ProductName'
 
 const Product = ({ product, onAddToCart, buyProduct }) =>
   <div className="card product-card">
+
     <div className="card-image">
       <figure className="image">
         {
@@ -18,13 +19,10 @@ const Product = ({ product, onAddToCart, buyProduct }) =>
         <img src={product.main_img_url} alt={product.name} />
       </figure>
     </div>
+
     <div className="card-content">
-        {/* <p className="title is-4 prod-name">{product.name}</p> */}
-        <ProductName className='has-text-centered'>{product.name}</ProductName>
-        {/* <p className="subtitle is-6 has-text-centered">
-          € {product.price/100}
-        </p> */}
-      </div>
+      <ProductName className='has-text-centered'>{product.name}</ProductName>
+    </div>
   </div>
 
 

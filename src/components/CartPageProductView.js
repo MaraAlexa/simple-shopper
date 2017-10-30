@@ -2,7 +2,8 @@ import React from 'react'
 import '../styles/IndividualProductPage.css'
 import ProductName from '../reusable-components/ProductName'
 
-const CartPageProductView = ({ product, onAddToCart, buyProduct }) => (
+
+const CartPageProductView = ({ product, onAddToCart, buyProduct, onRemoveOne, onAddOne}) => (
   <div className="media">
     <figure className="image cart-page-img-wrap">
       <img src={product.main_img_url} alt={product.name} />
@@ -15,6 +16,27 @@ const CartPageProductView = ({ product, onAddToCart, buyProduct }) => (
          €  {product.price / 100}
         </p>
       </div>
+    </div>
+
+    <div className="cart-product-controls">
+      <a
+        className='remove-one button is-white'
+        onClick={() => onRemoveOne(product)}
+      >
+        {
+          product.count > 1 ?
+          <span className='button is-danger is-outlined'>&ndash;</span> : <span className='button is-light'>x</span>
+        }
+      </a>
+
+      <span className='product-count'>{product.count}</span>
+
+      <button
+        className="add-one button is-primary is-outlined"
+        onClick={() => onAddOne(product)}
+      >
+        +
+      </button>
     </div>
   </div>
 )

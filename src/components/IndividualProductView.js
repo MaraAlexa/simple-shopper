@@ -67,7 +67,6 @@ class IndividualProductView extends React.Component {
         </div>
 
         <div className="card-content ind-prod-view">
-          {/* <h3 className='product-title'>{product.name}</h3> */}
           <ProductName>{product.name}</ProductName>
           <p className="subtitle is-5 product-price">
             € {product.price/100}

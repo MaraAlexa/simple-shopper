@@ -6,14 +6,6 @@ import '../styles/ProductsPage.css'
 import { Link } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
 
-import styled from 'styled-components'
-
-const Title = styled.h1`
-	font-size: 1.5em;
-	text-align: center;
-`;
-
-
 
 
 @inject(['products'])
@@ -30,7 +22,6 @@ const Title = styled.h1`
     return(
 
         <div className="products-page">
-          <Title className='content'>Products Page</Title>
 
           <ul className="products columns is-mobile">
             {
