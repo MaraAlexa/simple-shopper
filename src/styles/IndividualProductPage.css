@@ -51,7 +51,7 @@
       cursor: pointer; }
 
 .addToCart {
-  margin: 2rem 0;
+  margin: 1rem 0;
   width: 200px; }
 
 .choose-wrap {
@@ -80,7 +80,7 @@
   .primary-image-wrapper {
     width: 50%; }
   .addToCart {
-    height: 6.25em; } }
+    height: 3.25em; } }
 
 @media only screen and (max-width: 800px) {
   .card.individual-product-view {
