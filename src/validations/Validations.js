@@ -1,5 +1,5 @@
 import { observable, action } from "mobx"
-
+// begin validations mobX
 class Validations {
   // @observable email = ''
   @observable name = ''
