@@ -1,21 +1,24 @@
 import React from 'react'
+
+// components
 import TotalOrder from './TotalOrder'
 import CardSection from './CardSection'
+// import ConfirmOrderBtn from './ConfirmOrderBtn'
+
 import { injectStripe } from 'react-stripe-elements'
-// import Spinner from 'react-spinkit'
 import { inject, observer } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 
-
+// begin form validation
 @inject(['products'])
-@inject('validations')
 @observer
 class CheckoutForm extends React.Component {
-
+  state = {
+    showError: false
+  }
 
   handleSubmit = event => {
     event.preventDefault()
-
     const extraDetails = {
       name: this.name.value,
       email: this.email.value,
@@ -34,134 +37,92 @@ class CheckoutForm extends React.Component {
         name: extraDetails.name,
         email: extraDetails.email,
         tel: extraDetails.phone,
-        country: extraDetails.country,
-        city: extraDetails.city,
-        postcode: extraDetails.postcode,
-        street: extraDetails.street,
+        country: extraDetails.address_country,
+        city: extraDetails.address_city,
+        postcode: extraDetails.address_zip,
+        street: extraDetails.address_line1,
         stripe_token: token
       }
+      // post request to save the order
+      this.props.products.sendOrder(order)
 
-      //reset form fields when done
-      // this.checkoutForm.reset()
-      if (token) {
-        // req to backend to save order and send it to stripe
-        this.props.products.send_order(order)
-        this.props.history.push('/thanks')
-      }
+      // empty form fields after submission
+      this.checkoutForm.reset()
 
+      // send to thank you page
+      this.props.history.push('/thanks')
     })
   }
 
-
   render() {
-    const {
-      cartProducts,
-      email,
-      cardholderName,
-      phone,
-      selectedCountry,
-      city,
-      postalCode,
-      address,
-      handleUserInput,
-      formValid,
-      emailValid,
-      phoneValid,
-      selectedCountryValid,
-      cityValid,
-      postalCodeValid,
-      addressValid
-    } = this.props
-
-    const { transactionProccessed } = this.props.products
-
+    const { cartProducts } = this.props
+    const { orderSaved } = this.props.products
+    const buttonText = orderSaved ? 'Order was proccessed successfully' : 'Confirm Order'
     return (
       <form
-        className="payment-form"
         onSubmit={this.handleSubmit}
         ref={input => (this.checkoutForm = input)}
+         className="payment-form"
       >
         <section className="client-details">
-          <p className="subtitle">Your details</p>
+          <p className="subtitle">Contact Details</p>
           <div className="field form-group">
             <div className="control has-icons-left">
               <label htmlFor="name">Name *</label>
               <input
                 ref={input => (this.name = input)}
-                className={`input ${cardholderName.length > 2
-                  ? 'is-success'
-                  : 'is-warning'}`}
+                className="input"
                 type="text"
                 name="name"
                 placeholder="First and Last Name"
-                value={cardholderName}
-                onChange={e => handleUserInput(e)}
               />
               <span className="icon is-small is-left icon-fix">
                 <i className="fa fa-user-o" />
               </span>
             </div>
-            {cardholderName.length === 2 || cardholderName.length === 1 ? (
-              <ul className={`help is-danger is-pulled-right`}>
-                <li>* Name is too short *</li>
-              </ul>
-            ) : null}
           </div>
 
-          <div className="field form-group">
-            <div className="control has-icons-left">
+          <div className={`field form-group`}>
+            <div className="control has-icons-left has-icons-right">
               <label htmlFor="email">Email address *</label>
               <input
                 ref={input => (this.email = input)}
                 type="email"
                 placeholder="Email"
-                className={`input ${emailValid ? 'is-success' : 'is-warning'}`}
+                className="input"
                 name="email"
-                value={email}
-                onChange={e => handleUserInput(e)}
               />
               <span className="icon is-small is-left icon-fix">
                 <i className="fa fa-envelope-o" />
               </span>
             </div>
-
-            {email.length > 3 && emailValid === null ? (
-              <ul className={`help is-danger is-pulled-right`}>
-                <li>* This is not a valid email *</li>
-              </ul>
-            ) : null}
           </div>
 
           <div className="field form-group">
-            <div className="control has-icons-left">
+            <div className="control has-icons-left has-icons-right">
               <label htmlFor="phone">Mobile *</label>
               <input
                 ref={input => (this.tel = input)}
-                className={`input ${phoneValid ? 'is-success' : 'is-warning'}`}
+                className="input"
                 type="tel"
                 placeholder="Phone: 10 Digids"
                 name="phone"
-                value={phone}
-                onChange={e => handleUserInput(e)}
               />
               <span className="icon is-small is-left icon-fix">
                 <i className="fa fa-mobile" />
               </span>
             </div>
           </div>
-          {phoneValid === null && phone.length > 2 ? (
-            <ul className={`help is-danger is-pulled-right`}>
-              <li>* Phone Number is required and must contain 10 DIGIDS*</li>
-            </ul>
-          ) : null}
         </section>
 
         <section className="ship-to">
           <p className="subtitle">Ship to</p>
 
           <div className="field form-group">
-            <div className="control has-icons-left">
-              <label htmlFor="selectedCountry">Select your country *</label>
+            <div className="control has-icons-left has-icons-right">
+              <label htmlFor="selectedCountry">
+                Select your country - Mandatory
+              </label>
               <span className="select">
                 <span className="icon is-small is-left">
                   <i className="fa fa-globe" />
@@ -169,14 +130,8 @@ class CheckoutForm extends React.Component {
 
                 <select
                   ref={input => (this.country = input)}
-                  defaultValue={selectedCountry}
-                  onChange={e => {
-                    handleUserInput(e)
-                  }}
                   name="selectedCountry"
-                  className={`input ${selectedCountryValid
-                    ? 'is-success'
-                    : 'is-warning'}`}
+                  className="input"
                 >
                   <option>Select Country</option>
                   <option value="Netherlands">Netherlands</option>
@@ -185,92 +140,56 @@ class CheckoutForm extends React.Component {
                 </select>
               </span>
             </div>
-            {selectedCountryValid === null ? (
-              <ul className={`help is-danger is-pulled-right`}>
-                <li>* Please select a country *</li>
-              </ul>
-            ) : null}
+          </div>
 
-
-
-            <div className="control has-icons-left city">
+          <div className="field is-grouped form-group">
+            <div className="control has-icons-left has-icons-right city">
               <label htmlFor="city">City *</label>
               <input
                 ref={input => (this.city = input)}
-                className={`input ${cityValid ? 'is-success' : 'is-warning'}`}
+                className="input"
                 type="text"
                 placeholder="City"
                 name="city"
-                value={city}
-                onChange={e => {
-                  handleUserInput(e)
-                }}
               />
               <span className="icon is-small is-left icon-fix">
                 <i className="fa fa-map-o" />
               </span>
             </div>
-            {cityValid === null ? (
-              <ul className={`help is-danger is-pulled-right`}>
-                <li>* Please enter your city *</li>
-              </ul>
-            ) : null}
 
-            <div className="control has-icons-left postalCode">
+            <div className="control has-icons-left has-icons-right postalCode">
               <label htmlFor="postalCode">Postal Code *</label>
               <input
                 ref={input => (this.postcode = input)}
-                className={`input ${postalCodeValid
-                  ? 'is-success'
-                  : 'is-warning'}`}
+                className="input"
                 type="text"
                 name="postalCode"
                 placeholder="Postal Code"
-                value={postalCode}
-                onChange={e => {
-                  handleUserInput(e)
-                }}
               />
               <span className="icon is-small is-left icon-fix">
                 <i className="fa fa-map-o" />
               </span>
             </div>
-
-            {postalCodeValid === null ? (
-              <ul className={`help is-danger is-pulled-right`}>
-                <li>* Please enter your post code *</li>
-              </ul>
-            ) : null}
-
           </div>
 
           <div className="field form-group">
-            <div className="control has-icons-left">
+            <div className="control has-icons-left has-icons-right">
               <label htmlFor="address">Street address *</label>
               <input
                 ref={input => (this.street = input)}
-                className={`input ${addressValid
-                  ? 'is-success'
-                  : 'is-warning'}`}
+                className="input"
                 type="text"
                 name="address"
                 placeholder="Street Address"
-                value={address}
-                onChange={e => {
-                  handleUserInput(e)
-                }}
               />
               <span className="icon is-small is-left icon-fix">
                 <i className="fa fa-map-o" />
               </span>
             </div>
-            {addressValid === null ? (
-              <ul className={`help is-danger is-pulled-right`}>
-                <li>* Please enter your street and number *</li>
-              </ul>
-            ) : null}
           </div>
         </section>
+
+        <hr />
 
         <CardSection />
 
@@ -280,23 +199,15 @@ class CheckoutForm extends React.Component {
           ) : null}
         </section>
 
-        <div className="submit-order">
-            {
-              transactionProccessed ?
-              <button className="button is-primary" disabled>Transaction Processed Successfully</button>
-              :
-              formValid ?
-              <button className="button is-primary">Confirm Order</button>
-              :
-              <button
-                className="button is-primary"
-                type="submit"
-                disabled
-              >
-                Fill out all fields before buying
-              </button>
-            }
+        <div className="field is-grouped submit">
+          <p className="control">
+            <button disabled={orderSaved} className='button is-primary' type="submit">
+              {buttonText}
+            </button>
+          </p>
         </div>
+
+
       </form>
     )
   }

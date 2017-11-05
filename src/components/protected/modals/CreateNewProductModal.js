@@ -2,7 +2,7 @@ import React from 'react'
 import CreateProductForm from '../CreateProductForm'
 import Modal from 'react-modal'
 
-const custumStyles = {
+const customStyles = {
   content: {
     top: '60px'
   }
@@ -16,7 +16,7 @@ class CreateNewProductModal extends React.Component {
         <Modal
           isOpen={modalIsOpen}
           contentLabel='Modal'
-          style={custumStyles}
+          style={customStyles}
           >
             <a className="button is-primary is-outlined is-pulled-right"
               onClick={closeModal}
@@ -26,6 +26,7 @@ class CreateNewProductModal extends React.Component {
             <CreateProductForm closeModal={closeModal}/>
 
         </Modal>
+        
         <a className="button is-primary is-outlined"
           onClick={openCreateModal}>
           Create New Product

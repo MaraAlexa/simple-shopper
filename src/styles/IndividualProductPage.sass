@@ -7,13 +7,11 @@ $tagBgColor: lighten(grey, 40%)
 
 // individual-product-view styles
 .content
-  padding: 3rem 0 1rem 0
+  padding: 3rem 0 0 0
 
 .card.individual-product-view
   display: flex
-  flex-direction: row
-  height: 85vh
-  margin: 3.7rem .4rem 1rem .4rem
+  margin-top: 4rem
   .product-title
     font-weight: 700
   .description
@@ -29,13 +27,11 @@ $tagBgColor: lighten(grey, 40%)
 
 .card-content.ind-prod-view
   background: darken(white, 5%)
-  width: 50%
   display: flex
   flex-direction: column
+  flex-basis: 60%
+  padding: 2rem
   align-items: center
-  justify-content: space-around
-  padding-bottom: 0
-  box-shadow: none
 
 .product-price
   color: $priceColor
@@ -70,6 +66,11 @@ $tagBgColor: lighten(grey, 40%)
     font-size: .8rem
     text-transform: uppercase
 
+button.addTocart.button.is-primary.is-outlined
+  height: 100%
+button.out-of-stock-btn
+  margin-top: 20px
+
 .added-info-footer
   width: 100%
   padding-bottom: 1rem
@@ -96,8 +97,9 @@ $tagBgColor: lighten(grey, 40%)
   .card.individual-product-view
     flex-wrap: wrap
   .card-content.ind-prod-view
-    width: 100%
-    margin-top: 3rem
+    flex-basis: 100%
+    margin-top: 1rem
+    padding: 5rem
 
 @media #{$mobile}
   .individual-product-view
@@ -111,6 +113,7 @@ $tagBgColor: lighten(grey, 40%)
     width: 100%
     margin-top: 1rem
     background: white
+    padding: 2rem 1rem 
     p
       text-align: center
   .addToCart

@@ -1,14 +1,11 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react'
-import { observable } from 'mobx'
 import { withRouter } from 'react-router-dom'
 
 import '../styles/LoginPage.css'
 
 @inject('user')
 @observer class LoginPage extends React.Component {
-  @observable loginMessage = null
-
   componentWillMount() {
     this.props.user.signIn()
   }

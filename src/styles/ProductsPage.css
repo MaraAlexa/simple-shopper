@@ -30,11 +30,12 @@ ul li {
       height: 300px; }
   .card.product-card .card-content {
     height: 135px;
-    background: linear-gradient(to right, rgba(187, 210, 197, 0.2), rgba(83, 105, 118, 0.2));
+    background: linear-gradient(to top, rgba(110, 231, 239, 0.23), rgba(109, 232, 255, 0.35));
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     display: flex;
-    justify-content: center; }
+    justify-content: center;
+    align-items: center; }
     .card.product-card .card-content p {
       align-self: center; }
 

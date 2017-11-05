@@ -3,7 +3,8 @@ import { observable, action } from "mobx"
 class Validations {
   // @observable email = ''
   @observable name = ''
-  @observable nameValid = false
+  @observable inputIsValid = false
+  @observable formValid = false
 
   // @observable phone = ''
   // @observable selectedCountry = ''
@@ -15,10 +16,22 @@ class Validations {
 
   @action validateName (value) {
     if (value.match(/^[a-zA-Z ]{3,30}$/)) {
-      this.nameValid = true
+      this.inputIsValid = true
+    } else {
+      this.inputIsValid = false
     }
 
   }
+
+  // @action handleValidation (inputIsValid, value) {
+  //   inputIsValid ?
+  //     this.inputIsValid = true
+  //     :
+  //     value.length > 0 ?
+  //       this.validateName(value)
+  //       :
+  //       null
+  // }
 
 
 }

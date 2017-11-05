@@ -37,6 +37,8 @@ a.nav-item {
 
 .navbar-item.logo-link {
   padding: 0; }
+  .navbar-item.logo-link:hover {
+    background-color: transparent; }
 
 .navbar-brand {
   justify-content: space-between; }
@@ -63,11 +65,15 @@ a.active {
 #navBurger, #navMobileLinks {
   animation-duration: .3s; }
 
-@media (max-width: 1000px) {
+@media (max-width: 1024px) {
   .navbar {
-    padding: .65rem 0; } }
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .navbar-brand {
+    width: 100%; } }
 
-@media (max-width: 640px) {
+@media (max-width: 650px) {
   .navbar {
     margin-left: 0; }
   .cart-link .icon {
@@ -75,4 +81,12 @@ a.active {
     .cart-link .icon .fa.fa-cart-arrow-down {
       font-size: 1.5rem; }
   #navBurger {
-    margin-right: 1.3rem; } }
+    margin-right: 1.3rem; }
+  .content-center .title {
+    margin-top: 7rem; } }
+
+@media (max-width: 500px) {
+  .navbar {
+    padding: .65rem 0; }
+  #navBurger {
+    margin-right: 0.5rem; } }

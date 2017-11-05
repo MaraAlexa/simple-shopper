@@ -1,7 +1,15 @@
 import React from 'react'
 import '../styles/IndividualProductPage.css'
-// import styled from 'styled-components'
+import styled from 'styled-components'
 import ProductName from '../reusable-components/ProductName'
+
+const OutOfStockMsg = styled.div`
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  background-color: rgba(255, 55, 55, 0.6);
+  color: white;
+`
 
 const Product = ({ product, onAddToCart, buyProduct }) =>
   <div className="card product-card">
@@ -12,16 +20,16 @@ const Product = ({ product, onAddToCart, buyProduct }) =>
           product.stock > 0 ?
             null
             :
-          <div className="notification out-of-stock">
+          <OutOfStockMsg className='notification out-of-stock'>
             <strong>Out Of Stock</strong>
-          </div>
+          </OutOfStockMsg>
         }
         <img src={product.main_img_url} alt={product.name} />
       </figure>
     </div>
 
     <div className="card-content">
-      <ProductName className='has-text-centered'>{product.name}</ProductName>
+      <ProductName >{product.name}</ProductName>
     </div>
   </div>
 

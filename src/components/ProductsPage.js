@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
 
 
-
 @inject(['products'])
 @observer class ProductsPage extends React.Component {
 
@@ -36,7 +35,6 @@ import { inject, observer } from 'mobx-react'
                   <Link to={`/products/${product.id}`}>
                     <Product
                       product={product}
-                      onAddToCart={null}
                     />
                   </Link>
                 </li>

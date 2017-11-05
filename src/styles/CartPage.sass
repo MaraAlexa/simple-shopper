@@ -28,25 +28,39 @@ ul.cart-list
 
 
 /*cart page view */
-.cart-page-img-wrap
-  width: 150px
-  height: 150px
+.cart-page-media
   display: flex
-  align-items: center
-  margin-right: 3rem
-
-.product-description
-  max-width: 400px
-
-.media
   width: 100%
   align-items: center
 
+.cart-page-img-wrap, .product-in-cart, .cart-product-controls
+  height: 150px
+  display: flex
+  flex-basis: 33%
+  justify-content: center
+  align-items: center
+
+figure.image.cart-page-img-wrap
+  margin-bottom: 0
+  img
+    width: 100px
+    height: 100px
+
+.product-in-cart
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+#cartpage-name
+  margin-bottom: 0
 
 .product-count
   font-weight: bold
   margin: 1rem
   line-height: 2.5
+
+  .cart-product-controls
+    margin-bottom: 2rem
 
 
 .remove-one.button.is-white

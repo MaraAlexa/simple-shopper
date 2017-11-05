@@ -46,13 +46,8 @@ class User {
   }
 
   @action async signInFromStorage(email) {
-    // const session = {
-    //   email: localStorage.getItem('email'),
-    //   authentication_token: localStorage.getItem('token')
-    // }
 
     const response = await Api.get(this.sessions_path)
-
     const status = await response.status
 
     if (status === 200) {
@@ -121,7 +116,7 @@ class User {
     this.email = null
     this.authenticated = false
     this.isLoading = false
-    history.push('/')
+    history.push('/') // this is not working
   }
 }
 

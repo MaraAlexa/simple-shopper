@@ -1,7 +1,7 @@
 import React from 'react'
 
-const subtotal = (cartProducts) =>
-  cartProducts.reduce((sum, product) => sum + (product.price * product.count)/100, 0)
+const subtotal = (productsInCart) =>
+  productsInCart.reduce((sum, product) => sum + (product.price * product.count)/100, 0)
 
 const TotalOrder = ({ cartProducts }) =>
   <article className="message">
