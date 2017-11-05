@@ -1,5 +1,5 @@
 $laptop: "only screen and (min-width: 1280px)"
-$tablet: "only screen and (min-width: 700px)"
+$tablet: "only screen and (max-width: 800px)"
 $mobile: "only screen and (max-width: 700px)"
 $priceColor: lighten(black, 15%)
 $tagBgColor: lighten(grey, 40%)
@@ -7,13 +7,11 @@ $tagBgColor: lighten(grey, 40%)
 
 // individual-product-view styles
 .content
-  padding: 3rem 0 1rem 0
+  padding: 3rem 0 0 0
 
 .card.individual-product-view
   display: flex
-  height: 80vh
-  justify-content: space-between
-  margin: 3.7rem .4rem 1rem .4rem
+  margin-top: 4rem
   .product-title
     font-weight: 700
   .description
@@ -26,18 +24,17 @@ $tagBgColor: lighten(grey, 40%)
 .image.show-page
   margin: 0
 
+
 .card-content.ind-prod-view
   background: darken(white, 5%)
-  width: 50%
   display: flex
   flex-direction: column
+  flex-basis: 60%
+  padding: 2rem
   align-items: center
-  justify-content: space-around
-  padding-bottom: 0
 
 .product-price
   color: $priceColor
-  
 
   .underline
     background: lighten(black, 30%)
@@ -45,7 +42,7 @@ $tagBgColor: lighten(grey, 40%)
     margin-top: 1rem
     width: 2rem
     height: 4px
-    margin: 1rem auto
+    margin: 1rem .9rem
     display: block
 
 .tags
@@ -60,7 +57,7 @@ $tagBgColor: lighten(grey, 40%)
       cursor: pointer
 
 .addToCart
-  margin: 2rem 0
+  margin: 1rem 0
   width: 200px
 
 .choose-wrap
@@ -68,6 +65,11 @@ $tagBgColor: lighten(grey, 40%)
   .subtitle
     font-size: .8rem
     text-transform: uppercase
+
+button.addTocart.button.is-primary.is-outlined
+  height: 100%
+button.out-of-stock-btn
+  margin-top: 20px
 
 .added-info-footer
   width: 100%
@@ -85,25 +87,35 @@ $tagBgColor: lighten(grey, 40%)
   .individual-product-view
     display: flex
     flex-direction: row
+    padding: 0
   .primary-image-wrapper
     width: 50%
+  .addToCart
+    height: 3.25em
 
 @media #{$tablet}
   .card.individual-product-view
-    height: 100%
+    flex-wrap: wrap
+  .card-content.ind-prod-view
+    flex-basis: 100%
+    margin-top: 1rem
+    padding: 5rem
 
 @media #{$mobile}
-  .card.individual-product-view
+  .individual-product-view
+    display: block
+    margin-top: 5rem
+  .image-gallery-thumbnails-container
     display: flex
-    flex-direction: column
-    height: 100%
-  // text column on larger screens
+    justify-content: center
+
   .card-content.ind-prod-view
     width: 100%
     margin-top: 1rem
     background: white
+    padding: 2rem 1rem 
+    p
+      text-align: center
   .addToCart
-    padding: 1rem 0 2.5rem 0
-    font-size: 1.4rem
-  .added-info-footer
-    padding-bottom: 7rem
+    padding: .5rem 0 2rem 0
+    font-size: 1.1rem

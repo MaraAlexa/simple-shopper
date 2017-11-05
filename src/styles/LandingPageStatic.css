@@ -2,29 +2,24 @@
   position: absolute;
   bottom: 10%;
   right: 27.5%;
-  width: 45%;
-}
+  width: 45%; }
 
 .example-enter {
-  opacity: 0.01;
-}
+  opacity: 0.01; }
 
 .example-enter.example-enter-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
-}
+  transition: opacity 500ms ease-in; }
 
 .example-leave {
-  opacity: 1;
-}
+  opacity: 1; }
 
 .example-leave.example-leave-active {
   opacity: 0.01;
-  transition: opacity 300ms ease-in;
-}
+  transition: opacity 300ms ease-in; }
 
 .page-header {
-  background-image: url(../images/landing-page-bg.png);
+  background-image: url(../images/landing-image.jpg);
   transform: translate3d(0px, 0px, 0px);
   background-color: #B2AFAB;
   background-position: center top;
@@ -37,34 +32,33 @@
   width: 100%;
   z-index: 1;
   display: flex;
-  justify-content: center;
-
-}
+  justify-content: center; }
 
 .content-center {
   display: flex;
   flex-direction: column;
-  align-self: center;
-  z-index: 3
-}
+  justify-content: center;
+  z-index: 3;
+  text-align: center; }
 
-.content-center > p {
+.content-center p.title {
   color: white;
-  text-align: center;
-}
-.content-center > p.title {
-  font-size: 4rem;
-}
-.content-center > p.subtitle {
-  font-size: 2rem;
-}
+  font-size: 3.6rem; }
 
-.button.is-success.cta-large-btn {
-  margin-top: 2rem;
-  width: 200px;
-  height: 50px;
+.content-center p.subtitle {
+  color: antiquewhite;
+  font-size: 1.5rem;
+  font-weight: 200;
+  width: 75%;
+  margin: 0 auto; }
+
+.button.is-primary.cta-large-btn {
+  width: 50%;
+  height: 3rem;
   align-self: center;
-}
+  padding: 1.5rem;
+  position: relative;
+  top: 3rem; }
 
 .filter {
   background-color: rgba(0, 0, 0, 0.5);
@@ -75,16 +69,14 @@
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 2
-}
+  z-index: 2; }
 
 .best-seller-wrap {
-  margin-top: 2rem;
-}
+  margin-top: 2rem; }
 
-figure.static-product-one , figure.static-product-two, figure.static-product-three {
+figure.static-product-one, figure.static-product-two, figure.static-product-three {
   transform: translate3d(0px, 0px, 0px);
-  background-color: rgba(240, 240, 240, 1);
+  background-color: #f0f0f0;
   background-position: center center;
   background-size: 98% 98%;
   background-repeat: no-repeat;
@@ -92,10 +84,23 @@ figure.static-product-one , figure.static-product-two, figure.static-product-thr
   max-height: 999px;
   overflow: hidden;
   position: relative;
-  z-index: 1;
-}
+  z-index: 1; }
 
 .best-selling-title {
   text-align: center;
-  margin: 2rem 0;
-}
+  margin: 2rem 0; }
+
+@media screen and (max-width: 650px) {
+  .content-center {
+    margin-bottom: 8rem; } }
+
+@media screen and (max-width: 444px) {
+  .content-center p.title {
+    font-size: 2.6rem; }
+  .content-center p.subtitle {
+    font-size: 1.2rem; } }
+
+@media screen and (max-width: 350px) {
+  .content-center p.subtitle {
+    width: 60%;
+    margin: 0 auto; } }

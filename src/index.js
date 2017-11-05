@@ -10,7 +10,7 @@ import App from './App'
 import stores from './store'
 import { Provider } from 'mobx-react'
 
-import registerServiceWorker from './registerServiceWorker'
+// import registerServiceWorker from './registerServiceWorker'
 
 // begin with routing
 
@@ -19,4 +19,4 @@ ReactDOM.render(
     <App />
   </Provider>
   , document.getElementById('root'));
-registerServiceWorker();
+// registerServiceWorker();

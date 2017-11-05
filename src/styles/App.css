@@ -6154,8 +6154,4 @@ html, body, #root, .App {
   height: 100%; }
 
 .App {
-  background: #eeeeee; }
-
-@media screen and (max-width: 560px) {
-  .App {
-    padding: .5rem; } }
+  background: #fbfbfb; }

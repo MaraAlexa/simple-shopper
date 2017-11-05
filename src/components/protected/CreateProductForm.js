@@ -49,11 +49,7 @@ class CreateProductForm extends React.Component {
       formData.append("tags", `medium, gist`)
       formData.append("upload_preset", cloudinary.uploadPreset) // the code is the preset string provided by cloudinary
       formData.append("api_key", cloudinary.apiKey)
-      // formData.append("timestamp", (Date.now() / 1000) | 0)
 
-      // making the ajax request
-      // const cloudinaryUrl =
-      //   "https://api.cloudinary.com/v1_1/dcbdbitwq/image/upload"
 
       return axios
         .post(cloudinary.API_BASE_URL, formData, {
@@ -77,7 +73,6 @@ class CreateProductForm extends React.Component {
         onSubmit={this.createProduct}
         ref={input => (this.productForm = input)}
       >
-        {/* <DevTools /> */}
         <section className="create">
           <p className="subtitle">Upload product images</p>
 

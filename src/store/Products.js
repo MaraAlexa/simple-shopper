@@ -7,6 +7,7 @@ class Products {
   // initial state
   @observable all = []
   @observable isLoading = false
+  @observable orderSaved = false
 
   @action async fetchAll() {
     this.isLoading = true
@@ -28,13 +29,15 @@ class Products {
     }
   }
 
-  @action async send_order(order_data) {
+  @action async sendOrder(order_data) {
     const response = await Api.post(this.orders_path, order_data)
     const status = await response.status
+    this.isLoading = true
+
     if(status === 201) {
-      this.fetchAll()
-      // redirect to thank you page
-      window.location.replace('thanks')
+      this.isLoading = false
+      this.orderSaved = true
+      console.log('this transaction was processed successfully! ❤️');
     }
   }
 

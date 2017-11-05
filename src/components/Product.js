@@ -1,50 +1,35 @@
 import React from 'react'
 import '../styles/IndividualProductPage.css'
+import styled from 'styled-components'
+import ProductName from '../reusable-components/ProductName'
 
+const OutOfStockMsg = styled.div`
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  background-color: rgba(255, 55, 55, 0.6);
+  color: white;
+`
 
 const Product = ({ product, onAddToCart, buyProduct }) =>
-  <div className="card product-on-prods-page">
+  <div className="card product-card">
+
     <div className="card-image">
-      <figure className="image is-4by3">
+      <figure className="image">
         {
           product.stock > 0 ?
             null
             :
-          <div className="notification out-of-stock">
+          <OutOfStockMsg className='notification out-of-stock'>
             <strong>Out Of Stock</strong>
-          </div>
+          </OutOfStockMsg>
         }
         <img src={product.main_img_url} alt={product.name} />
       </figure>
     </div>
-    <div className="card-content prods-page-view">
-      <div className="media">
-        <div className="media-content">
-          <p className="title is-4 prod-name">{product.name}</p>
-          <p>{product.description}</p>
-        </div>
-      </div>
 
-      <div className="products-page-price">
-        <p className="subtitle is-6">
-          € {product.price/100}
-        </p>
-
-        <br />
-
-        {
-          buyProduct ?
-          <button
-            className="addToCart button is-primary is-outlined"
-            onClick={() => onAddToCart(product)}
-          >
-            Add to cart
-          </button>
-          :
-          null
-
-        }
-      </div>
+    <div className="card-content">
+      <ProductName >{product.name}</ProductName>
     </div>
   </div>
 

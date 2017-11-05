@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
 
 
-
 @inject(['products'])
 @observer class ProductsPage extends React.Component {
 
@@ -22,13 +21,13 @@ import { inject, observer } from 'mobx-react'
     return(
 
         <div className="products-page">
-          <h2 className='has-text-centered'>Products Page</h2>
+
           <ul className="products columns is-mobile">
             {
               isLoading ?
-              <Spinner name="ball-scale-ripple" color="brown"/>
+              <Spinner className='spinner' name="ball-spin-fade-loader" fadeIn='quarter'/>
               :
-              all.map(product =>
+              all.map((product) =>
                 <li
                   className="product column is-one-third is-half-mobile"
                   key={product.id}
@@ -36,7 +35,6 @@ import { inject, observer } from 'mobx-react'
                   <Link to={`/products/${product.id}`}>
                     <Product
                       product={product}
-                      onAddToCart={null}
                     />
                   </Link>
                 </li>

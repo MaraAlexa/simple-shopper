@@ -10,9 +10,15 @@
   height: 72px
   top: 0
   padding: 0 50px
+  border-bottom: 1px solid lighten(gray, 35%)
+
+.content
+  height: 100%
+
 
 #navMobileLinks
   background: white
+  text-align: right
 
 
 .logo
@@ -38,6 +44,8 @@ a.nav-item
 
 .navbar-item.logo-link
   padding: 0
+  &:hover
+    background-color: transparent
 
 
 .navbar-brand
@@ -67,22 +75,35 @@ a.active
   right: .7rem
 
 
-
-
 #navBurger, #navMobileLinks
   animation-duration: .3s
 
 
-@media (max-width: 1000px)
+@media (max-width: 1024px)
   .navbar
-    padding: .65rem 0
+    display: flex
+    align-items: center
+    justify-content: space-between
+  .navbar-brand
+    width: 100%
 
-@media (max-width: 640px)
+@media (max-width: 650px)
   .navbar
     margin-left: 0
-    width: calc(100% - 1rem)
+
   .cart-link
     .icon
       width: 2.5rem
       .fa.fa-cart-arrow-down
         font-size: 1.5rem
+  #navBurger
+    margin-right: 1.3rem
+  .content-center
+    .title
+      margin-top: 7rem
+
+@media (max-width: 500px)
+  .navbar
+    padding: .65rem 0
+  #navBurger
+    margin-right: 0.5rem

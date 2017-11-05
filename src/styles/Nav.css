@@ -8,10 +8,15 @@
   width: 100%;
   height: 72px;
   top: 0;
-  padding: 0 50px; }
+  padding: 0 50px;
+  border-bottom: 1px solid #d9d9d9; }
+
+.content {
+  height: 100%; }
 
 #navMobileLinks {
-  background: white; }
+  background: white;
+  text-align: right; }
 
 .logo {
   padding-top: 5px;
@@ -32,6 +37,8 @@ a.nav-item {
 
 .navbar-item.logo-link {
   padding: 0; }
+  .navbar-item.logo-link:hover {
+    background-color: transparent; }
 
 .navbar-brand {
   justify-content: space-between; }
@@ -58,15 +65,28 @@ a.active {
 #navBurger, #navMobileLinks {
   animation-duration: .3s; }
 
-@media (max-width: 1000px) {
+@media (max-width: 1024px) {
   .navbar {
-    padding: .65rem 0; } }
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .navbar-brand {
+    width: 100%; } }
 
-@media (max-width: 640px) {
+@media (max-width: 650px) {
   .navbar {
-    margin-left: 0;
-    width: calc(100% - 1rem); }
+    margin-left: 0; }
   .cart-link .icon {
     width: 2.5rem; }
     .cart-link .icon .fa.fa-cart-arrow-down {
-      font-size: 1.5rem; } }
+      font-size: 1.5rem; }
+  #navBurger {
+    margin-right: 1.3rem; }
+  .content-center .title {
+    margin-top: 7rem; } }
+
+@media (max-width: 500px) {
+  .navbar {
+    padding: .65rem 0; }
+  #navBurger {
+    margin-right: 0.5rem; } }

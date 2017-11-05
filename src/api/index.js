@@ -1,12 +1,12 @@
 const endpoint = 'https://radiant-sea-68238.herokuapp.com/v1'
 // const endpoint = 'http://localhost:3000/v1'
 
-
 const headers = () => {
   const h = new Headers();
   h.append('Content-Type', 'application/json')
   h.append('Accept', 'application/json')
 
+  // used for admin page authentication
   const session = {
     email: localStorage.getItem('email'),
     token: localStorage.getItem('token')

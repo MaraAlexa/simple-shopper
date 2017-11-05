@@ -17,7 +17,7 @@ class ProductsTable extends React.Component {
 
   openEditModal = (productId) => {
     this.modalIsOpen = true
-    this.product = this.props.products.filter(p => p.id === Number(productId))[0]
+    this.findEditableProduct = this.props.products.filter(p => p.id === Number(productId))[0]
   }
 
   closeModal = () => {
@@ -98,7 +98,7 @@ class ProductsTable extends React.Component {
         <EditProductModal
           modalIsOpen={this.modalIsOpen}
           closeModal={this.closeModal}
-          product={this.product}
+          product={this.findEditableProduct}
         />
 
       </div>

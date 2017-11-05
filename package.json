@@ -60,6 +60,7 @@
     "react-toggle": "^4.0.1",
     "react-transition-group": "1.x",
     "style-loader": "0.18.2",
+    "styled-components": "^2.2.2",
     "sw-precache-webpack-plugin": "0.11.3",
     "url-loader": "0.5.9",
     "webpack": "2.6.1",
